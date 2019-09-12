@@ -1,0 +1,1330 @@
+\documentclass[a4paper,11pt]{article}
+
+% Always keep your main language last
+\usepackage[british,nynorsk,samin,norsk]{babel}
+
+\usepackage{_sty/UiT}
+\usepackage{_sty/IMS}
+\usepackage{MAT-0001/MAT-0001}
+
+%==============================================================================%
+%                              COURSE INFORMATION                              %
+%==============================================================================%
+
+
+\UiTsetup{%
+    Language = {norsk}, %auto = language defined by babel
+    isExercise = {true}, % Is this an exercise? true / false
+    ExerciseNumber = {3}, % Which exercise number is this?
+    Solution = {true}, % Boolean (true/false) includes solutions
+    SolutionShort = {auto}, % is used by \UiTcorrect and \UiTwrong
+    CourseCode = {auto}, % auto = \courseCode (defined in courseCode.sty, e.g. MAT-1001.sty)
+    CourseName = {auto}, % auto = \courseName (defined in courseCode.sty, e.g. MAT-1001.sty)
+    Year = {2019}, % No auto setting for this, as it might change on recompilation
+    Month = {9}, % No auto setting for this, as it might change on recompilation
+    Day = {9},% No auto setting for this, as it might change on recompilation
+    DurationDays = {4}, % Set the number of days the exam should last
+}
+
+%==============================================================================%
+%                     OWN COMMANDS AND PACKAGES BELOW HERE                     %
+%==============================================================================%
+
+\begin{document}
+
+%==============================================================================%
+%                                 EXERCISE 03                                  %
+%==============================================================================%
+
+\frontpageUiT
+
+\titlebox[norsk]{auto}{\Spraak}{auto}{\dateDuration}
+
+%==============================================================================%
+%                                SEKSJON 1.10                                  %
+%==============================================================================%
+
+\subsection*{Seksjon \textcolor{\UiTnumbercolor}{1}.\textcolor{\UiTnumbercolor}{3}}
+
+%==============================================================================%
+%                               PROBLEM 1.10.1                                 %
+%==============================================================================%
+
+\begin{problem}[1]
+    Regn ut følgende summer
+    \begin{subproblem}{3}
+        \item $\displaystyle \sum_{n=0}^6 4n^2 \UiTcorrect*[=]{364}$
+                \label{subproblem:MAT-0001-Problem-1.10.1.a}
+        \item $\displaystyle \sum_{n=1}^{10} 1\UiTcorrect*[=]{10}$
+                \label{subproblem:MAT-0001-Problem-1.10.1.b}
+        \item $\displaystyle \sum_{j=0}^4 (5j^2 - 2)\UiTcorrect*[=]{140}$
+                \label{subproblem:MAT-0001-Problem-1.10.1.c}
+    \end{subproblem}
+    \begin{subproblem}[4]{3}
+        \item $\displaystyle \sum_{p=-1}^0 2p\UiTcorrect*[=]{-2}$
+                \label{subproblem:MAT-0001-Problem-1.10.1.d}
+        \item $\displaystyle \sum_{i=-100}^{100} i^3\UiTcorrect*[=]{0}$
+        \label{subproblem:MAT-0001-Problem-1.10.1.e}
+    \end{subproblem}
+\end{problem}
+
+\begin{solution}
+    Her blir kanskje det enkleste å bruke formlene for summen av ulike rekker
+    %
+    \begin{equation*}
+        \sum_{n=0}^N 1 = N+1, \qquad
+        \sum_{n=0}^N n = \frac{N(N+1)}{2}, \qquad
+        \sum_{n=0}^N n^2 = \frac{N(N+1)(2N+1)}{6}.
+    \end{equation*}
+    %
+    \Opg{subproblem:MAT-0001-Problem-1.10.1.a} Ved å bruke formelene ovenfor får vi direkte
+    %
+    \begin{equation*}
+           \sum_{n=0}^6 4n^2 
+        = 4\sum_{n=0}^6 n^2 
+        = 4 \cdot \frac{\textcolor{UiT-blue}{6}(6+1)(2\cdot 6+1)}{\textcolor{UiT-blue}{6}}
+        = 4 (7) (13) = 52 \cdot 7 = 364.
+    \end{equation*}
+    %
+    Siden vi har 52 uker i ett år, og syv dager i hver uke får vi totalt 364.
+    \begin{flalign*}
+     \Opg{subproblem:MAT-0001-Problem-1.10.1.b} &&
+        \sum_{n=1}^{10} a_j 1 
+        &= \underbrace{1 + 1 + \cdots + 1}_{\text{$10$ ganger}} = 10 && 
+    \end{flalign*}
+    \Opg{subproblem:MAT-0001-Problem-1.10.1.c} Vi har
+    %
+    \begin{align*}
+             \sum_{j=0}^4 5j^2
+        &= 5 \cdot \frac{(4) (4 + 1)(2\cdot 4 + 1)}{6}
+         = 5 \cdot \frac{(2 \cdot 2)(5)(3 \cdot 3)}{3 \cdot 2}
+         = 5 \cdot 2 \cdot 5 \cdot 3 
+         = 150 \\
+            \sum_{j=0}^{4} -2
+        &= -2(4 + 1) 
+         = -10 \\
+        \sum_{j=0}^{4} 5j^2 - 2 &= 150 - 10 = 140,
+    \end{align*}
+    \begin{flalign*}
+     \Opg{subproblem:MAT-0001-Problem-1.10.1.d} &&
+        \sum_{p=-1}^{0} 2p 
+        &= 2\cdot(-1) + 2\cdot(0) = -2. && 
+    \end{flalign*}
+    \Opg{subproblem:MAT-0001-Problem-1.10.1.e} Her har vi i utgangspunktet ingen formel, og
+    det er heller ingen grunn til å bruke en. Dersom vi prøver med mindre verdier ser vi at
+    %
+    \begin{equation*}
+        \sum_{i=-2}^{2} i^3 = (-2)^3 + (-1)^3 + (0)^3 + (1)^3 + (2)^3
+        = -8 - 1 + 0 + 1 + 8 = 0.
+    \end{equation*}
+    %
+    Hvor vi ser at alle de negative leddene kanselerer de positive. Det er rimelig å anta 
+    at dette fortsetter for større verdier også. Mer formelt kan vi og føre det som følger
+    %
+    \begin{align*}
+          \sum_{i=-N}^{N} i^3
+        &= \sum_{i=-N}^{-1} i^3 + \sum_{i=0}^0 i^3 + \sum_{i=1}^{N} i^3 \\
+        &= \sum_{-i=-N}^{1} (-i)^3 + 0 + \sum_{i=1}^{N} i^3 
+         = -\sum_{i=1}^{N} i^3 + \sum_{i=1}^{N} i^3 
+         = 0.
+    \end{align*}
+    %
+\end{solution}
+
+%==============================================================================%
+%                               PROBLEM 1.10.2                                 %
+%==============================================================================%
+
+\begin{problem}
+    \label{problem:MAT-0001-Problem-1.10.2}
+    Skriv $\displaystyle \sum_{j=1}^5a_j 2^j$ uten bruk av summetegn. 
+    $\UiTcorrect{2 a_1 + 4 a_2 + 8 a_3 + 16 a_4 + 32 a_5}$
+\end{problem}
+
+\begin{solution}
+    \begin{flalign*}
+     \Opg{problem:MAT-0001-Problem-1.10.2} &&
+        \sum_{j=1}^5a_j 2^j 
+        &= a_12^1 + a_22^2 + a_32^3 + a_42^4 + a_52^5 && \\ &&
+        &= 2 a_1 + 4 a_2 + 8 a_3 + 16 a_4 + 32 a_5. &&
+    \end{flalign*}
+\end{solution}
+
+%==============================================================================%
+%                               PROBLEM 1.10.3                                 %
+%==============================================================================%
+
+\begin{problem}
+    Skriv uttrykket
+    %
+    \begin{equation*}
+        4^3 + 4^5 + 4^5 + 4^6 \UiTcorrect*[=]{\sum_{n=3}^6 4^n},
+    \end{equation*}
+    %
+    ved bruk av summetegn.
+\end{problem}
+
+\newpageNotLF
+\newpageLF
+
+%==============================================================================%
+%                                SEKSJON 1.X                                   %
+%==============================================================================%
+
+\subsection*{Blandede oppgavel til kapittel \textcolor{\UiTnumbercolor}{1}}
+
+%==============================================================================%
+%                               PROBLEM 1.X.4                                  %
+%==============================================================================%
+
+\begin{problem}[4]
+    Forenke følgende uttrykk så mye du kan. Alle bokstaver står for reelle
+    tall.
+    %
+    \begin{subproblem}{2}
+        \item $\displaystyle \frac{x^3 + x^2 y}{x + x^2}$
+        \label{subproblem:MAT-0001-Problem-1-x-4.a}
+        \item $\displaystyle \frac{x^2 y^3 + y^4x}{xy^3 + y^4}$
+        \label{subproblem:MAT-0001-Problem-1-x-4.b}
+    \end{subproblem}
+    \begin{subproblem}[3]{2}
+        \item $\displaystyle \frac{1}{x - 1} - \frac{1}{x}$
+        \label{subproblem:MAT-0001-Problem-1-x-4.c}
+        \item $\displaystyle \frac{xy + 1 + xy^2}{x}$
+        \label{subproblem:MAT-0001-Problem-1-x-4.d}
+    \end{subproblem}
+    \begin{subproblem}[5]{2}
+        \item $\displaystyle \frac{yx - x}{y - 1}$
+        \label{subproblem:MAT-0001-Problem-1-x-4.e}
+        \item $\displaystyle \frac{rare}{greier}$
+        \label{subproblem:MAT-0001-Problem-1-x-4.f}
+    \end{subproblem}
+    \begin{subproblem}[7]{2}
+        \item $\displaystyle \biggr[3 - \frac{5x^2 tz + x^2 tz}{tx^2z}\biggl]^3$
+        \label{subproblem:MAT-0001-Problem-1-x-4.g}
+        \item $\displaystyle \frac{\text{Dette} - \text{er} - \text{egentlig}}{\text{bare} - \text{sludder}}$
+        \label{subproblem:MAT-0001-Problem-1-x-4.h}
+    \end{subproblem}
+\end{problem}
+
+\begin{solution}
+    \begin{flalign*}
+          \ref{subproblem:MAT-0001-Problem-1-x-4.a} &&
+         & \frac{x^3 + x^2 y}{x + x^2}
+         = \frac{x (x^2 + x y)}{x(1 + x)} 
+         = \frac{x^2 + xy}{1 + x},& \\ 
+           \ref{subproblem:MAT-0001-Problem-1-x-4.b} &&
+         & \frac{x^2 y^3 + y^4x}{xy^3 + y^4}
+         = \frac{x \cdot x y^3 + y \cdot xy^3}{x \cdot y^3 + y\cdot y^3}
+         = \frac{xy^3(x + y)}{y^3(x + y)}
+         = x, & \\
+           \ref{subproblem:MAT-0001-Problem-1-x-4.c} &&
+         & \frac{1}{x-1} - \frac{1}{x}
+         = \frac{1}{x-1}\cdot\frac{x}{x} - \frac{1}{x}\frac{x-1}{x-1}
+         = \frac{x - (x-1)}{x(x-1)}
+         = \frac{1}{x(x-1)},& \\
+           \ref{subproblem:MAT-0001-Problem-1-x-4.d} &&
+         & \frac{1}{x-1} - \frac{1}{x}
+         = \frac{1}{x-1}\cdot\frac{x}{x} - \frac{1}{x}\frac{x-1}{x-1}
+         = \frac{x - (x-1)}{x(x-1)}
+         = \frac{1}{x(x-1)},& \\
+           \ref{subproblem:MAT-0001-Problem-1-x-4.e} &&
+          & \frac{yx - x}{y - 1}
+          = \frac{(y-1)x}{y-1}
+          = \frac{y-1}{y-1}x
+          = x, & \\
+           \ref{subproblem:MAT-0001-Problem-1-x-4.f} &&
+          & \frac{rare}{greier}
+          = \frac{er^2\cdot a}{er^2\cdot egi}
+          = \frac{er^2}{er^2} \cdot \frac{a}{egi}
+          = \frac{a}{egi}. &
+    \end{flalign*}
+    \Opg{subproblem:MAT-0001-Problem-1-x-4.g} Alle leddene inneholder $x^2tz$ slik at
+    \begin{equation*}
+            \frac{5x^2 tz + x^2 tz}{tx^2z}
+          = \frac{5x^2 tz}{x^2tz} + \frac{x^2 tz}{x^2tz}
+          = 5 + 1 = 6,
+    \end{equation*}
+    som betyr at vår opprinnelige likning forenkles til 
+    \begin{equation*}
+        \biggr[3 - \frac{5x^2 tz + x^2 tz}{tx^2z}\biggl]^3
+        = \biggr[3 - 6\biggl]^3
+        = (-3)^3 = -27.
+    \end{equation*}
+    \Opg{subproblem:MAT-0001-Problem-1-x-4.g} ved å trekke ut de felles bokstavene fås
+    %
+    \begin{align*}
+        \frac{\text{Dette} - \text{er} - \text{egentlig}}{\text{bare} - \text{sludder}}
+        & = \frac{\text{D}\text{e}^2\text{t}^2 - \text{er} - \text{e}^2\text{g}^2\text{ilnt}}%
+                 {\text{aber} - \text{d}^2\text{elsru}} \\
+        & = \frac{\text{e}(\text{D}\text{e}\text{t}^2 - \text{r} - \text{e}\text{g}^2\text{ilnt})}%
+                 {\text{e}(\text{abr} - \text{d}^2\text{lsru})} 
+          = \frac{\text{D}\text{e}\text{t}^2 - \text{r} - \text{e}\text{g}^2\text{ilnt}}%
+                 {\text{abr} - \text{d}^2\text{lsru}}.
+    \end{align*}
+\end{solution}
+
+%==============================================================================%
+%                               PROBLEM 1.X.5                                  %
+%==============================================================================%
+
+\begin{problem}
+    Forenkle uttrykkene så mye du kan, og forklar underveis hvilke regneregler 
+    du bruker. Alle bokstaver står for tall.
+    \begin{subproblem}{2}
+        \item $\displaystyle \frac{x + x^5}{x}$
+          \label{subproblem:MAT-0001-Problem-1-x-5-a}
+        \item $\displaystyle \frac{x^2 ya + (ax)^2 y}{ay}$
+          \label{subproblem:MAT-0001-Problem-1-x-5-b}
+    \end{subproblem}
+    \begin{subproblem}[3]{2}
+        \item $\displaystyle x^2 + x^3 + 3x + 2x$
+          \label{subproblem:MAT-0001-Problem-1-x-5-c}
+        \item $\displaystyle (5a + 2)(a - 4) - 5a^2$
+          \label{subproblem:MAT-0001-Problem-1-x-5-d}
+    \end{subproblem}
+    \begin{subproblem}[5]{2}
+        \item $\displaystyle (2x^2 + 8) \cdot \frac{x+3}{2}$
+          \label{subproblem:MAT-0001-Problem-1-x-5-e}
+        \item $\displaystyle \frac{x}{(x^2 - 2x)(x + 1)}$
+          \label{subproblem:MAT-0001-Problem-1-x-5-f}
+    \end{subproblem}
+\end{problem}
+
+\begin{solution}
+    \Opg{subproblem:MAT-0001-Problem-1-x-5-a} siden alle leddene i teller og nevner
+    inneholder $x$ kan vi forkorte
+    %
+    \begin{equation}
+        \frac{x + x^5}{x} = \frac{x(1+x^4)}{x} = 1 + x^4.
+    \end{equation}
+    %
+    \Opg{subproblem:MAT-0001-Problem-1-x-5-b} Alle leddene inneholder $ay$
+    %
+    \begin{align*}
+           \frac{x^2 ya + (ax)^2 y}{ay}
+        &= \frac{ay(x^2 + ax^2)}{ay}
+         = (1 + a)x^2, \ \text{eller} \\
+           \frac{x^2 ya + (ax)^2 y}{ay}
+        &= \frac{x^2 ya}{ay} + \frac{x^2 ay}{ay}
+         = (1 + a)x^2.
+    \end{align*}
+    \Opg{subproblem:MAT-0001-Problem-1-x-5-c} Ikke veldig mye som kan gjøres her
+    %
+    \begin{equation*}
+        x^2 + x^3 + 3x + 2x = x^3 + x^2 + 5x = x(x^2 + x + 4).
+    \end{equation*}
+    \Opg{subproblem:MAT-0001-Problem-1-x-5-d} Ved å gange ut fås
+    %
+    \begin{equation*}
+        (5a + 2)(a - 4) - 5a^2
+        = (5a^2 + 2a - 20a - 8) - 5a^2 
+        = -18a - 8.
+    \end{equation*}    
+    \Opg{subproblem:MAT-0001-Problem-1-x-5-e} Merk at $2$ deler både $8$ og $2x^2$
+    \begin{equation*}
+          (2x^2 + 8) \cdot \frac{x+3}{2}
+        = 2(x^2 + 4) \cdot \frac{x+3}{2}
+        =  (x^2 + 4)(x + 3).
+    \end{equation*}
+    \Opg{subproblem:MAT-0001-Problem-1-x-5-f}
+    \begin{equation*}
+          \frac{x}{(x^2 - 2x)(x+1)}
+        = \frac{x}{(x\cdot x - 2\cdot x)(x+1)}
+        = \frac{x}{x(x - 2)(x+1)}
+        = \frac{1}{(x-2)(x+1)}.
+    \end{equation*}
+\end{solution}
+
+\newpageLF
+
+%==============================================================================%
+%                               PROBLEM 1.X.7                                  %
+%==============================================================================%
+
+\begin{problem}[7]
+    Finn eventuelle løsninger til følgende likninger
+    %
+    \begin{subproblem}{2}
+        \item $2x^2 + 3x - 1 = 0$
+        \label{subproblem:MAT-0001-Exercise-03-Problem-1-x-7-a}
+        \item $16x^2 - 16x + 5 = 0$
+        \label{subproblem:MAT-0001-Exercise-03-Problem-1-x-7-b}
+    \end{subproblem}
+    \begin{subproblem}[3]{2}
+        \item $N^2 + 3N - 8 = 0$
+        \label{subproblem:MAT-0001-Exercise-03-Problem-1-x-7-c}
+        \item $\lambda^2 - 2\lambda + 6 = 0$
+        \label{subproblem:MAT-0001-Exercise-03-Problem-1-x-7-d}
+    \end{subproblem}
+\end{problem}
+
+\begin{solution}
+    \Opg{subproblem:MAT-0001-Exercise-03-Problem-1-x-7-a}
+    Her finnes det dessverre ingen smarte triks: 
+    %
+    \begin{equation*}
+        2x^2 + 3x - 1 = 0 \ \Leftrightarrow \
+        x = \frac{-3 \pm \sqrt{3^2 - 4\cdot 2 \cdot (-1)}}{2\cdot 2}
+          = - \frac{3}{4} \pm \frac{\sqrt{17}}{4}.
+    \end{equation*}
+    \Opg{subproblem:MAT-0001-Exercise-03-Problem-1-x-7-b}
+    Skal vi være litt for smart for vårt eget beste legg merke til at 
+    $16x^2 - 16x + 5 = 16x(x-1) + 5$. Den minste verdien som $x(x-1)$ kan oppnå
+    er $-1/4$ når $x=1/2$. Dette betyr at vi har
+    %
+    \begin{equation*}
+        16x(x-1) + 5 \geq 16 \cdot \bigl( -\frac{1}{4}\bigr) + 5 = 1 > 0,
+    \end{equation*}
+    %
+    slik at polynomet ikke har noen nullpunkter. Hvorfor oppnår $x(x-1)$ sitt 
+    maksimum for $x=1/2$? Man kan bruke mekaniske derivasjon, ellers litt mer 
+    intuitivt anta vi har ett rektangel med sider $x$ og $x-1$. Dette rektanglet 
+    har størst areal når det er et kvadrat, som vil si at vi ønsker at $x$ og 
+    $x-1$ skal være like lange modulo fortegn. Ellers kan vi og fullføre 
+    kvadratet og se at $x(x-1) = (x-1/2)^2 - 1/4$. For en siste mulighet kan 
+    vi og drøfte diskriminanten til det opprinnelige polynomet
+    %
+    \begin{equation}
+        \Delta = b^2 - 4ac = 16^2 - 4 \cdot 16 \cdot 5 = 16 (16 - 20) < 0.
+    \end{equation}
+    \medskip
+    \Opg{subproblem:MAT-0001-Exercise-03-Problem-1-x-7-c} Her ønsker vi på undersøke om det eksisterer
+    to heltall slik at $a+b=3$ og $ab = 8$. Alle tallpar der produktet gir $8$ er $(1,8)$, $(2,4)$, $(-1,-8)$ og $(-2,-4)$. 
+    Ingen av disse gir $3$ når vi legger dem sammen, slik at løsningen ikke har noen heltallsrøtter. 
+    Vi må derfor ty til siste mulighet, andregradsformelen
+    %
+    \begin{equation*}
+        N^2 + 3N - 8 = 0
+        \ \Leftrightarrow \ 
+        N = \frac{-3 \pm \sqrt{3^2 - 4\cdot 1 \cdot (-8)}}{2\cdot 1}
+          = -\frac{3}{2} \pm \frac{\sqrt{41}}{2}.
+    \end{equation*}
+    \medskip
+    \Opg{subproblem:MAT-0001-Exercise-03-Problem-1-x-7-d} Slik som før
+    så er den minste verdien som $\lambda(\lambda - 2)$ kan få er $-1$ når $\lambda = 1$. 
+    Fordi da er $\lambda$ og $\lambda - 2$ like lange i absoluttverdi, og danner da ett kvadrat. Dermed så er 
+    %
+    \begin{equation*}
+        \lambda^2 - 2\lambda + 6 
+        = \lambda(\lambda - 2) + 6
+        \geq -1 + 6 \geq 5 > 0,
+    \end{equation*}
+    %*
+    og polynomet har ingen reell løsning. Alternativt via andregradsformelen
+    %
+    \begin{equation*}
+        \lambda^2 - 2\lambda + 6 
+        \ \Leftrightarrow \ 
+        \lambda 
+        = \frac{2 \pm \sqrt{(-2)^2 - 4(1)(6)}}{2}
+        = \frac{2 \pm \sqrt{-2^2\cdot 5}}{2} 
+        = 1 \pm i\sqrt{5}.
+    \end{equation*}
+\end{solution}
+
+
+
+%==============================================================================%
+%                               PROBLEM 1.X.8                                  %
+%==============================================================================%
+
+\begin{problem}
+    For hvilke verdier av $k$ har
+    %
+    \begin{equation*}
+        \lambda^2 - k \lambda + 9 = 0,
+    \end{equation*}
+    %
+    to forskjellige reelle røtter. 
+\end{problem}
+
+\begin{solution}
+Kanskje den enkleste måten er at polynomet har to forskjellige løsninger
+når diskriminanten $\Delta =  b^2 - 4ac$ er strengt positiv. Innsetning gir
+%
+\begin{equation*}
+    \Delta > 0 
+    \, \Rightarrow \, 
+    b^2 - 4ac  > 0 
+    \, \Rightarrow \, 
+    (-k)^2 - 4\cdot 1 \cdot 9> 0 
+    \, \Rightarrow \, 
+    k^2 > 6^2.
+\end{equation*}
+%
+Hvor vi da ser at vi trenger at $\abs{k} > 6$, som er det samme som at vi 
+enten må ha $k < -6$ eller $k > 6$. Men hvorfor fungerer dette? La oss sjekke 
+med andregradsformelen
+%
+\begin{equation}
+    \lambda = \frac{-k \pm \sqrt{(-k)^2 - 4\cdot 1 \cdot 9}}{2}
+     = \frac{-k \pm \sqrt{\Delta}}{2},
+\end{equation}
+%
+hvor vi gjenkjente det under rottegnet som diskriminanten. Det er nå klart at 
+vi har ingen løsning når $\Delta < 0$, én løsning når $\Delta = 0$ og 
+\emph{to} løsninger når $\Delta > 0$.
+\end{solution}
+
+%==============================================================================%
+%                               PROBLEM 1.X.9                                  %
+%==============================================================================%
+
+\begin{problem} 
+    La $L \subseteq \R^2$ være linjen $y = 1 - (1/2)x$.
+    \begin{subproblem}
+        \label{subproblem:MAT-0001-Exercise-03-Problem-1-x-9-a}
+        Finn likningen for linjen som er \emph{parallell} med $L$ og som går 
+        gjennom punktet $(1, 3)$.
+    \end{subproblem}
+    \begin{subproblem}
+        \label{subproblem:MAT-0001-Exercise-03-Problem-1-x-9-b}
+        Finn likningen for linjen som står \emph{vinkelrett} på $L$ og som går 
+        gjennom punktet $(1, 3)$.
+    \end{subproblem}
+\end{problem}
+
+\begin{solution}
+    \Opg{subproblem:MAT-0001-Exercise-03-Problem-1-x-9-a} At 
+    vår linje skal være \emph{parallell} med $y = 1 - (1/2)x$ betyr at 
+    de må ha samme \emph{stigningstall}. Hva er stignignstallet til den opprinelige
+    linja? Jo, $-1/2$. Dermed må vår linje være på formen
+    %
+    \begin{equation*}
+        y = b - \frac{1}{2}x.
+    \end{equation*}
+    %
+    For å bestemme konstanten $b$ bruker vi at linja passerer igjennom $(1, 3)$
+    %
+    \begin{equation*}
+        3 = b - \frac{1}{2} \cdot 1 
+        \ \Rightarrow \ 
+        b = 3 + \frac{1}{2}
+        \ \Rightarrow \ 
+        b = \frac{7}{2}.
+    \end{equation*}
+    %
+    Formelen for en linje som går igjennom $(1, 3)$ \emph{og} er parallell med 
+    $y = 1 - (1/2)x$ er altså $y = (7/2) - (1/2)x = (7 - x)/2$.
+    \medskip
+\end{solution}
+
+\begin{solution}
+    \Opg{subproblem:MAT-0001-Exercise-03-Problem-1-x-9-b} At 
+    vår linje skal stå \emph{vinkelrett}\footnote{Fjonge matematikere kaller gjerne dette for \emph{ortogonalitet}.} 
+    på $y = 1 - (1/2)x$ betyr at \emph{produktet} av stigningstallene skal bli $-1$. 
+    Så dersom linjen vår er på formen $y = ax$ så trenger vi at 
+    %
+    \begin{equation*}
+        -\frac{1}{2}a = - 
+        \ \Rightarrow \ 
+        a = 2.
+    \end{equation*}
+    %
+    For å bestemme konstanten $b$ bruker vi at linja passerer igjennom $(1, 3)$
+    %
+    \begin{equation*}
+        3 = b + 2 \cdot 1 
+        \ \Rightarrow \ 
+        b = 3 - 2
+        \ \Rightarrow \ 
+        b = 1
+    \end{equation*}
+    %
+    Formelen for en linje som går igjennom $(1, 3)$ \emph{og} står ortogonalt på 
+    $y = 1 - (1/2)x$ er altså $y = 5 - 2x$. Her har vi tegnet linjene i \cref{fig:MAT-0001-Problem-1-x-9}
+    for å forsikre oss om at vi har regnet riktig.
+\end{solution}
+
+\hvisLF{%
+  \begin{figure}[htbp!]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        UiTplotstyle,
+        ytick={-5,-3,...,5},
+        xtick={-5,-3,...,5},
+        % x tick label style={below right},
+        % y tick label style={above left,},
+        ymin=-2.75,
+        ymax=4.5,
+        xmin=-4.5,
+        xmax=4.5,
+        domain=-10:10,
+        legend pos = south west,
+        legend cell align={left},
+        ]
+        \addplot+[domain=-5:5, mark=none, ultra thick, black] {1-0.5*x};
+        \addplot+[domain=-5:5, mark=none, ultra thick, UiT-blue] {3.5 - 0.5*x};
+        \addplot+[domain=-5:5, ultra thick,mark=none, UiT-orange] {1 + 2*x};
+        \legend{$y = 1 - (1/2)x$, $y = (7-x)/2$, $y = 1 + 2x$}
+      \end{axis}
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:MAT-0001-Problem-1-x-9}. 
+  \end{figure}
+}
+
+\newpageNotLF
+
+%==============================================================================%
+%                                NOTAT 2.6.6                                   %
+%==============================================================================%
+
+\subsection*{Forelesningsnotater: seksjon \textcolor{\UiTnumbercolor}{2}.\textcolor{\UiTnumbercolor}{6}.\textcolor{\UiTnumbercolor}{6}}
+
+\begin{align}
+  \langle&a\rangle
+  = \brak{a_1}^{p_1}\brak{a_2}^{p_2}\dots\brak{a_n}^{p_n},
+  \label{Mregel}\\
+  [&a]
+  = \,\bpar{a_1}^{p_1}\,\bpar{a_2}^{p_2}\,\dots\,\bpar{a_n}^{p_n}
+  \label{Bregel}.
+\end{align}
+
+Vi har altså at for enhver benevnt avledet
+størrelse $a$, så finnes det potenser $q_1,\dots,q_k$ slik at
+%
+\begin{equation}
+  \bpar{a} = d_1^{q_1}\cdots d_k^{q_k},\label{BasicUnitExpansion}
+\end{equation}
+%
+hvor $d_1,\cdots,d_k$ er kortnavnene for enhetene assosierte med de benevnte
+grunnstørrelsene.
+
+%==============================================================================%
+%                           NOTAT 2.6.6 | PROBLEM 1                            %
+%==============================================================================%
+
+\begin{problem}[1]
+    La følgene benevnte størrelser være gitt
+    \begin{align*}
+      a_1 &= \SI{3.6}{\m\squared\s\tothe{\frac{1}{2}}},\\
+      a_2 &= \SI{5.1}{\m\tothe{\frac{1}{3}}\s\tothe{-4}},
+    \end{align*}
+    og la $a$ være den benevnte avledede størrelsen
+    \begin{equation*}
+      a = a_1^{\frac{1}{3}}a_2^2.
+    \end{equation*}
+\end{problem}
+\begin{subproblem}
+    Finn måltallet til $a$ ved å benytte
+    regelen \eqref{Mregel} for å finne måltallet til en benevnt avledet
+    størrelse.
+\end{subproblem}
+\begin{solution}
+    Ved å bruke \cref{Mregel} 
+    %
+    \begin{equation}
+          \brak{a} 
+        = \brak{a_1}^{\frac{1}{3}}\brak{a_2}^2
+        = \num{3.6}^{\frac{1}{3}}\num{5.1}^2
+        \approx \num{39.8634},
+    \end{equation}
+    %
+    så er måltallet vårt altså $\brak{a}=\num{39.8634}$.
+\end{solution}
+\begin{subproblem}
+    Vis, ved å benytte regelen \eqref{Bregel} for å finne
+    benevningen til en benevnt avledet størrelse, at benevningen til
+    $a$ kan skrives på formen \eqref{BasicUnitExpansion}. Angi hva
+    $k$, $d_1,\dots,d_k$ og $p_1,\dots, p_k$ er i dette tilfellet.
+\end{subproblem}
+\begin{solution}
+    Ved å bruke \cref{Bregel}
+    %
+    \begin{align*}
+            \bpar{a} 
+          = \bpar{a_1}^{\frac{1}{3}}\bpar{a_2}^2
+        & = (\si{\m\squared\s\tothe{\frac{1}{2}}})^{\frac{1}{3}}
+            (\si{\m\tothe{\frac{1}{3}}\s\tothe{-4}})^2 \\
+        & = \si{\m\tothe{2\cdot\frac{1}{3}+\frac{1}{3}\cdot 2}%
+                \s\tothe{\frac{1}{2}\cdot\frac{1}{3}-4\cdot 2}}
+          = \si{\m\tothe{\frac{4}{3}}\s\tothe{-\frac{47}{6}}}
+    \end{align*}
+    %
+    Her er $d_1 = \si{m}$, $p_1 = \frac{3}{4}$ og $d_2 = \si{\s}$, $p_2 = -\frac{47}{6}$, $k=2$.
+    Ved å kombinere får vi altså at $a = \SI{39.8634}{\m\tothe{\frac{4}{3}}\s\tothe{-\frac{47}{6}}}$. 
+\end{solution}
+\begin{subproblem}
+    Skift fra gamle enheter til nye enheter ved at
+    \begin{align*}
+      \si{\s} &\rightarrow \si{\hour},\\
+      \si{\m} &\rightarrow \si{\km}.
+    \end{align*}
+    Beregn måltall og benevning til $a$ med hensyn på de nye
+    enhetene på to måter
+    \begin{subsubproblem}
+        \label{subsubproblem:MAT-0001-Exercise-03-Problem-N-2.6.6.1-c-i}
+        Skift først enheter i $a_1$ og $a_2$ og finn de nye måltallene
+        og benevningene tilhørende disse to benevnte størrelsene. Finn så
+        nytt måltall og benevning til $a$ ved å bruke reglene fra \cref{Mregel,Bregel}.
+    \end{subsubproblem}
+    \begin{subsubproblem}
+        \label{subsubproblem:MAT-0001-Exercise-03-Problem-N-2.6.6.1-c-ii}
+        Bruk måltallet og benevningen til $a$ med hensyn på gamle
+        enheter, funnet i oppgavene a og b, til å direkte beregne måltallet
+        og benevningen til $a$ med hensyn på de nye enhetene.
+    \end{subsubproblem}
+\end{subproblem}
+
+\begin{solution}
+    \Opg{subsubproblem:MAT-0001-Exercise-03-Problem-N-2.6.6.1-c-i}
+    Ved å skifte enheter har vi
+    \begin{alignat*}{2}
+      a_1 &= \num{3.6} \cdot (\SI{e-3}{\km})^{2}
+                             (\SI[quotient-mode=fraction]{1/3600}{\hour})^{\frac{1}{2}}
+         &&= \SI{6e-8}{\km\squared\hour\tothe{\frac{1}{2}}}, \\
+      a_2 &= \num{5.1} \cdot (\SI{e-3}{\km})^{\frac{1}{3}}
+                             (\SI[quotient-mode=fraction]{1/3600}{\hour})^{-4}
+          &&= \SI{8.5660416e13}{\km\tothe{\frac{1}{3}}\hour\tothe{-4}}
+    \end{alignat*}
+    % 
+    Ved nå og bruke reglene fra \cref{Mregel,Bregel} så blir henholdsvis måltallet og benevningen til $a$
+    %
+    \begin{align*}
+        \brak{a} &= \brak{a_1}^{\frac{1}{3}}\brak{a_2}^2 \\
+                 &= (\num{6e-8})^{\frac{1}{3}}(\num{8.5660416e13})^2 
+                  \approx \num{2.872615e25} \\
+        \bpar{a} &= \bpar{a_1}^{\frac{1}{3}}\bpar{a_2}^2 \\
+                 &= (\si{\km\squared\hour\tothe{\frac{1}{2}}})^{\frac{1}{3}}
+                    (\si{\km\tothe{\frac{1}{3}}\hour\tothe{-4}})^2 
+                  = \si{\km\tothe{2\cdot\frac{1}{3}+\frac{1}{3}\cdot 2}%
+                        \hour\tothe{\frac{1}{2}\cdot\frac{1}{3}-4\cdot 2}} 
+                  = \si{\km\tothe{\frac{4}{3}}\hour\tothe{-\frac{47}{6}}}.
+    \end{align*}
+    %
+    Ved å kombinere likningene ovenfor får vi
+    %
+    \begin{equation*}
+        a \approx \SI{2.872615e25}{\km\tothe{\frac{4}{3}}\hour\tothe{-\frac{47}{6}}}
+    \end{equation*}
+    %
+    \Opg{subsubproblem:MAT-0001-Exercise-03-Problem-N-2.6.6.1-c-ii}
+    Ved å direkte endre på $a$ får vi
+    %
+    \begin{align*}
+        a &= \SI{39.8634}{\m\tothe{\frac{4}{3}}\s\tothe{-\frac{47}{6}}}\\
+          &= 39.8634 \cdot (\SI{e-3}{\km})^{\frac{4}{3}} 
+                           (\SI[quotient-mode=fraction]{1/3600}{\hour})^{-\frac{47}{6}} 
+           \approx \SI{2.872615e25}{\km\tothe{\frac{4}{3}}\hour\tothe{-\frac{47}{6}}}
+    \end{align*}
+    %
+    Hvor vi ser at vi fikk det samme svaret som før. 
+\end{solution}
+
+%==============================================================================%
+%                           NOTAT 2.6.6 | PROBLEM 2                            %
+%==============================================================================%
+
+\begin{problem}
+    Gjenta oppgave 1 med følgende benevnte størrelser
+    \begin{align*}
+      a_1 &= \SI{6.3}{\m\tothe{\frac{1}{4}}\kg\cubed},\\
+      a_2 &= \SI{31.1}{\m\tothe{-\frac{1}{3}}\kg\tothe{-\frac{1}{2}}},
+    \end{align*}
+    hvor $a$ nå er
+    \begin{equation*}
+      a = a_1^3 a_2^{\frac{3}{2}}
+    \end{equation*}
+    og hvor vi har følgende skifte fra gamle til nye enheter
+    \begin{align*}
+      \si{\kg} &\rightarrow \si{\g},\\
+      \si{\m} &\rightarrow \si{\milli\m}.
+    \end{align*}
+\end{problem}
+\begin{solution}
+    Ved å bruke \cref{Mregel} får vi med en gang at 
+    %
+    \begin{equation*}
+          \brak{a} 
+        = \brak{a_1}^{3}\brak{a_2}^{\frac{3}{2}}
+        = \num{6.3}^{3}\num{31.1}^{\frac{3}{2}}
+        \approx \num{4.37863e4}
+    \end{equation*}
+    Ved å bruke \cref{Bregel} får vi med en gang at 
+    %
+    \begin{align*}
+            \bpar{a} 
+          = \bpar{a_1}^{3}\bpar{a_2}^{\frac{3}{2}}
+        & = (\si{\m\tothe{\frac{1}{4}}\kg\cubed})^{3}
+            (\si{\m\tothe{-\frac{1}{3}}\kg\tothe{-\frac{1}{2}}})^{\frac{3}{2}} \\
+        & = \si{\m\tothe{\frac{1}{4}\cdot 3 - \frac{1}{3}\cdot \frac{3}{2}}%
+                \kg\tothe{3\cdot 3 - \frac{1}{2} \cdot \frac{3}{2}}}
+          = \si{\m\tothe{\frac{1}{4}}\kg\tothe{\frac{33}{4}}}
+    \end{align*}
+    Slik at vi ser at vi har
+    \begin{equation*}
+        a = a_1^3 a_2^{\frac{3}{2}} 
+          \approx \SI{4.37863e4}{\m\tothe{\frac{1}{4}}\kg\tothe{\frac{33}{4}}}
+    \end{equation*}
+\end{solution}
+\begin{solution}
+    \Opg{subsubproblem:MAT-0001-Exercise-03-Problem-N-2.6.6.1-c-i}
+    Ved å skifte enheter har vi
+    \begin{alignat*}{2}
+      a_1 &= \phantom{3}\num{6.3} \cdot (\SI{e3}{\milli\m})^{\frac{1}{4}}
+                             (\SI{e3}{\g})^{3}
+          &&= \SI{3.54275e10}{\milli\m\tothe{\frac{1}{4}}\g\cubed}, \\
+      a_2 &= \num{31.1} \cdot (\SI{e3}{\milli\meter})^{-\frac{1}{3}}
+                             (\SI{e3}{\g})^{-\frac{1}{2}}
+          &&= \SI{9.898e-2}{\milli\meter\tothe{-\frac{1}{3}}\g\tothe{-\frac{1}{2}}}.
+    \end{alignat*}
+    % 
+    Ved nå og bruke reglene fra \cref{Mregel,Bregel} så blir henholdsvis måltallet og benevningen til $a$
+    %
+    \begin{align*}
+        \brak{a} &= \brak{a_1}^{3}\brak{a_2}^{\frac{3}{2}} \\
+                 &= (\num{3.54275e10})^{3}(\num{9.898e-2})^{\frac{3}{2}} 
+                  \approx \num{1.38464e30}, \\
+        \bpar{a} &= \bpar{a_1}^{3}\bpar{a_2}^{\frac{3}{2}} \\
+                 &= (\si{\milli\m\tothe{\frac{1}{4}}\g\cubed})^{3}
+                    (\si{\milli\m\tothe{-\frac{1}{3}}\g\tothe{-\frac{1}{2}}})^{\frac{3}{2}} \\
+                & = \si{\milli\m\tothe{\frac{1}{4}\cdot 3 - \frac{1}{3}\cdot \frac{3}{2}}%
+                        \g\tothe{3\cdot 3 - \frac{1}{2} \cdot \frac{3}{2}}}
+                  = \si{\milli\m\tothe{\frac{1}{4}}\g\tothe{\frac{33}{4}}}.
+    \end{align*}
+    %
+    Da er det klart at
+    %
+    \begin{equation}
+        a \approx \SI{1.38464e30}{\milli\m\tothe{-\frac{1}{4}}\g\tothe{\frac{33}{4}}}
+    \end{equation}
+    %
+    \Opg{subsubproblem:MAT-0001-Exercise-03-Problem-N-2.6.6.1-c-ii}
+    Derimot om vi endrer direkte på $a$
+    %
+    \begin{align*}
+        a &= \SI{4.37863e4}{\m\tothe{\frac{1}{4}}\kg\tothe{\frac{33}{4}}}\\
+          &= \num{4.37863e4} \cdot (\SI{e3}{\milli\m})^{\frac{1}{4}} 
+                           (\SI{e3}{\g})^{\frac{33}{4}} \\
+          &\approx
+          \SI{1.38464e30}{\milli\m\tothe{\frac{1}{4}}\g\tothe{\frac{33}{4}}}
+    \end{align*}
+    %
+    ser at vi får det samme svaret som før. 
+\end{solution}
+
+
+%==============================================================================%
+%                           NOTAT 2.6.6 | PROBLEM 5                            %
+%==============================================================================%
+
+\begin{problem}[5]
+    La følgende benevnte størrelser være gitt
+    \begin{align*}
+      a_1 &= \SI{1.2}{\kg\tothe{\frac{1}{3}}%
+                                \m\tothe{4}%
+                                \s\tothe{-\frac{5}{6}}},\\
+      a_2 &= \SI{4.3}{\per\kg\cubed%
+                                \m\tothe{\frac{4}{5}}%
+                                \s\tothe{-\frac{1}{2}}},\\
+      a_3 &= \SI{5.2}{\kg\tothe{\frac{1}{2}}%
+                                \m\squared%
+                                \s\tothe{\frac{3}{4}}},\\
+      a_4 &= \SI{2.4}{\kg\squared%
+                                \m\cubed%
+                                \s\tothe{\frac{1}{2}}},
+    \end{align*}
+    og la $a$ være størrelsen
+    \begin{equation*}
+      a = a_1%
+          a_2^{-\frac{10}{9}}%
+          a_3^{\frac{86}{45}}%
+          a_4^{-\frac{104}{45}}.
+    \end{equation*}
+    Vis at dersom vi endrer enheter ved at
+    \begin{align*}
+      \si{\m} &\rightarrow \si{\km},\\
+      \si{\s} &\rightarrow \si{\hour},\\
+      \si{\kg} &\rightarrow \si{\ct},
+    \end{align*}
+    så endres ikke måltallet for størrelsen. Vis så, ved å finne benevningen til
+    $a$, at den er en ubenevnt avledet størrelse.
+\end{problem}
+
+\begin{solution}
+    Vi begynner med å regne ut måltallet til $\alpha$ først
+    %
+    \begin{align*}
+         \brak{a} 
+      &= \brak{a_1}%
+         \brak{a_2}^{-\frac{10}{9}}%
+         \brak{a_3}^{\frac{86}{45}}%
+         \brak{a_4}^{-\frac{104}{45}} \\ 
+      &= (\num{1.2})%
+         (\num{4.3})^{-\frac{10}{9}}%
+         (\num{5.2})^{\frac{86}{45}}%
+         (\num{2.4})^{-\frac{104}{45}} \\
+      &= \num{7.32789e-1}.
+    \end{align*}
+    La oss først regne ut det nye måltallet
+    \begin{alignat*}{2}
+      \brak{a_1} &= (\num{1.2})(\num{0.5e4})^{\frac{1}{3}}
+                    (\num{e-3})^4\biggl(\frac{1}{3600}\biggr)^{-\frac{5}{6}} 
+        &&\approx \num{1.88693e-8},\\
+      \brak{a_2} &= (\num{4.3})(\num{0.5e4})^{-3}
+                    (\num{e-3})^{\frac{4}{5}}\biggl(\frac{1}{3600}\biggr)^{-\frac{1}{2}} 
+      &&\approx \num{8.21693e-12},\\
+      \brak{a_3} &= (\num{5.2})(\num{0.5e4})^{\frac{1}{2}}
+                    (\num{e-3})^2\biggl(\frac{1}{3600}\biggr)^{\frac{3}{4}} 
+      &&\approx \num{7.91155e-7},\\
+      \brak{a_4} &= (\num{2.4})(\num{0.5e4})^{2}
+                    (\num{e-3})^3\biggl(\frac{1}{3600}\biggr)^{\frac{1}{2}} 
+        &&\approx \num{1.00000e-3}.
+    \end{alignat*}
+    Vi kan nå regne ut måltallet til $a$ med nye enheter
+    %
+    \begin{align*}
+         \brak{a} 
+      &= \brak{a_1}%
+         \brak{a_2}^{-\frac{10}{9}}%
+         \brak{a_3}^{\frac{86}{45}}%
+         \brak{a_4}^{-\frac{104}{45}} \\ 
+      &= (\num{1.88693e-8})%
+         (\num{8.21693e-12})^{-\frac{10}{9}}%
+         (\num{7.91155e-7})^{\frac{86}{45}}%
+         (\num{e-3})^{-\frac{104}{45}} \\
+      &= \num{7.32789e-1}.
+    \end{align*}
+    Slik at vi ser at måltallet $a$ ikke har endret seg. La oss nå bestemme
+    benevningen til $a$ direkte
+    %
+    \begin{align*}
+         \bpar{a}
+      &= \bpar{a_1}%
+         \bpar{a_2}^{-\frac{10}{9}}%
+         \bpar{a_3}^{\frac{86}{45}}%
+         \bpar{a_4}^{-\frac{104}{45}} \\
+      &= (\si{\kg\tothe{\frac{1}{3}}%
+              \m\tothe{4}\s\tothe{-\frac{5}{6}}})%
+         (\si{\per\kg\cubed%
+              \m\tothe{\frac{4}{5}}
+              \s\tothe{-\frac{1}{2}}})^{-\frac{10}{9}}%
+         (\si{\kg\tothe{\frac{1}{2}}%
+              \m\squared%
+              \s\tothe{\frac{3}{4}}})^{\frac{86}{45}}%
+         (\si{\kg\squared%
+              \m\cubed%
+              \s\tothe{\frac{1}{2}}})^{-\frac{104}{45}}\\
+      &= \si{\kg\tothe{(\frac{1}{3} + 3 \cdot \frac{10}{9} + \frac{1}{2}\frac{86}{45} - 2 \cdot \frac{104}{45})}%
+             \m\tothe{(4-\frac{4}{5}\frac{10}{9}+2\frac{86}{45}-3\cdot \frac{104}{45})}%
+             \s\tothe{(-\frac{5}{6}+\frac{1}{2}\frac{10}{9} + \frac{3}{4} \cdot \frac{86}{45} - \frac{1}{2}\frac{104}{45})}} \\
+      &= \si{\kg\tothe{0}\m\tothe{0}\s\tothe{0}} = 1.
+    \end{align*}
+    %
+    Altså er $a$ en ubenevnt størrelse som var det som skulle vises.
+\end{solution}
+
+\newpageNotLF
+
+%==============================================================================%
+%                           NOTAT 2.6.6 | PROBLEM 6                            %
+%==============================================================================%
+
+\begin{problem}[6]
+    La følgende benevnte størrelser være gitt
+    \begin{align*}
+      a_1 &= \SI{6.5}{\m\squared\s\tothe{-\frac{5}{7}}},\\
+      a_2 &= \SI{3.0}{\m\tothe{\frac{3}{5}}%
+                                \s\tothe{-\frac{1}{3}}},\\
+      a_3 &= \SI{7.3}{\m\tothe{\frac{2}{3}}%
+                                \s\tothe{\frac{1}{4}}},\\
+      a_4 &= \SI{8.0}{\m\cubed\s\tothe{-\frac{1}{2}}},
+    \end{align*}
+    og la $a$ og $b$ være følgende størrelser
+    \begin{align*}
+      a &=
+      a_1^{91}%
+      a_3^{96}%
+      a_4^{-82},\\
+      b &=
+      a_2^{5}%
+      a_3^{\frac{42}{13}}%
+      a_4^{-\frac{67}{39}}.
+    \end{align*}
+    Vis at dersom vi endrer enheter ved at
+    \begin{align*}
+      \si{\m} &\rightarrow \si{\km},\\
+      \si{\s} &\rightarrow \si{\hour},
+    \end{align*}
+    så endres ikke måltallet for størrelsene $a$ og $b$. Vis så ved å finne
+    benevningen til $a$ og $b$ at de er ubenevnte avledede størrelser.
+\end{problem}
+
+\begin{solution}
+    La oss først regne ut måltallet for henholdsvis $a$ og $b$
+    %
+    \begin{alignat*}{3}
+        \bpar{a} 
+         &= \bpar{a_1}^{91}\bpar{a_3}^{96} \bpar{a_4}^{-82} 
+        &&= (\num{6.5})^{91} (\num{7.3})^{96} (\num{8.0})^{-82} 
+        &&= \num{6.32020e82}, \\
+        \bpar{b} 
+         &= \bpar{a_2}^{5}\bpar{a_3}^{\frac{42}{13}} \bpar{a_4}^{-\frac{67}{39}} 
+        &&= (\num{6.5})^{5}(\num{7.3})^{\frac{42}{13}} (\num{8.0})^{-\frac{67}{39}} 
+        &&= \num{4.20089e3}.
+    \end{alignat*}
+    %
+    Vi regner så om de benevnte størrelsene
+    %
+    \begin{alignat*}{3}
+      a_1 &= \SI{6.5}{\m\squared\s\tothe{-\frac{5}{7}}}
+          &&= (\num{6.5})(\SI{e-3}{\km})^2
+                        (\SI[quotient-mode=fraction]{1/3600}{\hour})^{-\frac{5}{7}}
+          &&\approx \SI{2.25491e-3}{\km\squared\hour\tothe{-\frac{5}{7}}},\\
+      a_2 &= \SI{3.0}{\m\tothe{\frac{3}{5}}%
+                      \s\tothe{-\frac{1}{3}}}
+          &&= (\num{3.0})(\SI{e-3}{\km})^{\frac{3}{5}}
+                        (\SI[quotient-mode=fraction]{1/3600}{\hour})^{-1/3}
+          &&\approx \SI{7.28711e-1}{\km\tothe{\frac{3}{5}}\hour\tothe{-\frac{1}{3}}},\\
+      a_3 &= \SI{7.3}{\m\tothe{\frac{2}{3}}%
+                      \s\tothe{\frac{1}{4}}}
+          &&= (\num{7.3})(\SI{e-3}{\km})^{\frac{2}{3}}
+                        (\SI[quotient-mode=fraction]{1/3600}{\hour})^{\frac{1}{4}}
+          &&\approx \SI{9.42426e-3}{\km\tothe{\frac{2}{3}}%
+                                   \hour\tothe{\frac{1}{4}}},\\
+      a_4 &= \SI{8.0}{\m\cubed\s\tothe{-\frac{1}{2}}}
+          &&= (\num{8.0})(\SI{e-3}{\km})^3
+                        (\SI[quotient-mode=fraction]{1/3600}{\hour})^{-\frac{1}{2}}
+          &&= \SI{4.80000e-7}{\km\cubed\hour\tothe{-\frac{1}{2}}},
+    \end{alignat*}
+    %
+    hvor en selvsagt også bare kunne ha regnet ut måltallet da potensene til enhetene
+    ikke endres. Det nye \bquote{måltallet} til henholdsvis $a$ og $b$ blir nå
+    %
+    \begin{align*}
+        \bpar{a} 
+        &= \bpar{a_1}^{91}\bpar{a_3}^{96} \bpar{a_4}^{-82} \\
+        & = (\num{2.25491e-3})^{91} (\num{9.42426e-3})^{96} (\num{4.8e-7})^{-82} \\
+        &= \num{6.31995e82}, \\
+        \bpar{b} 
+        &= \bpar{a_2}^{5}\bpar{a_3}^{\frac{42}{13}} \bpar{a_4}^{-\frac{67}{39}} \\
+        &= (\num{7.28711e-1})^{5}(\num{9.42426e-3})^{\frac{42}{13}} (\num{4.8e-7})^{-\frac{67}{39}} \\
+        &= \num{4.20088e3}.
+    \end{align*}
+    %
+    Vi ser at vi får ca de samme tallene som før. Grunnen til at $a$ avviker såvidt
+    er at vi her arbeider med svært høye potenser. Ett lite avik i $\text{tall}^{92}$ 
+    gjør mye større utsalg på det endelige svaret enn $\text{tall}^3$. Dersom vi skulle ha fått 
+    enda likere svar måtte vi ha brukt enda flere desimaler. Direkte utregning av enhetene gir
+    \begin{align*}
+         \brak{a} 
+      &= \brak{a_1}^{91}%
+         \brak{a_3}^{96}%
+         \brak{a_4}^{-82},\\
+      &= (\si{\m\squared\s\tothe{{-\frac{5}{7}}}})^{91}
+         (\si{\m\tothe{\frac{2}{3}}\s\tothe{\frac{1}{4}}})^{96}
+         (\si{\m\cubed\s\tothe{-\frac{1}{2}}})^{-82} \\
+      &= \si{\m\tothe{(2 \cdot 91 + \frac{2}{3}\cdot 96 - 3\cdot 82)}%
+             \s\tothe{(-\frac{5}{7} \cdot 91 + \frac{1}{4}\cdot 96 + \frac{1}{2}\cdot 82)}}\\
+      &= \si{\m\tothe{0}\s\tothe{0}} = 1,\\
+         %
+         \brak{b} 
+      &= \brak{a_2}^{5}%
+         \brak{a_3}^{\frac{42}{13}}%
+         \brak{a_4}^{-\frac{67}{39}} \\
+      &= (\si{\m\tothe{\frac{3}{5}}\s\tothe{-\frac{1}{3}}})^{5}
+         (\si{\m\tothe{\frac{2}{3}}\s\tothe{\frac{1}{4}}})^{\frac{42}{13}}
+         (\si{\m\cubed\s\tothe{-\frac{1}{2}}})^{\frac{67}{39}} \\
+      &= \si{\m\tothe{(\frac{3}{5} \cdot 5 + \frac{2}{3} \cdot \frac{42}{13} + 3 \cdot \frac{67}{39})}%
+             \s\tothe{(-\frac{1}{3} \cdot 5 + \frac{1}{4}\cdot \frac{42}{13} + \frac{1}{2}\cdot \frac{67}{39})}}\\
+      &= \si{\m\tothe{0}\s\tothe{0}} = 1.\\
+    \end{align*}
+    %
+    Slik at $a$ og $b$ er ubenevnte avledede størrelser, som var det som skulle vises.
+\end{solution}
+
+%==============================================================================%
+%                           NOTAT 2.6.6 | PROBLEM 8                            %
+%==============================================================================%
+
+\begin{problem}
+    \begin{subproblem}
+        \label{subproblem:MAT-0001-Problem-N-2.2.6.a}
+        La $M$, $R$, $T$ og
+        $G$ være benevnte størrelser hvor benevningene er
+        gitt ved
+        \begin{align*}
+          \bpar{M} &= \si{\kg},\\
+          \bpar{R} &= \si{\m},\\
+          \bpar{T} &= \si{\s},\\
+          \bpar{G} &= \si{\m\cubed\per\kg\per\s\squared}.
+        \end{align*}
+        Vis at
+        \begin{equation*}
+          \alpha = T G^{\frac{1}{2}} M^{\frac{1}{2}} R^{-\frac{3}{2}}
+        \end{equation*}
+        er en ubenevnt avledet størrelse.
+    \end{subproblem}
+\end{problem}
+\begin{solution}
+    Direkte innsetning gir at
+    %
+    \begin{align*}
+        \alpha 
+        & = T G^{\frac{1}{2}} M^{\frac{1}{2}} R^{-\frac{3}{2}} \\
+        & = (\si{\s})(\si{\m\cubed\per\kg\per\s\squared})^{\frac{1}{2}} (\si{\kg})^{\frac{1}{2}} (\si{\m})^{-\frac{3}{2}} \\
+        & = \si{\s\tothe{1 - 2\cdot\frac{1}{2}}%
+                \m\tothe{3 \cdot \frac{1}{2} - \frac{3}{2}}%
+                \kg\tothe{-1\cdot\frac{1}{2}+\frac{1}{2}}} \\
+        & = \si{\s\tothe{0}\m\tothe{0}\kg\tothe{0}}
+          = 1.
+    \end{align*}
+    %
+    som var det som skulle vises.
+\end{solution}
+    \begin{subproblem}
+        La størrelsene fra \cref{subproblem:MAT-0001-Problem-N-2.2.6.a} ha måltall
+        \begin{align*}
+          \brak{M} &= \num{1.3},\\
+          \brak{R} &= \num{10.4},\\
+          \brak{T} &= \num{7.8},\\
+          \brak{G} &= \num{23.7}.
+        \end{align*}
+        Bruk dette til å regne ut måltallet for størrelsen $\alpha$ fra \cref{subproblem:MAT-0001-Problem-N-2.2.6.a},
+        og sjekk resultatet du fant der ved å vise at dersom vi endrer enheter
+        \begin{align*}
+          \si{\m}&\rightarrow \si{\milli\m},\\
+          \si{\s}&\rightarrow \si{\hour},\\
+          \si{\kg}&\rightarrow \si{\lbs}.
+        \end{align*}
+        så endres ikke måltallet for størrelsen $\alpha$.
+    \end{subproblem}
+\begin{solution}
+    Vi begynner med å regne ut måltallet for størrelsen $\alpha$
+    %
+    \begin{align*}
+           \brak{\alpha}
+        &= \brak{T} \brak{G}^{\frac{1}{2}} \brak{M}^{\frac{1}{2}} \brak{R}^{-\frac{3}{2}} \\
+        &= (\num{7.8}) (\num{23.7})^{\frac{1}{2}} (\num{1.3})^{\frac{1}{2}} (\num{10.4})^{-\frac{3}{2}} \\
+        &\approx \num{1.13219}.
+    \end{align*}
+    %
+    Dersom vi nå endrer enheter får vi i stedet
+    %
+        \begin{align*}
+          M &= \SI{1.3}{\kg} 
+             = \num{1.3}\cdot(\SI{2.205}{\lbs}) 
+             = \SI{2.8665}{\lbs}\\
+          R &= \SI{10.4}{\m} 
+             = \num{10.4}\cdot(\SI{e3}{\milli\m}) 
+             = \SI{1.04e4}{\milli\m}\\
+          T &= \SI{7.8}{\s} 
+             = \num{7.8} \cdot \biggl(\SI[quotient-mode=fraction]{1/3600}{\hour}\biggr)
+             \approx \SI{2.16e-3}{\hour},\\
+          G &= \SI{23.7}{\m\cubed\per\kg\per\s\squared} \\
+            &= \num{23.7}(\SI{e3}{\milli\m})^3
+                         (\SI{2.205}{\lbs})^{-1}
+                   \biggl(\SI[quotient-mode=fraction]{1/3600}{\hour}\biggr)^{-2} \\
+            &\approx \SI{1.392980e17}{\milli\m\cubed\per\lbs\per\hour\squared}
+        \end{align*}
+    %
+    Vi regner så ut måltallet igjen med disse nye enhetene
+    %
+    \begin{align*}
+        \brak{\alpha}
+        &= \brak{T} \brak{G}^{\frac{1}{2}} \brak{m}^{\frac{1}{2}} \brak{r}^{-\frac{3}{2}} \\
+        &= (\num{2.16e-3}) (\num{1.39298e17})^{\frac{1}{2}} (\num{2.8665})^{\frac{1}{2}} (\num{1.04e4})^{-\frac{3}{2}} \\
+        &\approx \num{1.13219},
+    \end{align*}
+    %
+    som er det samme som vi fikk tidligere.
+\end{solution}
+    \begin{subproblem}
+        La de benevnte størrelsene $M$, $R$, $T$ fra \cref{subproblem:MAT-0001-Problem-N-2.2.6.a} være
+        massen, rotasjonsperioden og radiusen til en geostasjonær bane for en
+        planet. Legg merke til at den geostasjonære banen til en planet er en
+        sirkulær bane hvor rotasjontiden for en satellitt er lik
+        rotasjonsperioden for planeten. Sett fra bakken vil derfor satellitten
+        alltid befinne seg i samme posisjon på himmelen.  Dette er opplagt
+        nyttig dersom satellitten for eksempel sender TV-signaler til kunder på
+        bakken.
+
+        Den benevnte størrelsen $G$ er en universell konstant på lik linje med
+        lysets hastighet i vakuum og kalles for \emph{gravitasjonskonstanten}.
+        Benevningen er slik som gitt i \cref{subproblem:MAT-0001-Problem-N-2.2.6.a} og måltallet er gitt ved
+        \begin{equation*}
+          \brak{G} = \SI{6.67408e-11}.
+        \end{equation*}
+        Beregn verdien av den ubenevnte avledede størrelsen $\alpha$ for jorda
+        og Mars. Måltallene for massen, rotasjonsperioden og radiusen for
+        geostasjonær bane for jorda og Mars finner dere på nettet.
+
+        Legg merke tillat det er mulig måltallene for størrelsene $M$, $R$ og
+        $T$ dere finner på nettet ikke referer til enhetene $\si{\kg}$,
+        $\si{\m}$ og $\si{\s}$. Dersom dette er tilfelle må dere skifte enheter
+        for $m$, $r$ og $T$ til $\si{\kg}$, $\si{\m}$ og $\si{\s}$, noe som
+        medfører at måltallene endrer seg ifølge den generelle regelen beskrevet
+        på slutten av avsnitt (\textcolor{\UiTnumbercolor}{1}.\textcolor{\UiTnumbercolor}{7}.\textcolor{\UiTnumbercolor}{1}). Alternativtkan dere skifte
+        enhetene $\si{\kg}$, $\si{\m}$ og $\si{\s}$ til enhetene som måltallene
+        dere finner på nettet refererer til. Da vil måltallet til
+        Gravitasjonskonstanten $G$ endre seg slik som beskrevet på slutten av
+        avsnitt (\textcolor{\UiTnumbercolor}{1}.\textcolor{\UiTnumbercolor}{7}.\textcolor{\UiTnumbercolor}{1}).
+    \end{subproblem}
+    
+\begin{solution}
+    Vi ønsker å beregne $\alpha = T G^{\frac{1}{2}} M_{\text{j}}^{\frac{1}{2}} R^{-\frac{3}{2}}$
+    hvor $T$ er omløptstiden til den geostasjonære satellitten, denne er gitt som ett
+    siderisk døgn\footnote{se \url{https://nn.wikipedia.org/wiki/Stjerned\%C3\%B8gn} for definisjonen.}, $G$ er gravtiasjonskonstanten, $M_{\text{j}}$ er massen til jorden
+    og $R$ er radiusen.
+    
+    \begin{center}
+        \begin{tabular}{r c c c c}
+            \toprule 
+             Planet & {{$T$ ($\si{\s}$)}} & {{$G$ ($\si{\m\cubed\per\kg\per\s\squared}$)}} 
+                    & {$M$ ($\si{\kg}$)} & {$R$ ($\si{\m}$)} \\ \midrule
+             Jorden &   \num{86164} & \num{6.67430e-11} & \num{5.972e24} & \num{3.579e7} \\
+             Mars   &   \num{88642} & \num{6.67430e-11} & \num{6.417e23} & \num{1.703e7} \\
+             \bottomrule 
+        \end{tabular}
+    \end{center}
+    
+    Dette gjør at vi kan regne ut $\alpha_{\text{j}}$ og $\alpha_{\text{m}}$ for 
+    henholdsvis jorden og mars
+    %
+    \begin{align*}
+              \alpha_{\text{j}}
+        &= T_{\text{j}} G^{\frac{1}{2}} M_{\text{j}}^{\frac{1}{2}} R_{\text{j}}^{-\frac{3}{2}} \\
+        &=    \num{86164} 
+        \cdot (\num{6.67430e-11})^{\frac{1}{2}}
+        \cdot (\num{5.972e24})^{\frac{1}{2}} 
+        \cdot (\num{3.579e7})^{-\frac{3}{2}} \\
+        &\approx \num{8.03426},\\
+              \alpha_{\text{m}}
+        &= T_{\text{m}} G^{\frac{1}{2}} M_{\text{m}}^{\frac{1}{2}} R_{\text{m}}^{-\frac{3}{2}} \\
+        &=    \num{88642} 
+        \cdot (\num{6.67430e-11})^{\frac{1}{2}}
+        \cdot (\num{6.417e23})^{\frac{1}{2}} 
+        \cdot (\num{1.703e7})^{-\frac{3}{2}} \\
+        &\approx \num{8.02366}.
+    \end{align*}
+    %
+    Slik at vi ser at $\alpha$ er omtrent konstant.
+\end{solution}
+
+%==============================================================================%
+%                           NOTAT 2.6.6 | PROBLEM 10                           %
+%==============================================================================%
+
+\begin{problem}[10]
+    \begin{subproblem}
+      \label{subproblem:MAT-0001-Problem-N-2.2.10.a}
+      La $v$, $l$ og $g$ være benevnte størrelser hvor benevningene er
+        gitt ved
+        \begin{align*}
+          \bpar{v} &= \si{\m\per\s},\\
+          \bpar{l} &= \si{\m},\\
+          \bpar{g} &= \si{\m\per\s\squared}.
+        \end{align*}
+        Vis at $\alpha = v l^{-\frac{1}{2}} g^{-\frac{1}{2}}$ er en ubenevnt avledet størrelse.
+    \end{subproblem}
+\end{problem}
+\begin{solution}
+    Ved direkte innsetning ser vi at 
+    %
+    \begin{align*}
+            \alpha
+        &=  v l^{-\frac{1}{2}} g^{-\frac{1}{2}} \\
+        &= (\si{\m\per\s})(\si{\m})^{-\frac{1}{2}}(\si{\m\per\s\squared})^{-\frac{1}{2}}, \\
+        &= \si{\m\tothe{1 -\frac{1}{2} - \frac{1}{2}}\s\tothe{-1-2\cdot(-\frac{1}{2})}} \\
+        &= \si{\m\tothe{0}\s\tothe{0}} = 1,
+    \end{align*}
+    %
+    slik at $\alpha = v l^{-\frac{1}{2}} g^{-\frac{1}{2}}$ er en ubenevnt avledet størrelse.
+\end{solution}
+    \begin{subproblem}
+      La størrelsene fra \cref{subproblem:MAT-0001-Problem-N-2.2.10.a} ha måltall
+        \begin{align*}
+          \brak{v} &= \num{3.4},\\
+          \brak{l} &= \num{1.2},\\
+          \brak{g} &= \num{4.5}.
+        \end{align*}
+        Regn ut måltallet for størrelsen $\alpha$ fra \cref{subproblem:MAT-0001-Problem-N-2.2.10.a} og sjekk resultatet
+        du fant der ved å vise at dersom vi endrer enheter
+        \begin{align*}
+          \si{\m} &\rightarrow \si{\ft},\\
+          \si{\s} &\rightarrow \si{\hour}.
+        \end{align*}
+        så endres ikke måltallet for størrelsen $\alpha$.
+    \end{subproblem}
+    \iftoggle{isLF}{%
+        La oss først regne ut måltallet til $\alpha$
+        %
+        \begin{equation*}
+            \brak{a} 
+            = \brak{v} \brak{l}^{-\frac{1}{2}} \brak{g}^{-\frac{1}{2}}
+            = \num{3.4} (\num{1.2})^{-\frac{1}{2}} (\num{4.5})^{-\frac{1}{2}}
+            \approx \num{1.46313}.
+        \end{equation*}%
+        %
+        Ved å endre enheter får vi derimot
+        %
+        \begin{align*}
+            v &= \SI{3.4}{\m\per\s}
+               = \num{3.4}\cdot
+                 \SI{3.281}{\ft}
+                 \biggr(\SI[quotient-mode=fraction]{1/3600}{\hour}\biggl)^{-1}\\
+              &\approx \SI{4.015944e4}{\ft\per\hour}, \\
+            l &= \SI{1.2}{\m} = \num{1.2}\cdot \SI{3.281}{\ft}  \\
+              &= \SI{3.9372}{\ft},\\
+            g &= \SI{4.5}{\m\per\s\squared}
+               = \num{4.5}\cdot
+                 \SI{3.281}{\ft}
+                 \biggr(\SI[quotient-mode=fraction]{1/3600}{\hour}\biggl)^{-2}\\
+              &= \SI{1.91347920e8}{\ft\per\hour\squared}.
+        \end{align*}
+        %
+        Dermed får vi at måltallet til $\alpha$ med nye enheter kan skrives
+        %
+        \begin{align*}
+               \brak{a} 
+            &= \brak{v} \brak{l}^{-\frac{1}{2}} \brak{g}^{-\frac{1}{2}} \\
+            &= (\num{40159.44}) 
+               (\num{3.9372})^{-\frac{1}{2}} 
+               (\num{1.91347920e8})^{-\frac{1}{2}}
+            \approx \num{1.46313},
+        \end{align*}%
+        %
+        som var det samme resultatet som tidligere.
+    }{}
+    \begin{subproblem}
+      La oss betrakte en situasjon hvor en person befinner seg på en
+        planet hvor tyngdens akselerasjon er $g$. Tyngdens akselerasjon på en
+        planet er akselerasjonen et legeme vil oppleve dersom det slippes og får
+        falle fritt nær planetens overflate. La $l$ være lengden på bena til
+        personen og la $v$ være farten personen oppnår ved å gå på planetens
+        overflate på den mest energieffektive måten. På jorda tyder målinger
+        gjort i laboratorier at $\alpha=1$. Bruk dette til å beregne din egen
+        mest energieffektive gangfart på jorda. La oss postulerer at samme verdi
+        for $\alpha$ gjelder for alle planeter. Hva er din egen mest
+        energieffektive gangfart på Månen og på Mars. Du finner tyngdens
+        akselerasjon for disse himmellegemene på nettet.
+    \end{subproblem}
+    \iftoggle{isLF}{%
+        Her må vi først løse likningen med tanke på $v$
+        %
+        \begin{align*}
+            \alpha &= v l^{-\frac{1}{2}} g^{-\frac{1}{2}} \\
+            v &= \frac{\alpha}{l^{-\frac{1}{2}} g^{-\frac{1}{2}}}
+              = l^{\frac{1}{2}} g^{\frac{1}{2}}.
+        \end{align*}
+        %
+        Vi kan nå sette opp en tabell for å regne ut $v$ på ulike planeter
+        
+        \begin{center}
+            \begin{tabular}{r c c c}
+                \toprule 
+                 Planet & $l$ ($\si{\m}$) & $g$ ($\si{\m\per\s\squared}$) & {$v = l^{\frac{1}{2}}g^{\frac{1}{2}}$ ($\si{\m\per\s})$} \\
+                 \midrule
+                 Jorden & \num{1.0} & \num{9.807} & \num{3.132} \\
+                  Månen & \num{1.0} & \num{1.620} & \num{1.273} \\ 
+                   Mars & \num{1.0} & \num{3.711} & \num{1.926}\\ 
+              \bottomrule
+            \end{tabular}
+        \end{center}
+        
+        Altså er min optimale gangfart på jorden ca lik $\SI{3.1}{\m\per\s}$.
+    }{}
+\end{document}

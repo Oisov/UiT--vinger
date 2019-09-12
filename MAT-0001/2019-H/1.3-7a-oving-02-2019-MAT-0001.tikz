@@ -1,0 +1,85 @@
+\tikzstyle{level 1}=[level distance=3.5cm, sibling distance=3.5cm]
+\tikzstyle{level 2}=[level distance=4.5cm, sibling distance=1.5cm]
+\tikzstyle{level 3}=[level distance=3.5cm, sibling distance=2cm]
+
+
+\tikzstyle{bag} = [text width=4em, text centered]
+\tikzstyle{end} = [rectangle, draw=none, minimum width=3pt, inner sep=0pt]
+
+
+\begin{tikzpicture}[level distance=4cm,
+level 1/.style={sibling distance=3.5cm},
+level 2/.style={sibling distance=1.2cm},
+level 3/.style={level distance = 2cm},grow'=right]
+\tikzstyle{every node}=[]
+    \node (Root) [] {}
+        child [] {
+        node {$a$}
+        child { node {a} 
+                child {node[end] {$aa$} }
+                edge from parent
+                node[left] {}
+        }
+        child [black] { node {b} 
+                child {node[end] {$ab$} }
+                edge from parent
+                node[left] {}
+        }
+        child [black] { node {c} 
+                child {node[end] {$ac$} }
+            edge from parent
+            node[left] {}
+        }
+        edge from parent
+        node[above] {$c$}
+    }
+    child {
+        node {$b$}
+        child { node {a} 
+                child {node[end] {$ba$} }
+                edge from parent
+                node[left] {}
+        }
+        child { node {b} 
+                child {node[end] {$bb$} }
+                edge from parent
+                node[left] {}
+        }
+        child { node {c} 
+                child {node[end] {$bc$} }
+                edge from parent
+                node[left] {}
+        }
+        edge from parent
+        node[above] {$b$}
+    }
+    child {
+        node {$c$}
+        child { node {a} 
+                child {node[end] {$ca$} }
+                edge from parent
+                node[left] {}
+        }
+        child { node {b}
+                child {node[end] {$cb$} }
+                edge from parent
+                node[left] {}
+        }
+        child { node {c}
+                child {node[end] {$cc$} }
+                edge from parent
+                node[left] {}
+        }
+        edge from parent
+        node[below] {$c$}
+    };
+   % How I'm applying labels to each level. 
+  % Need to be able to dynamically align nodes at top level
+\begin{scope}[every node/.style={text width=2cm, align=center, anchor=center, font=\bfseries,}]
+ \node[above= 0.5cm of Root-1-1-1] (labels-level) {Lengde 2};
+ \node[at =(labels-level-|Root-1-1)] {Valg};
+ \node[at =(labels-level-|Root-1)] {Lengde 1};
+ \node[at =(labels-level-|Root)] {Lengde 0};
+
+\end{scope}
+\end{tikzpicture}

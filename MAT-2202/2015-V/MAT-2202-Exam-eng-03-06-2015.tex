@@ -1,0 +1,130 @@
+\titlebox[english]
+
+
+\Problem
+
+Consider the function
+%
+\begin{equation}
+    f(u, v) = u^2 + uv + 3v^2 + u^4
+\end{equation}
+%
+on $\R^2$. 
+
+\begin{subproblem}
+    The function has a single stationary point $\vx_{*}$. Calculate it, and establish that it is indeed a local minimum point.
+\end{subproblem}
+
+\begin{subproblem}
+    \begin{subsubproblem}
+        Use $\vx_0 = (1, 1)$ as the initial point for a gradient search with constant step size $\alpha = \num{0.1}$ to find $x_{*}$, and calculate the iterate $\vx_1$.
+    \end{subsubproblem}
+    %
+\begin{subsubproblem}
+    Use $\widetilde{\vx}_0 = (1, 1)$ as the initial point for a Newton search to find $x_{*}$, and calculate the iterate $\widetilde{\vx}_1$.
+\end{subsubproblem}
+\end{subproblem}
+
+\begin{subproblem}
+    Consider any $C^2$ function $\fun[h]{\R^n}{\R}$. 
+    It is well know that the Newton step is not always descent direction.
+    Assuming that $\vx_k$ is not a stationary point of $h$, show that 
+    it is possible to choose $\alpha_k \geq 0$ such that
+    %
+    \begin{equation}
+        \vq_k = \vp_k - \alpha_k (\nabla h) (x_k),
+    \end{equation}
+    %
+    is a descent direction for $h$ at $\vx_k$, where $\vp_k$ is the Newton step for $h$ at $\vx_k$.
+\end{subproblem}
+
+
+\newpageNotLF
+
+\Problem 
+
+(Counts as two questions) Each day a hospital requires the following number of nurses' aides (hjelpepleiere) on duty:
+
+\begin{table}[H]
+    \centering
+    \caption{}
+    \label{tab:my_label}
+    \begin{tabular}{r@{}c@{}r|S[table-format=2.0]}
+    \toprule 
+    \multicolumn{3}{c}{Clock period} & {Minimum number on duty} \\
+    \midrule
+        7\AM &\ - \ & 11\AM & 60 \\
+       11\AM &  -   &  3\PM & 70 \\
+        3\PM &  -   &  7\PM & 60 \\
+        7\PM &  -   & 11\PM & 50 \\
+       11\PM &  -   &  3\AM & 20 \\
+        3\AM &  -   &  7\AM & 30 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+Nurses' aides always arrive at the beginning of a clock period and work for
+$8$~hours. Except that no nurses' aides arrive at $3\AM$ The salary per hour is $\SI{50}{\percent}$ higher from $7\PM$ to $7\AM$. Set up a linear programming model for a roster (bemanningsplan) of nurses' aides that ensures that the minium number required s always on duty, and that minimises the salary cost.
+
+Do not solve the model, and ignore that in principle the model should be set up as an ILP problem.
+
+\Problem
+
+Consider the variational problem
+%
+\begin{equation}
+    \int_0^1 \e^x \bigl[ 2 y(x)^2 + y'(x)^2 \bigr] \dx \to \min
+\end{equation}
+%
+with $y(0)=0$, $y(1) = \e + \e^{-2}$ for $y \in C^2[0, 1]$.
+
+\begin{subproblem}
+    Find the Euler-Lagrange equation for the problem.
+\end{subproblem}
+
+\begin{subproblem}
+    Establish a minimizer for the problem.
+\end{subproblem}
+
+\begin{subproblem}
+    Find a valid candidate for an optimal solution of the extremal problem
+    %
+    \begin{align}
+        \int_0^1 \e^x \bigl[ 2 y(x)^2 + y'(x)^2 \bigr] \dx 
+        & \to \min, \\
+        \int_0^1 e^x y(x) \dx & = 0,
+    \end{align}
+    %
+    with $y(0) = 0$, $y(1) = 1$ for $y \in C^2[0,1]$. You are not asked to eastablish that it is a minimzer.
+\end{subproblem}
+
+
+\Problem
+
+\begin{subproblem}
+    \label{subproblem:MAT-2202-03-05-2015-4a}
+    The linear program
+    %
+    \begin{align*}
+        \phantom{2}x_1 + 2 x_2 + 4x_3 \to &\min \\
+        4x_1 + \phantom{2}x_2 + 2x_3 \geq{}&{}3 \\
+        2x_1 + 4x_2 + \phantom{4}x_3 \geq{}&{}5 \\
+        x_1, x_2,x_3 \geq & \ 0 
+    \end{align*}
+    %
+    is in canonical form. Write down its dual linear program, and solve the dual.
+    (Find an optimal solution and the corresponding optimal value).
+\end{subproblem}
+
+\begin{subproblem}
+    Writing down the linear program in \cref{subproblem:MAT-2202-03-05-2015-4a} in standard form
+    %
+    \begin{alignat*}{2}
+        \phantom{2}x_1 + 2 x_2 + 4x_3 && \to &\min \\
+        4x_1 + \phantom{2}x_2 + 2x_3 &&{}- e_1 \geq & \ 3 \\
+        2x_1 + 4x_2 + \phantom{4}x_3 &&{}- e_2 \geq & \ 5 \\
+        x_1, x_2,x_3,e_1,e_2 &&  \geq & \ 0 
+    \end{alignat*}
+    %
+    Check that $x = \mat{0&1&1&0&0}\tran$ is a basic feasible solution. Establish that it is not an optimal solution.
+\end{subproblem}

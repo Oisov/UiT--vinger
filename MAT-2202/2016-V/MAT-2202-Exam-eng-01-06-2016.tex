@@ -1,0 +1,116 @@
+\titlebox[english]
+
+
+\Problem
+
+\begin{subproblem}
+    \label{subproblem:MAT-2202-01-06-2016}
+    Find an optimal solution to the linear programming problem
+    %
+    \begin{alignat*}{2}
+        z ={}& 6x_1 + 8x_2 && \to \min \\
+            & 4x_1 + 5x_2 && \geq 20 \\
+            & 3x_1 + 5x_2 && \geq 20 \\
+            & 2x_1 + 5x_2 && \geq 20 \\
+            & \hspace{0.7cm}x_1, x_2 && \geq 0,
+    \end{alignat*}
+    %
+    for example graphically.
+\end{subproblem}
+
+\begin{subproblem}
+    Write down the dual of the linear programming problem from \cref{subproblem:MAT-2202-01-06-2016}
+\end{subproblem}
+
+\begin{subproblem}
+    A version of the Weak duality Theorem states:
+    %
+    \begin{theorem}
+        Let $\widetilde{\vx}$ be a feasible point for a primal linear programming program in standard form
+        %
+        \begin{alignat*}{2}
+            \vc\tran \vx & \to \min &&\\
+            A \vx & = \vb && \text{($A$ has full row rank)} \\
+            \vx & \geq \vnull &&
+        \end{alignat*}
+        %
+        and let $\widetilde{\vy}$ be a feasible point for the dual problem.
+        Then $\vc\tran\widetilde{\vx}\geq \vb\tran\widetilde{\vy}$.
+    \end{theorem}
+    %
+    Use the Weak Duality Theorem to show that if the primal is unbounded, then the dual is infeasible. Also show that if the dual is unbounded, then the primal is infeasible.
+\end{subproblem}
+
+\begin{subproblem}
+    State (but do not prove) the Strong Duality Theorem for linear programming.
+\end{subproblem}
+
+\begin{subproblem}
+    \newcommand{\dollar}[1]{\$\,\num{#1}}
+    \newcommand{\oil}[1]{$\dollar{#1}/\text{ton}$}
+    An oil refinery buys crude oil of three different qualitites $A$, $B$ and $C$. 
+    The price of $A$ is \oil{167}, of $B$ is \oil{173} and of $C$ is \oil{177}. The products obtained by reding a ton of $A$ can be sold for a total of $\dollar{216}$, of $B$ a total of $\dollar{220}$ and of $C$ a total of $\dollar{223}$. Crude $A$ contains $\SI{1.2}{\percent}$ sulphur by weight, Crude $B$ contains $\SI{0.8}{\percent}$~sulphur and Crude $C$ contains $\SI{0.4}{\percent}$~sulphur. 
+    Environmental regulations imply that the final products must be sulphur free. 
+    The refinery is capable of separating up to $\num{12000}$~tons of crude per year. The total capacity
+    is $\num{2000000}$~tons of crude per year. Set up
+    a linear programming model to maximise the difference between the value of the sales and the cost of the crude. 
+\end{subproblem}
+
+\vspace*{-0.5cm}
+\Problem
+
+The function $\fun{D}{\R}$ given by
+%
+\begin{equation}
+    f(x_1,x_2) = x_1^4 - 12x_1x_2 + x_2^4
+\end{equation}
+%
+is defined on the convex set $D = \{ (x_1,x_2) \in \R^2 \mid x_1, x_2 > 1\}$. 
+
+\begin{subproblem}
+    Check that $f$ is strictly convex function on $D$. 
+\end{subproblem}
+
+\begin{subproblem}
+    \label{subproblem:MAT-2202-01-06-2016-problem-2b}
+    Calculate the Newton step $\vp$ for $f$ at the point $\vx_0 = (2,2)$.
+\end{subproblem}
+
+\begin{subproblem}
+    Viewing the Newton step $\vp$ from \cref{subproblem:MAT-2202-01-06-2016-problem-2b} as a search direction at $\vx_0$, establish that is a descent direction for $f$ at $\vx_0$.
+\end{subproblem}
+
+\vspace*{-0.5cm}
+\Problem
+
+Let $\fun{\R^n}{\R}$ be a function with continuous first partial derivatives. We consider solving the 
+unconstrained minimisation problem $f \to \min$ by
+\emph{line search algorithm} 
+%
+\begin{equation}
+    \vx_{k+1} = \vx_x + \alpha_j \vp_x.
+\end{equation}
+%
+Here $\vx_0$ is an \emph{initial point} that we have chosen, and $\vp_0$, $\vp_1$, $\vp_2$, $\ldots$ is a sequence of \emph{search directions} produced by the algorithm.
+
+Taking for granted the initial point and the algorithmic strategy to produce search directions, the remaining issue 
+in a line search algorithm is to successively choose the scalars $\alpha_k > 0$ so as to ensure that the sequence
+$(\vx_k)_{k=1}^\infty$ converges (preferably rapid) to a minimum point
+$\vx_*$ of $f$. (Assuming $f$ \emph{has} a minimum point, and that the initial point is chosen sufficiently close to this minimum point.)
+
+\begin{subproblem}
+    \bgroup\setlength{\abovedisplayskip}{-12pt}%
+    \begin{flalign} \text{Given} &&
+        r(x, y) = (1 -x)^2 + 100 (y - x^2)^2, &&
+    \end{flalign}
+    \egroup
+    %
+    with initial point $\vx_0 = (0, 1)$ and search direction
+    $\vp_0 = (0, -2)$ at the initial point, perform an
+    \emph{excact line search} to obtain $\vx_1$.
+\end{subproblem}
+
+\begin{subproblem}
+    Describe the \emph{Armijo condition} (sufficient decrease condition)
+    , and the associated \emph{backtracking line search}.
+\end{subproblem}

@@ -1,0 +1,200 @@
+
+
+% ============================================================ 
+% COURSE INFORMATION
+% ============================================================
+
+\UiTFaculty{NT} % {BFE, HSL, IVT, NT, Helse, Jur}
+
+\newcommand{\courseCode}{MAT-0001}
+
+\newcommand{\courseNameBokmaal}{Brukerkurs i matematikk}
+\newcommand{\courseNameNynorsk}{Brukerkurs i matematikk}
+\newcommand{\courseNameEnglish}{Mathematical Methods}
+\newcommand{\courseNameSamin}{Kalkulus 1}
+
+% ============================================================ 
+% COURSE SPECIFIC COMMANDS BELOW HERE 
+% ============================================================
+
+\usepackage{pgfplots}
+\usepackage{_sty/functional-lines}
+
+\pgfplotsset{UiTplotstyle/.style={%
+    unit vector ratio*=1 1 1,
+    width=0.75\textwidth,
+    grid=major,
+    grid style={dashed, gray!30},
+    axis lines=middle, enlargelimits=false,
+    inner axis line style={-stealth},
+    xlabel={
+      \large $x$
+    },
+    xlabel style={
+      anchor=south east,
+      align=right
+    },
+    ylabel={\large $y$},}
+}
+
+\usepackage{multicol,tablists,array}
+\renewcommand\tabenumsep{\hskip6.5em}
+\renewcommand\tabenumindent{\hskip0em}
+
+\newcolumntype{g}{>{$}l<{$}}
+\newcolumntype{h}{>{$}c<{$}}
+\newcolumntype{j}{>{$}r<{$}}
+
+\newenvironment{Tabenum}%
+    {\begin{tabenum}[\color{\UiTnumbercolor}\bfseries a\color{black})]}%
+    {\end{tabenum}}
+
+\usepackage{longdivision}
+\longdivisionkeys{style=german}
+
+\DeclarePairedDelimiter\brak{\langle}{\rangle}
+\DeclarePairedDelimiter\bpar{[}{]} %
+
+\DeclareSIUnit\Radius{$R$}
+\DeclareSIUnit\lbs{lbs}
+
+\DeclareSIUnit\pound{lbs}
+\DeclareSIUnit\lbs{lbs}
+
+\DeclareSIUnit\feet{ft}
+\DeclareSIUnit\ft{ft}
+
+\DeclareSIUnit\carat{ct}
+\DeclareSIUnit\ct{ct}
+
+\DeclareSIUnit\year{\AarSI}
+
+\newcounter{seksjon} \setcounter{seksjon}{1}
+\newcounter{subseksjon} \setcounter{subseksjon}{1}
+\newcounter{notat} \setcounter{notat}{1}
+\newcounter{subnotat} \setcounter{subnotat}{1}
+\newcounter{subsubnotat} \setcounter{subsubnotat}{1}
+
+\newcommand{\UNItitlestyle}{\LARGE \bfseries}
+\DeclareDocumentCommand{\UNIsection}{s O{\theseksjon} G{\thesubseksjon}}{%
+    \mysection*{%
+    \IfBooleanTF{#1}{%
+        Blandede oppgaver kapittel}{%
+        Seksjon%
+    }~\textcolor{\UiTnumbercolor}{\setcounter{seksjon}{#2}\theseksjon}%
+    \IfBooleanTF{#1}{%
+        \stepcounter{seksjon}}{%
+        .\textcolor{\UiTnumbercolor}{\setcounter{subseksjon}{#3}\thesubseksjon}\stepcounter{subseksjon}%
+        }%
+    }%
+}
+\DeclareDocumentCommand{\UNInotat}{O{\thenotat} G{\thesubnotat} G{\thesubsubnotat}}{%
+    \mysection*{%
+    Forelesningsnotater~%
+    \textcolor{\UiTnumbercolor}{\setcounter{notat}{#1}\thenotat}%
+    .\textcolor{\UiTnumbercolor}{\setcounter{subnotat}{#2}\thesubnotat}%
+    .\textcolor{\UiTnumbercolor}{\setcounter{subsubnotat}{#3}\thesubsubnotat}%
+    \stepcounter{subsubnotat}%
+    }
+}
+
+\newcommand{\black}[1]{\textcolor{black}{#1}}
+\newcommand{\bopen}{\black{(}}
+\newcommand{\bclose}{\black{)}}
+\newcommand{\UiTcorrectColor}[1]{\textcolor{correct}{#1}}
+\newcommand{\UiTwrongColor}[1]{\textcolor{wrong}{#1}}
+
+\newcommand{\hvisLFkort}[1]{\iftoggle{isLFshort}{\bgroup\color{black}#1\egroup}{}}
+\newcommand{\hvisLFkortC}[1]{\hvisLFkort{\bgroup\bopen#1\bclose\egroup}}
+\newcommand{\hvisLFkortCC}[1]{\hvisLFkort{\bgroup\bopen\UiTcorrect{#1}\bclose\egroup}}
+\newcommand{\hvisLFkortCW}[1]{\hvisLFkort{\bgroup\bopen\UiTwrong{#1}\bclose\egroup}}
+
+\newcommand{\UiTcorrectSymbol}{\checkmark}
+\newcommand{\UiTwrongSymbol}{$\mathbf{\times}$}
+
+\DeclareDocumentCommand{\UiTcorrectB}{s G{\UiTcorrectSymbol}}{%
+    \hvisLFkort{%
+        \bgroup\IfBooleanF{#1}{\bopen}%
+            #2%
+        \IfBooleanF{#1}{\bclose}\egroup%
+    }
+}
+
+\DeclareDocumentCommand{\UiTcorrect}{s O{} G{\UiTcorrectSymbol} O{}}{%
+    \hvisLFkort{%
+        \bgroup\IfBooleanF{#1}{\bopen}%
+            #2\UiTcorrectColor{#3}#4%
+        \IfBooleanF{#1}{\bclose}\egroup%
+    }
+}
+
+\DeclareDocumentCommand{\UiTwrongB}{s G{\UiTwrongSymbol}}{%
+    \hvisLFkort{%
+        \bgroup\IfBooleanF{#1}{\bopen}%
+            #2%
+        \IfBooleanF{#1}{\bclose}\egroup%
+    }
+}
+
+\DeclareDocumentCommand{\UiTwrong}{s G{\UiTwrongSymbol}}{%
+    \hvisLFkort{%
+        \bgroup\IfBooleanF{#1}{\bopen}%
+            \UiTwrongColor{#2}%
+        \IfBooleanF{#1}{\bclose}\egroup%
+    }
+}
+
+
+\newcommand{\Opg}[1]{\textit{\Cref{#1}}}
+\newcommand{\opg}[1]{\textit{\cref{#1}}}
+\newcommand{\opgKort}[1]{\textit{\ref{#1}}}
+
+\newcommand{\tref}[1]{\bgroup\hyperlink{#1}{\hypersetup{linkcolor=\UiTrefcolor}\ref{#1}\hypersetup{linkcolor=\UiThyperlinkcolor})}\egroup}
+
+\usepackage{relsize,pgfplots}
+\pgfplotsset{compat=1.15}
+\usetikzlibrary{positioning}
+\usepgfplotslibrary{fillbetween}
+
+\newcommand{\drawIntervalCC}[3]{%
+    \pgfmathsetmacro\asnub{#1+0.01}\pgfmathsetmacro\bsnub{#2-0.01}
+    \draw[{[-}, ultra thick, #3] (#1,0) -- (\asnub,0);
+    \draw[{-]}, ultra thick, #3] (\bsnub,0) -- (#2,0);
+    \fill[opacity = 0.2, #3,rounded corners=1ex]%
+        (#1,-1.12ex) -- (#2, -1.12ex) -- (#2, 1.12ex) -- (#1,1.12ex) -- cycle;
+}
+
+\newcommand{\drawIntervalCO}[3]{%
+    \pgfmathsetmacro\asnub{#1+0.01}\pgfmathsetmacro\bsnub{#2-0.01}
+    \draw[{[-}, ultra thick, #3] (#1,0) -- (\asnub,0);
+    \draw[{-)}, ultra thick, #3] (\bsnub,0) -- (#2,0);
+    \fill[opacity = 0.2, #3,rounded corners=1ex]%
+        (#1,-1.12ex) -- (#2, -1.12ex) -- (#2, 1.12ex) -- (#1,1.12ex) -- cycle;
+}
+
+\newcommand{\drawIntervalOC}[3]{%
+    \pgfmathsetmacro\asnub{#1+0.01}\pgfmathsetmacro\bsnub{#2-0.01}
+    \draw[{(-}, ultra thick, #3] (#1,0) -- (\asnub,0);
+    \draw[{-]}, ultra thick, #3] (\bsnub,0) -- (#2,0);
+    \fill[opacity = 0.2, #3,rounded corners=1ex]%
+        (#1,-1.12ex) -- (#2, -1.12ex) -- (#2, 1.12ex) -- (#1,1.12ex) -- cycle;
+}
+
+\newcommand{\drawIntervalOO}[3]{%
+    \pgfmathsetmacro\asnub{#1+0.01}\pgfmathsetmacro\bsnub{#2-0.01}
+    \draw[{(-}, ultra thick, #3] (#1,0) -- (\asnub,0);
+    \draw[{-)}, ultra thick, #3] (\bsnub,0) -- (#2,0);
+    \fill[opacity = 0.2, #3,rounded corners=1ex]%
+        (#1,-1.12ex) -- (#2, -1.12ex) -- (#2, 1.12ex) -- (#1,1.12ex) -- cycle;
+}
+
+\newcommand{\standardAxis}{%
+    \draw[->, thick] (0.5,0) -- (4.5,0);
+    \foreach \x/\xtext in {1/1,2/2,3/3,4/4}
+        \draw[thick] (\x,1pt) -- (\x,-1pt) node[below] {\xtext};
+}
+\newcommand{\standardAxisTwo}{%
+    \draw[->, thick] (-1.5,0) -- (2.5,0);
+    \foreach \x/\xtext in {-1/-1,0/0,1/1,2/2}
+        \draw[thick] (\x,1pt) -- (\x,-1pt) node[below] {\xtext};
+}

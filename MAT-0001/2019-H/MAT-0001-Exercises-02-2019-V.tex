@@ -1,0 +1,1161 @@
+\documentclass[a4paper,11pt]{article}
+
+% Always keep your main language last
+\usepackage[british,nynorsk,samin,norsk]{babel}
+
+\usepackage{_sty/UiT}
+\usepackage{_sty/IMS}
+\usepackage{MAT-0001/MAT-0001}
+
+%==============================================================================%
+%                              COURSE INFORMATION                              %
+%==============================================================================%
+
+\settoggle{isLF}{true}
+\settoggle{isLF}{false} % Comment this line to show solutions
+
+\frontpageUiTsetup{%
+    Language = {norsk}, %auto = language defined by babel
+    isExercise = {true}, % Is this an exercise? true / false
+    ExerciseNumber = {2}, % Which exercise number is this?
+    CourseCode = {auto}, % auto = \courseCode (defined in courseCode.sty, e.g. MAT-1001.sty)
+    CourseName = {auto}, % auto = \courseName (defined in courseCode.sty, e.g. MAT-1001.sty)
+    Year = {2019}, % No auto setting for this, as it might change on recompilation
+    Month = {9}, % No auto setting for this, as it might change on recompilation
+    Day = {2},% No auto setting for this, as it might change on recompilation
+    DurationDays = {5}, % Set the number of days the exam should last
+}
+
+%==============================================================================%
+%                     OWN COMMANDS AND PACKAGES BELOW HERE                     %
+%==============================================================================%
+
+\usepackage{polynom}
+\polyset{style=C}
+
+\begin{document}
+
+%==============================================================================%
+%                                 EXERCISE 02                                  %
+%==============================================================================%
+
+\frontpageUiT
+
+\settoggle{isLF}{false}
+\settoggle{isLFshort}{false}
+\excludecomment{solution}
+
+\titlebox[norsk]{auto}{\Spraak}{auto}{\dateDuration}
+
+%==============================================================================%
+%                                 SEKSJON 1.3                                  %
+%==============================================================================%
+
+\subsection*{Seksjon 1.3}
+
+%==============================================================================%
+%                                PROBLEM 1.3.6                                 %
+%==============================================================================%
+
+\begin{problem}[6]
+  Forenke uttrykket, og redegjør for hvilke potensregler du benytter.
+  %
+  \begin{subproblem}{2}
+    \item $(ab)^5a^{-3}b^2\UiTcorrect*[{}=]{a^2b^7}$
+      \label{subproblem:1.3-6a-oving-02-2019-MAT-0001}
+    \item $(a^3a^5b^2)^{-4}\UiTcorrect*[{}=]{a^{-32}b^{-8}}$
+      \label{subproblem:1.3-6b-oving-02-2019-MAT-0001}
+  \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  \begin{flalign*}
+    \opgKort{subproblem:1.3-6a-oving-02-2019-MAT-0001} &&
+            (ab)^5a^{-3}b^2 
+        & = a^5b^5a^{-3}b^2 && \text{Potens regel: $(ab)^n=a^nb^n$}\\&&
+        & = a^5a^{-3}b^5b^2 && \text{Kommutativ regel: $ab=ba$}\\&&
+        & = a^{5-3}b^{5+2} && \text{Eksponent regel: $a^ma^n=a^{m+n}$}\\&&
+        & = a^2b^7
+  \end{flalign*}
+\end{solution}
+\begin{solution}
+  \begin{flalign*}
+            \opgKort{subproblem:1.3-6b-oving-02-2019-MAT-0001} &&
+            (a^3a^5b^2)^{-4}
+        & = (a^{3+5}b^2)^{-4} && \text{Eksponent regel: $a^ma^n=a^{m+n}$}\\&&
+        & = (a^8)^{-4}(b^2)^{-4} && \text{Potens regel: $(ab)^n=a^nb^n$}\\&&
+        & = a^{-4\cdot8}b^{-4\cdot2} && \text{Eksponent regel: $(a^m)^n=a^{mn}$}\\&&
+        & = a^{-32}b^{-8}
+  \end{flalign*}
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.3.7                                 %
+%==============================================================================%
+
+\begin{problem}
+  Det er gitt tre symboler $a$, $b$ og $c$. Med disse symbolene er det mulig å
+  lage $3 \cdot 3 = 9$ \bquote{ord} av lengde $2$, nemlig
+  %
+  \begin{equation*}
+    aa, ab, ac, ba, bb, bc, ca, cb, cc.
+  \end{equation*}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.3-7a-oving-02-2019-MAT-0001}
+    Hvor mange ord av lengde $3$ kan man lage? \UiTcorrect{$27$}
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.3-7b-oving-02-2019-MAT-0001}
+    Hvor mange ord av lengde $n$ kan man lage? \UiTcorrect{$3^n$}
+  \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  \Opg{subproblem:1.3-7a-oving-02-2019-MAT-0001} Her \emph{kan} man gjøre som
+  i første oppgave å skrive ned alle mulighetene
+  %
+  \begin{align*}
+        & aaa, aab, aac, aba, abb, abc, aca, acb, acc,\\
+        & baa, bab, bac, bba, bbb, bbc, bca, bcb, bcc,\\
+        & caa, cab, cac, cba, cbb, cbc, cca, ccb, ccc.
+  \end{align*}
+  %
+  så totalt $27$. Alternativt kan vi og telle hvor mange muligheter vi har på
+  hver plass. For den første bokstaven har vi tre muligheter $abc$, for den
+  neste bokstaven har vi nå også $3$ muligheter og endelig for den siste
+  bokstaven har vi også $3$ muligheter. Totalt $3 \cdot 3 \cdot 3 = 3^3 =27$
+  muligheter. Her kan og \cref{fig:1.3-7-oving-02-2019-MAT-0001} være til hjelp.
+  For hvert nye nivå for hver av våre opprinnelige ord, tre nye ord de kan bli
+  til. 
+\end{solution}
+
+\hvisLF{%
+\medskip
+\begin{figure}
+  \centering
+  \input{1.3-7a-oving-02-2019-MAT-0001.tikz}
+  \caption{Viser hvordan vi gradvis kan bygge opp ord med lengde $0$, $1$ og $2$.}
+  \label{fig:1.3-7-oving-02-2019-MAT-0001}
+\end{figure}
+}
+
+\begin{solution}
+  \Opg{subproblem:1.3-7b-oving-02-2019-MAT-0001} Slik som vi nevnte i forrige
+  deloppgave og som illustrert i \cref{fig:1.3-7-oving-02-2019-MAT-0001} får vi
+  tre nye muligheter for hvert ord vi har. Dersom vi har $n$ ord, eller ett ord
+  av lengde $n$ så kan vi totalt lage
+  %
+  \begin{equation*}
+      \underbrace{3 \cdot 3 \cdots 3}_{\text{$n$ ganger}} 
+    = \rightans{3^n} \ \text{mulige ord}.
+  \end{equation*}
+\end{solution}
+
+
+%==============================================================================%
+%                                PROBLEM 1.3.10                                %
+%==============================================================================%
+
+\begin{problem}[10]
+  \label{problem:1.3-10-oving-02-2019-MAT-0001}
+  Hver $\si{\cm\squared{}}$ av Jordens overflate bærer en luftsøyle med masse
+  $\SI{1}{\kg}$. Jordens overflate er $\SI{5.1e8}{\km\squared}$
+  %
+  \begin{subproblem}
+    \label{subproblem:1.3-10a-oving-02-2019-MAT-0001}
+    Finn atmosfærens masse. \UiTcorrect{$\SI{5.1e18}{\kg}$}
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.3-10b-oving-02-2019-MAT-0001}
+    \SI{22}{\percent} av atmosfærens masse er oksygen. Finn massen av oksygenet
+    i atmosfæren. \UiTcorrect{$\SI{1.1e18}{\kg}$}
+  \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  \Opg{subproblem:1.3-10a-oving-02-2019-MAT-0001} En metode er å regne om
+  $\SI{5.1e8}{\km\squared}$ til $\si{\cm\squared}$. Siden
+  $\si{\km}=\SI{e3}{\m}=\SI{e5}{\cm}$ får vi
+  %
+  \begin{equation*}
+    \SI{5.1e8}{\km\squared}
+    = \num{5.1e8}(\SI{e5}{\cm})^2
+    = \num{5.1}\cdot10^{8+5\cdot2}\si{\cm\cubed}
+    = \SI{5.1e18}{\cm\squared}
+  \end{equation*}
+  %
+  Atmosfæren sin masse er altså ca $\SI{5.1e18}{\kg}$
+  \medskip
+\end{solution}
+
+\begin{solution}
+  \Opg{subproblem:1.3-10b-oving-02-2019-MAT-0001} Nå trenger vi å regne ut
+  $\SI{22}{\percent}$ av svaret fra
+  \cref{subproblem:1.3-10a-oving-02-2019-MAT-0001}. Siden $\si{\percent}$ betyr
+  hundrededdel så får vi
+  %
+  \begin{equation*}
+    \SI{22}{\percent} \ \text{av} \ \SI{5.1e18}{\kg}
+    = \frac{22}{100} \cdot \SI{5.1e18}{\kg}
+    = \SI{1.12e18}{\kg}
+  \end{equation*}
+  %
+  Slik at massen til oksygenet i atmosfæren er ca $\SI{1.1e18}{\kg}$.
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.3.11                                %
+%==============================================================================%
+
+\begin{problem}
+  \label{problem:1.3-11-oving-02-2019-MAT-0001} Én $\si{\km\squared}$ ungskog
+  produser ca $\SI{2.5e5}{\kg}$ oksygen per år. Hvor stor andel er dette
+  oksygenet i atmosfæren over $\SI{1}{\km\squared}$ av jordens overflate.
+  \UiTcorrect{\num{1.1e-4}}
+\end{problem}
+
+\begin{solution}
+  \Opg{problem:1.3-11-oving-02-2019-MAT-0001}: Her kan vi først prøve å finne ut
+  hvor mye oksygen vi har over $\SI{1}{\km\squared}$.
+  %
+  \begin{equation*}
+    \frac{\SI{1.1e18}{\kg}}{\SI{5.1e8}{\km\squared}} 
+    \approx \SI{2.157e8}{\kg \per \km\squared}
+  \end{equation*}
+  %
+  Nå kan vi finne ut hvor stor andel $\SI{2.5e5}{\kg\per\km\squared}$
+  utgjør av dette. Rett frem regning gir
+  %
+  \begin{equation*}
+    \frac{\SI{2.5e5}{\kg\per\km\squared}}{\SI{2.157e8}{\kg \per \km\squared}} 
+    \approx \num{1.1e-4}
+  \end{equation*}
+  % 
+  Så andelen som denne ungskogen produser er ca \num{1.1e-4} eller
+  $\SI{0.011}{\percent}$.
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.3.12                                %
+%==============================================================================%
+
+\begin{problem}
+  \label{problem:1.3-12-oving-02-2019-MAT-0001}
+  Planetens nettoproduksjon av oksygen er ca $\SI{0.9e13}{\kg}$ per år.  Hvor
+  mange år ville disse plantene bruke på å bygge opp atmosfærens innhold av
+  oksygen hvis hverken dyreliv eller branner fjernet oksygen fra luften?
+  \UiTcorrect{$\SI{120000}{\year}$}
+\end{problem}
+
+\begin{solution}
+  \Opg{problem:1.3-12-oving-02-2019-MAT-0001}: i
+  \cref{subproblem:1.3-10b-oving-02-2019-MAT-0001} fant vi ut at oksygenet i
+  atmosfæren veier $\SI{1.1e18}{\kg}$. Så må vi finne ut hvor lang tid det tar
+  for plantene å produsere denne mengden oksygen
+  %
+  \begin{equation}
+      \frac{\SI{1.1e18}{\kg}}{\SI{0.9e13}{\kg\per\year}}
+    = \frac{1.1}{0.9}\cdot 10^{18-13} \si{\year}
+    \approx \SI{1.22222e5}{\year}
+  \end{equation}
+  %
+  Slik at det vil ta ca $\num{120000}$ år å bygge opp igjen jordens atmosfære.
+  Merk at her må vi runde av svaret til to signifikante siffer siden både
+  $\SI{1.1e18}{\kg}$ og $\SI{1.1e18}{\kg}$ har to signifikante siffer. Det er
+  altså umulig for oss å oppgi ett mer nøyaktig svar uten å innføre større
+  måleusikkerhet.
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.3.13                                %
+%==============================================================================%
+
+\begin{problem}
+  Hvor mange gjeldene siffer er følgende tall skrevet med?
+\end{problem}
+
+\begin{subproblem}{3}
+  \item $\num{0.0380}$ \UiTcorrect{3}
+    \label{subproblem:1.3-13a-oving-02-2019-MAT-0001}
+  \item $\num{10000}$ \UiTcorrect{5}
+    \label{subproblem:1.3-13b-oving-02-2019-MAT-0001}
+  \item $\num{1.60e2}$ \UiTcorrect{3}
+    \label{subproblem:1.3-13c-oving-02-2019-MAT-0001}
+\end{subproblem}
+
+\begin{solution}
+  Det enkleste er å lese tallet fra venstre til høyre. Når vi kommer til det
+  første tallet fra venstre som \emph{ikke} er null, begynner vi å telle
+  gjeldende siffer. Vi teller så alle siffer enten de er $0$ eller ikke helt
+  frem til siste siffer. Dette gir henholdsvis svarende du ser ovenfor.
+\end{solution}
+
+\newpageLF
+\newpageNotLF
+
+%==============================================================================%
+%                                 SEKSJON 1.4                                  %
+%==============================================================================%
+
+\subsection*{Seksjon 1.4}
+
+%==============================================================================%
+%                                PROBLEM 1.4.1                                 %
+%==============================================================================%
+
+\begin{problem}[1]
+  Finn følgende uten kalkulator
+\end{problem}
+
+\hvisLF{\vspace{-0.5cm}}
+
+\begin{subproblem}
+  \label{subproblem:1.4-1a-oving-02-2019-MAT-0001}
+  Kvadratroten til $64$ \UiTcorrect{8}
+\end{subproblem}
+
+\hvisLF{\vspace{-0.5cm}}
+
+\begin{subproblem}{3}
+  \item $\sqrt{100}\UiTcorrect*[\,=]{10}$
+    \label{subproblem:1.4-1b-oving-02-2019-MAT-0001}
+  \item $\sqrt[3]{125}\UiTcorrect*[\,=]{5}$
+    \label{subproblem:1.4-1c-oving-02-2019-MAT-0001}
+  \item $\sqrt[3]{-125}\UiTcorrect*[\,=]{-5}$
+    \label{subproblem:1.4-1d-oving-02-2019-MAT-0001}
+\end{subproblem}
+
+\begin{solution}
+  \Opg{subproblem:1.4-1a-oving-02-2019-MAT-0001} Vi må finne ett tall $n$ slik
+  at $n^2 = 64$. Vi ser med en gang at $10$ er for høyt siden $10^2 = 100>64$ og
+  $5$ er for lavt siden $5^2 = 25 < 100$. Litt prøving og feiling gir $\sqrt{64}
+  = 8$.
+\end{solution}
+
+\medskip
+
+\begin{solution}
+  \Opg{subproblem:1.4-1b-oving-02-2019-MAT-0001} $125$ er delelig på $5$ siden
+  det slutter på $5$
+  %
+  \begin{equation}
+    \intlongdivision[style = german ]{125}{5}
+  \end{equation}
+  %
+  Slik at vi ser at $125 = 5^3$ siden $5^2 = 25$. Dermed får vi
+  %
+  \begin{equation*}
+      \sqrt[3]{125} 
+    = (125)^{\frac{1}{3}} 
+    = (5^3)^{\frac{1}{3}}
+    = 5^{3\cdot(1/3)} 
+    = 5.
+  \end{equation*}
+\end{solution}
+
+\hvisLF{\vspace{-0.5cm}}
+
+%==============================================================================%
+%                                PROBLEM 1.4.2                                 %
+%==============================================================================%
+
+\begin{problem}
+  \label{problem:1.4-2-oving-02-2019-MAT-0001}
+  Bruk kalkulator til å finne tilnærmede verdier for røttene
+  $\sqrt{2}$, $\sqrt{6}$ og $\sqrt[3]{10}$.
+\end{problem}
+
+\begin{solution}
+  \vspace{-0.5cm}
+  \bgroup\centering
+  \begin{multicols}{3}
+    $\sqrt{2}     \approx \UiTcorrectColor{\num{1.4142}}$, \vfill\null
+    $\sqrt{6}     \approx \UiTcorrectColor{\num{2.4495}}$, \vfill\null
+    $\sqrt[3]{10} \approx \UiTcorrectColor{\num{2.1544}}$.
+  \end{multicols}
+  \egroup
+  \vspace{-1cm}
+\end{solution}
+
+
+%==============================================================================%
+%                                PROBLEM 1.4.3                                 %
+%==============================================================================%
+
+\begin{problem}
+  \label{problem:1.4-3-oving-02-2019-MAT-0001}
+  Vis at hvis $x \geq 0$, så er $(\sqrt[4]{x})^2 = \sqrt{x}$.
+\end{problem}
+
+\hvisLF{\vspace*{-0.1cm}}
+
+\begin{solution}
+  \Opg{problem:1.4-3-oving-02-2019-MAT-0001}:
+  siden $\sqrt[4]{x}$ ikke eksisterer når $x<0$ er det en rimelig
+  å anta $x \geq 0$
+  %
+  \begin{equation*}
+    \sqrt[4]{x})^2
+    = \bigl(x^{\frac{1}{4}}\bigr)^2
+    = x^{\frac{1}{4} \cdot 2}
+    = x^{\frac{1}{2}}
+    = \sqrt{x},
+  \end{equation*}
+  %
+  hvor det ble brukt at $\sqrt[m]{x} = x^{1/m}$ og $(a^m)^n = a^{mn}$.
+\end{solution}
+
+\hvisLF{\vspace*{-0.1cm}}
+
+%==============================================================================%
+%                                PROBLEM 1.4.4                                 %
+%==============================================================================%
+
+\begin{problem}
+  \label{problem:1.4-4-oving-02-2019-MAT-0001}
+  Forenkle uttrykket $\sqrt{(a/b)} - \sqrt{a}(\sqrt{b})^{-1}%
+  \UiTcorrect*[\,=]{0}$.
+\end{problem}
+
+\hvisLF{\vspace*{-0.1cm}}
+
+\begin{solution}
+  \Opg{problem:1.4-4-oving-02-2019-MAT-0001}: siden 
+  $\sqrt{a}(\sqrt{b})^{-1}
+  = \sqrt{a}/\sqrt{b}
+  = \sqrt{a/b}$ får vi med en gang at 
+  \begin{equation*}
+    \sqrt{(a/b)} - \sqrt{a}(\sqrt{b})^{-1}
+    = \sqrt{(a/b)} - \sqrt{(a/b)} 
+    = 0
+  \end{equation*}
+  %
+  Her ble det brukt at $a^{-1}=1/a$ og $\sqrt{a/b}=(a/b)^{1/2} = a^{1/2}/b^{1/2}
+  = \sqrt{a}/\sqrt{b}$.
+\end{solution}
+
+\hvisLF{\vspace*{-0.3cm}}
+
+%==============================================================================%
+%                                PROBLEM 1.4.5                                 %
+%==============================================================================%
+
+\begin{problem}
+  Finn følgende tall og angi svaret med fire gjeldende siffer.
+  \iftoggle{isLF}{\vspace*{-0.1cm}}{}
+    \begin{subproblem}{3}
+      \item $\sqrt[12]{\num{12.96}}\UiTcorrect*[\,=]{\num{1.897}}$
+        \label{subproblem:1.4-5a-oving-02-2019-MAT-0001}
+      \item $(\num{0.3})^{\frac{1}{3}}\UiTcorrect*[\,=]{\num{0.6694}}$
+        \label{subproblem:1.4-5b-oving-02-2019-MAT-0001}
+      \item $10^{\num{0.1}}\UiTcorrect*[=]{\num{1.259}}$
+        \label{subproblem:1.4-5c-oving-02-2019-MAT-0001}
+    \end{subproblem}
+\end{problem}
+
+\newpageLF
+
+%==============================================================================%
+%                                 SEKSJON 1.5                                  %
+%==============================================================================%
+
+\subsection*{Seksjon 1.5}
+
+%==============================================================================%
+%                                PROBLEM 1.5.1                                 %
+%==============================================================================%
+
+\begin{problem}[1]
+  \label{problem:1.5-1-oving-02-2019-MAT-0001}
+  En størrelse vokser fra verdien $A_0$ til verdien $(\num{2.17})A_0$. Hvor
+  stor er den relative økningen? \UiTcorrect{$\num{1.17}$}
+\end{problem}
+
+\begin{solution}
+  Hver gang vi skal regne ut en relativ økning bruker vi den samme formelen
+  %
+  \begin{equation*}
+    \text{Relativ økning} 
+    = \frac{\text{Ny verdi} %
+    - \text{Opprinnelig verdi}}{\text{Opprinnelig verdi}}
+  \end{equation*}
+  %
+  ved å sette inn i formelen får vi at den relative økningen var
+  %
+  \begin{equation*}
+    \text{Relativ økning} 
+    = \frac{(\num{2.17})A_0 - A_0}{A_0}
+    = \frac{(\num{2.17}) - 1}{1}
+    = \num{1.17},
+  \end{equation*}
+  %
+  eller $\SI{117}{\percent}$.
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.5.3                                 %
+%==============================================================================%
+
+\begin{problem}[3]
+  \label{problem:1.5-3-oving-02-2019-MAT-0001}
+  Avlingen av poteter på en går økte $\SI{20}{\percent}$ fra 2007 til 2008,
+  men avtok $\SI{18}{\percent}$ fra 2008 til 2009. I hvilket av årene 2007 og
+  2009 var avlingen størst? \UiTcorrect{2007}
+\end{problem} 
+
+\begin{solution}
+  Her er det kanskje enklest å sammenlikne vekstfaktoren i de ulike årene.  I
+  det første året er den $1$, deretter øker den med $\SI{20}{\percent}$ til $1
+  \cdot (1 + \num{0.2}) = \num{1.2}$. Så synker den igjen fra $\num{1.2}$ med
+  $\SI{18}{\percent}$ til $\num{1.2} \cdot (1-\num{0.18}) = \num{0.984}$.
+  Hvor vi da passet på å bruke en negativ vekstfaktor siden avlingen synker.
+  Oppsumert
+
+  \begin{center}
+    \begin{tabular}{r|c c c}
+      \toprule
+      År & $2007$    & $2008$      & $2009$\\
+      \midrule
+      Vekst fra $2007$ & $\num{1}$ & $\num{1.2}$ & $\num{0.984}$ \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+  hvor det da er klart at avlingen var størst i $2007$.
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.5.5                                 %
+%==============================================================================%
+
+\begin{problem}[5]
+  \label{problem:1.5-5-oving-02-2019-MAT-0001}
+  På en fastrentekonto med årlig rente $\SI{5.2}{\percent}$ settes det inn
+  kr~$\num{1000}$. Hvor mye penger står det på kontoen $6$ år senere, etter at
+  også siste års renter er lagt til? \UiTcorrect{$\num{1355.5}$}
+\end{problem}
+
+\begin{solution}
+  Hvert år så øker beholdningen av penger med $\SI{5.2}{\percent}$. Dette vil
+  si at vi har en positiv vekstfaktor på $\num{1.052}$. Slik at vi får 
+  %
+  \begin{align*}
+    \text{Penger etter $0$ år:} &&                                   \num{1000} &= \num{1000} \cdot \num{1.052}^0 \\
+    \text{Penger etter $1$ år:} && \text{Penger etter $0$ år} \cdot \num{1.052} &= \num{1000} \cdot \num{1.052}^1 \\
+    \text{Penger etter $3$ år:} && \text{Penger etter $1$ år} \cdot \num{1.052} &= \num{1000} \cdot \num{1.052}^2 \\
+    \vdotswithin{\text{Penger etter $0$ år:}} && & \vdotswithin{=} \\
+    \text{Penger etter $6$ år:} && \text{Penger etter $5$ år} \cdot \num{1.052} &= \num{1000} \cdot \num{1.052}^6 \\
+  \end{align*}
+  %
+  Der en direkte utregning gir at pengene hun har etter $6$ år er $\num{1000}
+  \cdot \num{1.052}^6 = \num{1355.484135234801664} \approx
+  \num{1355.5}$~kroner.
+\end{solution}
+
+%==============================================================================%
+%                                SEKSJON 1.6.1                                 %
+%==============================================================================%
+
+\subsection*{Seksjon 1.6}
+
+%==============================================================================%
+%                                PROBLEM 1.6.1                                 %
+%==============================================================================%
+
+\begin{problem}[1]
+  \label{problem:1.6-1-oving-02-2019-MAT-0001}
+  Skriv brøken $12/7$ som desimaltall ved å utføre divisjonen for hånd. Hold på
+  inntill desimalene begynner å gjenta seg.
+\end{problem}
+
+\begin{solution}
+  \Opg{problem:1.6-1-oving-02-2019-MAT-0001}: rett frem divisjon gir oss 
+
+  \begin{center}
+    \longdivision{12}{7}
+  \end{center}
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.6.3                                 %
+%==============================================================================%
+
+\begin{problem}[3]
+  Skriv følgende desimaltall på formen $n/m$, der $n$ og $m$ er hele tall.
+  %
+  \begin{subproblem}
+    \label{subproblem:1.6-3a-oving-02-2019-MAT-0001}
+    $\num{4.1212121212}\ldots%
+    \UiTcorrect[=]{4 + \frac{4}{33}}$
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.6-3b-oving-02-2019-MAT-0001}
+    $\num{-78.001234123412341234}\ldots%
+    \UiTcorrect*[=]{-78 - \frac{617}{\num{499950}}}$
+  \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  \Opg{subproblem:1.6-3a-oving-02-2019-MAT-0001} 
+  La $x = \num{0.1212}\ldots$ altså delen som gjentar seg. Så ganger vi $x$
+  med $10^b$ hvor $b$ er perioden eller antall siffer som gjentar seg. 
+  %
+  \begin{align*}
+    100x &= \num{12.1212121212}\ldots \\
+    -(\phantom{100}x &= \phantom{1}\num{0.1212121212}\ldots) \\
+    99x & = 12
+  \end{align*}
+  Slik at $x = 12/99 = 4/33$. Slik at
+  %
+  \begin{equation}
+    \num{4.1212121212}\ldots = 4 + \frac{4}{33} = \frac{136}{33}
+  \end{equation}
+\end{solution}
+
+\newpageLF
+
+\begin{solution}
+  \Opg{subproblem:1.6-3b-oving-02-2019-MAT-0001} Teknikken som vi brukte i
+  forrige oppgave vil ikke fungere her, så la oss prøve en litt annen
+  fremgangsmåte. La $x = \num{0.1234123412341234}\ldots$ altså delen som
+  gjentar seg. Videre har vi 
+  %
+  \begin{align*}
+    10000x &= \num{1234.123412341234}\ldots \\
+    -(\phantom{10000}x &=\phantom{123}\num{0.123412341234}\ldots) \\
+    9999x & = 1234
+  \end{align*}
+  %
+  Hvor vi bare trakk fra. Dette gir at tallet vårt kan skrives på følgende
+  brøkform
+  %
+  \begin{equation*}
+    \num{-78.001234}\ldots
+    = -78 - \frac{1}{100}\frac{1234}{9999} 
+    = -78 - \frac{617}{\num{499950}}
+    = -\frac{\num{38996717}}{\num{499950}}
+  \end{equation*}
+\end{solution}
+
+
+%==============================================================================%
+%                                 SEKSJON 1.8                                  %
+%==============================================================================%
+
+\subsection*{Seksjon 1.8}
+
+%==============================================================================%
+%                                PROBLEM 1.8.1                                 %
+%==============================================================================%
+
+\begin{problem}[1]
+  La $a$, $b$, $x$ og $y$ står for vilkårlige reelle tall. Avgjør hvilke av
+  implikasjonene som gjelder.
+  %
+  \begin{subproblem}
+    \label{subproblem:1.8-1a-oving-02-2019-MAT-0001}
+    $x + a > b \ \Longrightarrow \ x > b - a$ \UiTcorrect
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.8-1b-oving-02-2019-MAT-0001}
+    $ax +by > 5 \ \Longrightarrow \ y > \frac{1}{b}(5 - ax)$ \UiTwrong
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.8-1c-oving-02-2019-MAT-0001}
+    $\frac{1}{x} > \frac{1}{y} > 0\ \Longrightarrow \ y > x$ \UiTcorrect
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.8-1d-oving-02-2019-MAT-0001}
+    $a^2 + b^2 = 0 \ \Longrightarrow \ a = 0 \ \text{og} \ b = 0$ \UiTcorrect
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.8-1e-oving-02-2019-MAT-0001}
+    $a^2 + b^2 = 0 \ \Longrightarrow \ a = 0 \ \text{eller} \ b = 0$ \UiTwrong
+  \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  \Cref{subproblem:1.8-1a-oving-02-2019-MAT-0001} 
+  Dersom en trekker i fra $a$ på begge sider av ulikheten $x + a > b$ får vi
+  $x > b - a$ så denne impliasjonen er åpenbart sann. \medskip
+
+  \Cref{subproblem:1.8-1b-oving-02-2019-MAT-0001} Problemet her er at vi deler
+  på $b$ for å få høyresiden av implikasjonen.  Dersom $b = 0$ blir
+  venstresiden $ax > 5$ mens høyresiden er udefinert.  Så implikasjonen holder
+  ikke alltid, bare når $b \neq 0$.  \medskip
+
+  \Cref{subproblem:1.8-1c-oving-02-2019-MAT-0001} Her trenger vi ikke å bry
+  oss om tilfellet hvor $x=0$ og $y=0$, siden dersom $1/y > 0$ så er $y>0$.
+  Dersom vi nå ganger ulikheten med $xy$ får vi $xy/x > xy/y > 0 \cdot xy$ som
+  er det samme som $y > x > 0$. \medskip
+
+  \Cref{subproblem:1.8-1d-oving-02-2019-MAT-0001} Eneste mulighet for at $a^2
+  = 0$ er når $a=0$, slik at eneste mulighet for at $a^2 + b^2 = 0$ er at
+  $a=0$ \emph{og} $b=0$. \medskip
+
+  \Cref{subproblem:1.8-1e-oving-02-2019-MAT-0001} Anta at $a = 0$, da blir
+  likningen til $0^2 + b^2 = 0$ så dermed \emph{må} $b = 0$ og. Altså holder
+  det ikke at $a = 0$ eller $b=0$ vi trenger at \emph{begge} er null.
+\end{solution}
+
+\newpageLF
+
+%==============================================================================%
+%                                PROBLEM 1.8.5                                 %
+%==============================================================================%
+
+\begin{problem}[5]
+  Hvilke av følgende utsagn er sanne?
+  %
+  \begin{subproblem}
+    \label{subproblem:1.8-5a-oving-02-2019-MAT-0001}
+    $x^2 > 0 \ \Longrightarrow \ x > 0$ \UiTwrong
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.8-5b-oving-02-2019-MAT-0001}
+    $x = 2 \ \Longrightarrow \ x^4 = 16$ \UiTcorrect
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.8-5c-oving-02-2019-MAT-0001}
+    $x^4 = 16 \ \Longrightarrow \ x = 2$ \UiTwrong
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.8-5d-oving-02-2019-MAT-0001}
+    $x^2 = 16 \ \Longleftrightarrow \ x = 2$ \UiTwrong
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.8-5e-oving-02-2019-MAT-0001}
+    $x^4 = 16 \ \Longleftrightarrow \ x = 2 \ \text{eller} \ x = -2$ \UiTcorrect
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.8-5f-oving-02-2019-MAT-0001}
+    $x^2 + y^2 = 0 \ \Longleftrightarrow \ x = 0 \ \text{og} \ y = 0$ \UiTcorrect
+  \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  \Cref{subproblem:1.8-5a-oving-02-2019-MAT-0001} La $x = -a$ hvor $a>0$, da har
+  vi $x^2 = (-a)^2 = a^2 > 0$.  Altså stemmer ikke implikasjonen om at $x^2>0$
+  medfører at $x>0$.
+  \medskip
+
+  \Cref{subproblem:1.8-5b-oving-02-2019-MAT-0001} Dersom $x=2$ har vi at $x^4
+  = 2^4 = 16$, altså stemmer implikasjonen $x=2\,\Rightarrow\,x^4=16$.
+  \medskip
+
+  \Cref{subproblem:1.8-5c-oving-02-2019-MAT-0001} Dette stemmer ikke, for ett
+  moteksempel la $x=-2$ da er også $x^4 = (-2)^4 = 16$. Så $x^4 = 16$ medfører
+  ikke nødvendigvis at $x=2$. \medskip
+
+  \Cref{subproblem:1.8-5d-oving-02-2019-MAT-0001} Dette stemmer, de eneste to
+  løsningene til $x^4 = 16$. Her må vi utgangspunktet vise implikasjonen begge
+  veier. $\textcolor{UiT-main}{\Rightarrow}$ 
+  %
+  \begin{equation}
+    x^4 = 16 \, \Rightarrow \, 
+    \sqrt[4]{x^4} = \pm \sqrt[4]{2^4} 
+    \, \Rightarrow \, 
+    x = \pm 2
+  \end{equation}
+  %
+  $\textcolor{UiT-main}{\Leftarrow}$ Anta at $x = 2$ da er $x^4 = 2^4 = 16$,
+  og dersom $x=-2$ så er $(-2)^4 = 16$. Dette viser at $x^4 + 16 \Leftarrow x
+  = -2 \ \text{eller} \ x = 2$.  \medskip
+
+  \Cref{subproblem:1.8-5e-oving-02-2019-MAT-0001}
+  $\textcolor{UiT-main}{\Rightarrow}$ Dersom $x = 0$ og $y = 0$ så er $0 = 0^2
+  + 0^2 = x^2 + y^2$.  Dette viser $x^2 + y^2 = 0\,\Leftarrow\, x = 0 \
+  \text{og} \ y = 0$. 
+
+  $\textcolor{UiT-main}{\Leftarrow}$ For å vise implikasjonen den andre veien
+  har vi at $x^2 > 0$ når $x \neq 0$. Slik at $x^2 + y^2 > 0$ når $x,y \neq
+  0$.  Dermed så er eneste mulighet for at $x^2 + y^2 = 0$ at $x = 0$ og $y =
+  0$. Dette viser implikasjonen den andre veien.
+\end{solution}
+
+\newpageLF
+
+\newpageNotLF
+
+%==============================================================================%
+%                                 SEKSJON 1.9                                  %
+%==============================================================================%
+
+\subsection*{Seksjon 1.9}
+
+%==============================================================================%
+%                                PROBLEM 1.9.1                                 %
+%==============================================================================%
+
+\begin{problem}[1]
+  \label{problem:1.9-1-oving-02-2019-MAT-0001}
+  Trine og Stine er til sammen $40$~år, og Stine er $8$ år eldre enn Trine. La
+  Trines alder hete $x$. Sett opp en likning for $x$, og bruk denne til å finne
+  ut hvor gamle de er.  \UiTcorrect{\UiTcorrectColor{16}, \UiTcorrectColor{24}}
+\end{problem}
+
+\begin{solution}
+  Dersom Trine's alder er $x$ så må Stines alder være $x + 8$. Til sammen skal
+  de være $40$~år. Dette gir oss følgende likning
+  %
+  \begin{align*}
+    \text{Trine's alder} + \text{Stine's alder} &= 40 \\
+    x + (x + 8) &= 40 \\
+    2x + 8 &= 40 \\
+    2x &= 32 \\
+    x &= 16
+  \end{align*}
+  Altså er Trine's alder $16$~år, og Stine's alder er $16+8=24$~år. Du kan selv
+  sjekke at $16 + 24 = 40$.
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.9.2                                 %
+%==============================================================================%
+
+\begin{problem}
+  Løs følgende likninger med hensyn på $x$
+  %
+  \iftoggle{isLF}{\renewcommand{\tabenumsep}{\hskip1.5em}}{}
+    \begin{Tabenum}
+      \tabenumitem \label{subproblem:1.9-2a-oving-02-2019-MAT-0001}
+      $2x - 5=0$\UiTcorrect{$x=5/2=\num{2.5}$}
+      \tabenumitem \label{subproblem:1.9-2b-oving-02-2019-MAT-0001}
+      $\cfrac{x}{x+3}=5$
+      \UiTcorrect{$x=-15/4$}\\
+      \tabenumitem \label{subproblem:1.9-2c-oving-02-2019-MAT-0001}
+      $x^2 - 5x + 6 = 0$
+      \UiTcorrect{$x=3\vee x=2$}
+      \tabenumitem \label{subproblem:1.9-2d-oving-02-2019-MAT-0001}
+      $5x^2 + x = -10$
+      \UiTcorrect{$x\not\in\R$}\\
+      \tabenumitem \label{subproblem:1.9-2e-oving-02-2019-MAT-0001}
+      $x^2 - 5x = 0$
+      \UiTcorrect{$x=0\vee x=5$}
+      \tabenumitem \label{subproblem:1.9-2f-oving-02-2019-MAT-0001}
+      $x^2 + 14x = -49$
+      \UiTcorrect{$x=-7$}\\
+      \tabenumitem \label{subproblem:1.9-2g-oving-02-2019-MAT-0001}
+      $x^2 + (1-t)x = t$
+      \UiTcorrect{$x=-1 \vee x=t$}
+      \tabenumitem \label{subproblem:1.9-2h-oving-02-2019-MAT-0001}
+      $t + \cfrac{a}{kx+t} = 0$
+      \UiTcorrect{$x=-\frac{a+t^2}{kt}$}\\
+      \tabenumitem \label{subproblem:1.9-2i-oving-02-2019-MAT-0001}
+      $5x^{-2} + 4x^{-1} = 1$
+      \UiTcorrect{$x=-5 \vee x=-1$}
+      \tabenumitem \label{subproblem:1.9-2j-oving-02-2019-MAT-0001}
+      $x = \sqrt{x - 1} + 7$
+      \UiTcorrect{$x=10$} \\
+    \end{Tabenum}
+\end{problem}
+
+\begin{solution}
+  \tref{subproblem:1.9-2a-oving-02-2019-MAT-0001}
+  $2x - 5 = 0\,\Rightarrow\,2x = 5\,\Rightarrow\,x=5/2=\num{2,5}$ \\
+  %
+  \tref{subproblem:1.9-2b-oving-02-2019-MAT-0001} Anta at $x \neq 3$, ved å
+  gange med $x+3$ kan likningen skrives som
+  %
+  \begin{equation*}
+    x = 5(x + 3)\,\Rightarrow\,-4x = 15\,\Rightarrow\,x=-15/4
+  \end{equation*}
+  %
+  \tref{subproblem:1.9-2c-oving-02-2019-MAT-0001} 
+  Ved å gange ut ser vi at $(x-a)(x-b) = x^2 - (a+b)x + ab$. Slik at $x^2 - 5x +
+  6 = (x-b)(x-a)$ dersom vi kan finne to tall $a,b$ slik at $a+b = 5$ og $ab =
+  6$. Etter litt tenking ser en kanskje at $2+3 = 5$ og $2\cdot 3 = 6$ slik at
+  $x^2 - 5x + 6 = (x-2)(x-3)$ som gir at $x=3$ eller $x=2$ løser likningen.  \\
+  %
+  \tref{subproblem:1.9-2d-oving-02-2019-MAT-0001} 
+  Ved å fullføre kvadratet så ser vi at 
+  %
+  \begin{align*}
+    5x^2 + x + 10
+        & = 5(x^2 + 2 \cdot \frac{1}{10} + (\frac{1}{10})^2 - (\frac{1}{10})^2 + 2) \\
+        & = 5(x + \frac{1}{10})^2 + 5 (-\frac{1}{10^2} + 2)
+        = 5(x + \frac{1}{10})^2 - \frac{199}{20}
+  \end{align*}
+  %
+  Hvor vi ser at den \emph{minste} verdien polynomet vårt oppnår er $199/20 \gg
+  0$ når $x = -1/10$. Så likningen $5x^2 + x = -10$ har ingen reell løsning. \\
+  %
+  \tref{subproblem:1.9-2e-oving-02-2019-MAT-0001} Rett frem har vi at $x^2 - 5x
+  = x(x - 5) = 0$ slik at enten så er $x = 0$ eller så er $x = 5$.\\
+  %
+  \tref{subproblem:1.9-2f-oving-02-2019-MAT-0001} Her kan vi bruke første
+  kvadratsetning:
+  $\textcolor{UiT-blue}{a}^2 
+  + 2\textcolor{UiT-blue}{a}\textcolor{UiT-orange}{b}
+  + \textcolor{UiT-main}{b}^2 = (\textcolor{UiT-blue}{a} 
+  + \textcolor{UiT-orange}{b})^2$
+  %
+  \begin{equation}
+    x^2 + 14x + 49
+    = \textcolor{UiT-blue}{x}^2 
+    + 2 \cdot \textcolor{UiT-orange}{7}\textcolor{UiT-blue}{x}
+    + \textcolor{UiT-orange}{7}^2
+    = (\textcolor{UiT-blue}{x} - \textcolor{UiT-orange}{7})^2.
+  \end{equation}
+  %
+  Som betyr at $x=7$ er eneste løsning av likningen $x^2+14x=-49$.\\
+  %
+  \tref{subproblem:1.9-2g-oving-02-2019-MAT-0001} Her ønsker vi igjen $x^2 -
+  (t-1)x - t = (x - a)(x -b)$ så vi må finne to tall slik at $a + b = t - 1$ og
+  $ab = -t$.  Ett veldig naturlig valg er da $a = t$ og $b = -1$
+  %
+  \begin{equation*}
+    x^2 - (t-1)x - t = (x - t)(x + 1)
+  \end{equation*}
+  %
+  Så løsningene våre er $x = t$ og $t = 1$. Alternativt via litt algebramagi
+  %
+  \begin{equation*}
+    x^2 - \textcolor{UiT-blue}{(t-1)x} - t 
+    = (x^2 - \textcolor{UiT-blue}{tx}) + (\textcolor{UiT-blue}{x} - t)
+    = x(x - t) + (x - t)
+    = (x + 1)(x - t)
+  \end{equation*}
+  %
+  Merk at andreagradsformelen om noe strevsom fungerer helt fint og! \\
+  %
+  \tref{subproblem:1.9-2h-oving-02-2019-MAT-0001} Her må vi anta $kx + t \neq 0$
+  altså at $k,t \neq 0$. 
+  %
+  \begin{align*}
+    t + \frac{a}{kx + t} &= 0 \\
+    \frac{a}{kx + t} &= -t \\
+    a &= -t(kx + t) \\
+    a &= -tkx - t^2 \\
+    tkx &= -(a + t^2) \\
+    x &= -\frac{a + t^2}{tk}
+  \end{align*}
+  \\
+  \tref{subproblem:1.9-2i-oving-02-2019-MAT-0001} Her kan vi vise to ulike
+  fremgangsmåter. Først kan vi gjøre variabelskiftet $u = x^{-1}$. Likningen
+  blir da
+  %
+  \begin{equation*}
+    5u^2 + 4u - 1
+    \Rightarrow u = \frac{-4 \pm \sqrt{4^2 + 4\cdot 5 \cdot 1}}{2\cdot 5}
+    = \frac{-4 \pm 6}{2 \cdot 5} =
+    \begin{cases}
+      \frac{-4-6}{2 \cdot 5} =          -1, &  \pm = - \\
+      \frac{-4+6}{2 \cdot 5} = \frac{1}{5}, & \pm = +
+    \end{cases}
+  \end{equation*}
+  %
+  Dette betyr at vi har $x = 1/(-1) = -1$ eller $x = 1/(1/5) = 5$ siden $u =
+  x^{-1} \Rightarrow x = 1/u$. Kanskje enda enklere er at vi kan se at $x \neq
+  0$ så vi kan trygt gange likningen med $x^2$ slik at 
+  %
+  \begin{align*}
+    (5x^{-2} + 4x^{-1} - 1) \cdot x^2 &= 0\cdot x^2 \\
+    5 + 4x - x^2 &= 0 \\
+    x^2 - 4x - 5 &= 0
+  \end{align*}
+  %
+  Hvor vi trenger to tall slik at $a + b = 4$ og $ab = -5$.  Etter litt
+  tenking så funker $a = 5$ og $b = -1$ fint.  Dermed har vi
+  $x^2-4x-5=(x-5)(x+1)$ som gir oss de samme løsningene som før.\\
+  %
+  \tref{subproblem:1.9-2j-oving-02-2019-MAT-0001} 
+  Dersom svaret skal bli pent må det under kvadratroten være ett perfekt
+  kvadrat, dette betyr vi kan prøve å la $x$ være $2$, $5$, $10$, $17$ for
+  da blir jo $x-1$ lik $1$, $4$ osv, som det er enkelt å ta kvadratroten av.
+  Vi raskt ser at $x = 10$ løser likningen. Mer systematisk betyr det at det
+  må eksistere et naturlig tall $k \in \N$ slik at $x-1=k^2$ og dermed $x =
+  k^2 + 1$. Innsetning gir da
+  %
+  \begin{equation*}
+    x = \sqrt{x - 1} + 7
+    \, \Rightarrow \,
+    k^2 + 1 = \sqrt{k^2} + 7 
+    \, \Rightarrow \,
+    k^2 - k - 6
+  \end{equation*}
+  %
+  Hvor vi trenger to tall slik at $a+b = 1$ og $ab = 6$. Her ser vi at $k = -2$
+  og $k = 3$ dermed oppfyller likningen. Merk at det er umulig at $k = -2$
+  (hvorfor?), slik at $k = 3$. Da er $x = k^2 + 1 = 3^2 + 1 = 10$ som før.  En
+  siste mulighet er å kvadrere likningen
+  %
+  \begin{align*}
+                  x &=  \sqrt{x - 1} + 7 \\
+          (x - 7)^2 &= (\sqrt{x - 1})^2 \\
+     x^2 - 14x + 49 &= x - 1 \\
+     x^2 - 15x + 50 &= 0 \\
+    (x - 5)(x - 10) &= 0
+  \end{align*}
+  %
+  Hvor vi ser at vi har fått en \emph{falsk} løsning $x = 5$. Dette skjer fordi
+  vi kvadrerte likningen, og en likning av høyere grad har nødvendigvis flere
+  løsninger. Eneste måte å forsikre seg om at løsningene vi har fått er ekte, er
+  enten å unngå å kvadrere, eller sette inn i den opprinnelige likningen.
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.9.3                                 %
+%==============================================================================%
+
+\begin{problem}
+  Løs følgende likninger. Hint: se eksempelet forrige side.
+  %
+  \begin{subproblem}
+    \label{subproblem:1.9-3a-oving-02-2019-MAT-0001}
+    $x^3 - 21x + 20 = 0$ \UiTcorrect{$x=-5 \vee x=1 \vee x=4$}
+  \end{subproblem}
+  %
+  \begin{subproblem}
+    \label{subproblem:1.9-3b-oving-02-2019-MAT-0001}
+    $x^4 - 10x^3 + 21x^2 + 40x - 100=0$ \UiTcorrect{$x=\pm2 \vee x=5$}
+  \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  \Opg{subproblem:1.9-3a-oving-02-2019-MAT-0001} Denne oppgaven kan løses via
+  polynomdivisjon da vi ser via inspeksjon at siden $1 - 21 + 20 = 0$ så er $x =
+  1$ en løsning. Rett frem divisjon gir
+  %
+  \begin{center}
+    \polylongdiv{x^3 - 21x + 20 }{x-1}
+  \end{center}
+  %
+  Hvor vi enten kan bruke andregradsformelen eller se at $x^2 + x - 20 = x(x +
+  1) - 20$.  Altså ønsker vi å finne to tall $x$ og $x+1$ slik at produktet
+  deres blir $20$. Hmmm$\ldots$ Etter litt tenking kommer du nok frem til at de
+  eneste mulighetene er $x=4$ og $x=-5$. 
+  %
+  \begin{equation}
+    \label{eq:1.9-3a-oving-02-2019-MAT-0001}
+    x^3 - 21x + 20 = 0 \quad 
+    \Leftrightarrow 
+    \quad x = 1 \ \text{eller} \ x = 4 \ \text{eller} \ x = -5.
+  \end{equation}
+  %
+  Alternativt kan vi bli en algebratrollmann
+  %
+  \begin{align*}
+    x^3 - 21x + 20 
+        & = x^3 - x - 20x + 20 \\
+        & = x(x^2 - 1) - 20(x - 1) \\
+        & = x(x - 1)(x + 1) - 20(x - 1) \\
+        & = (x-1)(x(x+1) - 20) \\
+        & = (x-1)(x^2 + x - 20) \\
+        & = (x-1)(x + 5)(x - 4)
+  \end{align*}
+  %
+  Hvor vi ser at vi får de samme løsningene som i
+  \cref{eq:1.9-3a-oving-02-2019-MAT-0001}.
+\end{solution}
+
+\medskip
+
+\begin{solution}
+  \Opg{subproblem:1.9-3b-oving-02-2019-MAT-0001} Dersom vi antar alle løsningene
+  av polynomet er heltall, så må alle løsninger være delelig på 100, dette betyr
+  at vi kan tippe løsninger som $\pm 1$, $\pm 2$, $\pm 4$, $\pm 5$ også videre.
+  Ved innsetning ser vi at $x = 2$ er en løsning slik at polynomdivisjon atter
+  en gang gir oss
+  %
+  \begin{center}
+    \polylongdiv{x^4 - 10x^3 + 21x^2 + 40x - 100}{x-2}
+  \end{center}
+  %
+  Hvor vi igjen kan prøve å sette inn verdier og ser nå at $x=-2$ er en
+  løsning
+  %
+  \begin{center}
+    \polylongdiv{x^3 - 8x^2 + 5x + 50}{x+2}
+  \end{center}
+  %
+  Siden $x^2 - 10x + 25 = \textcolor{UiT-blue}{x}^2 -
+  2\cdot\textcolor{UiT-orange}{5}\cdot\textcolor{UiT-blue}{x} + 5^2 =
+  (\textcolor{UiT-blue}{x}-\textcolor{UiT-orange}{5})^2$ så har vi funnet alle
+  løsningene våre.  Alternativt igjen kunne vi hatt en enda større
+  algebratrollmann i magen\footnote{Men det er jo begrenset hvor mye plass vi
+  har i magen etter å allerede spist én Michelangelo og én algebratrollmann.}
+  %
+  \begin{align*}
+    x^4 - 10x^3 + \textcolor{UiT-blue}{21x^2} + 40x - 100 
+        &= (x^4 - 10x^3 + \textcolor{UiT-blue}{25x^2}) - (\textcolor{UiT-blue}{4x^2} - 40x + 100) \\ 
+        &= x^2(x^2 - 10x + 25) - 4(x^2 - 10x + 25) \\ 
+        &=  (x^2 - 4)(x^2 - 10x + 25) \\
+        &= (x-2)(x+2)(x-5)^2.
+  \end{align*}
+  %
+  Finnes det en intuitiv forklaring på hvorfor vi delte opp polynomet slik?  Vel
+  det er ønskelig å dele opp polynomet slik at vi får to polynomer av andre
+  grad.  Dette blir mulig dersom vi lar $\alpha$, $\beta$ være konstanter slik
+  at $\alpha - \beta = 21$
+  %
+  \begin{align*}
+    x^4 - 10x^3 + \textcolor{UiT-blue}{21}x^2 + 40x - 100 
+        &= x^4 - 10x^3 + (\textcolor{UiT-blue}{\alpha - \beta})x^2  + 40x - 100 \\ 
+        &= (x^4 - 10x^3 + \alpha x^2) - (\beta^2 - 40x + 100) \\ 
+        &= x^2(x^2 - 10x + \alpha) - \beta(x^2 - \frac{40}{\beta}x + \frac{100}{\beta}) 
+  \end{align*}
+  %
+  Her valgte vi $\alpha - \beta = 21$ og ikke $\alpha + \beta = 21$ nettopp
+  fordi vi ønsket at fortegnene våre i polynomene $x^2 - 10x + \alpha$ og $x^2 -
+  \frac{40}{\beta}x + \frac{100}{\beta}$ ble det samme. Det enkleste blir nok nå
+  å bare prøve seg fram med noen verdier. Alternativt for at polynomene skal
+  være like trenger vi at $10x = - 40x/\beta$ som gir at $\beta = 4$, Derifra
+  har vi at $\alpha = 100/\beta = 25$, siden vi akkurat fant ut at $\beta = 4$.
+  Dette fullfører den nokså vanskelige oppdelingen av polynomet.
+\end{solution}
+
+\newpageLF
+
+\begin{problem}
+  \label{problem:1.9-5-oving-02-2019-MAT-0001}
+  Løs likningen $x + 2 - \sqrt{4x + 13} = 0$ \UiTcorrect{$x=3$}
+\end{problem}
+
+\begin{solution}
+  \Opg{problem:1.9-5-oving-02-2019-MAT-0001}: I denne oppgaven kan vi også jukse
+  litt. Om $x + 2$ skal være likt $\sqrt{4x + 13}$ så er en rimelig antagelse at
+  $4x + 13$ er ett perfekt kvadrat altså at det eksisterer ett
+  heltall\footnote{Det må ikke nødvendigvis være ett heltall det kan helt fint
+  også være ett rasjonelt tall, altså en brøk. Men det er en \emph{rimelig}
+  antakelse at de som har laget oppgaven ønsker at svarene skal være nogen lunde
+  vakre.} $k$ slik at $4x+13=k^2$. En mulighet er å velge $x=3$ siden da er
+  $\sqrt{4\cdot 3 + 13} = \sqrt{5^2} = 5$. Nå er vi så heldige at $3 + 2 = 5$ så
+  $x = 3$ er en løsning av likningen. Du lærer det kanskje ikke i dette kurset,
+  men dette er \emph{eneste} løsning til likningen. Siden både $x + 2$ og
+  $\sqrt{4x + 13}$ begge er voksende funksjoner så er dette eneste gangen de
+  møtes. \medskip
+
+  Det å prøve litt ulike verdier før en begynner å løse en likning er
+  kjempelurt! Alternativt kan vi og beregne integralet som følger
+  %
+  \begin{align*}
+    x + 2 - \sqrt{4x + 13} &= 0 \\ 
+    (x + 2)^2  &= (\sqrt{4x + 13}) \\ 
+    x^2 + 4x + 4 &= 4x + 13 \\
+    x^2 - 9 &= 0 \\
+    (x - 3)(x + 3) &= 0
+  \end{align*}
+  %
+  Hvor vi igjen ser at $x = 3$ er en løsning. (Hvorfor er ikke $x = -3$ en
+  løsning?) Grunnen til at vi fikk en \emph{falsk} løsning var fordi vi
+  kvadrerte likningen. Dersom vi øker graden til en likning eller polynom får vi
+  nødvendigvis flere løsninger. Tenk på $x = 2$, kvadrerer vi denne får vi $x^2
+  = 4$ som har løsningene $x = 2$ og $x = -2$, selv om $x = -2$ ikke løser den
+  opprinnelige likningen.
+\end{solution}
+
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass[a4paper,11pt]{article}
+
+% Always keep your main language last
+\usepackage[british,nynorsk,samin,norsk]{babel}
+
+\usepackage{_sty/UiT}
+\usepackage{_sty/IMS}
+\usepackage{MAT-0001/MAT-0001}
+
+% ============================================================ 
+% COURSE INFORMATION
+% ============================================================
+
+\settoggle{isLF}{true}
+\settoggle{isLF}{false} % Comment this line to show solutions
+
+\UiTsetup{%
+    Language = {norsk}, %auto = language defined by babel
+    Exam = {false}, % Is this an exam? true / false
+    Exercise = {true}, % Is this an exercise? true / false
+    ExerciseNumber = {1}, % Which exercise number is this?
+    CourseCode = {auto}, % auto = \courseCode (defined in courseCode.sty, e.g. MAT-1001.sty)
+    CourseName = {auto}, % auto = \courseName (defined in courseCode.sty, e.g. MAT-1001.sty)
+    Year = {2019}, % No auto setting for this, as it might change on recompilation
+    Month = {8}, % No auto setting for this, as it might change on recompilation
+    Day = {27},% No auto setting for this, as it might change on recompilation
+%    DeadlineYear = {2020},
+%    DeadlineMonth = {12},
+%    DeadlineDay = {22},
+    DurationDays = {3}, % Set the number of days the exam should last
+}
+
+% ============================================================ 
+% v OWN COMMANDS AND PACKAGES BELOW HERE v
+% ============================================================
+
+
+\begin{document}
+
+\frontpageUiT
+
+% \include{MAT-0001-Exercises-01-2019-V}
+
+% \include{MAT-0001-Exercises-02-2019-V}
+\end{document}

@@ -1,0 +1,161 @@
+\titlebox[norsk]
+
+\Problem
+
+The function
+%
+\begin{equation}
+    f(x_1, x_2) = 2x_1^2 + x_1^4 + x_2^2 - x_1 x_2
+\end{equation}
+%
+is defined on $\R^2$.
+
+\begin{subproblem}
+    Find whatever stationary point(s) that $f(x_1,x_2)$ may have.
+\end{subproblem}
+
+\begin{subproblem}
+    Check that $f(x_1,x_2)$ is strictly convex everywhere. Does $f(x_1, x_2)$ have a global minimum point?
+\end{subproblem}
+
+\begin{subproblem}
+    Compute $\vx_1$ by Newton's method from the initial point $\vx_0 = (1,1)$.
+\end{subproblem}
+
+\begin{subproblem}
+    Explain briefly how Newton's method applied to a strictly convex $C^2$ function may be modified so that it becomes a reliable downhill search. The proposed modification should ensure that full Newton steps taken when close to a minimum point.
+\end{subproblem}
+
+
+\Problem
+
+\begin{subproblem}
+    \label{problem:MAT-2202-eng-04-06-2014-problem-4a}
+    A linear programming problem
+    %
+    \begin{equation*}
+        \systeme{
+            x_1 + x_2 - x_3 = 6,
+            2x_1 + 3x_2 - x_4 = 7,
+            4x_1 + x_2 - x_5 = 3
+        }
+    \end{equation*}
+    %
+    where $3x_1 + 5x_2 \to \min$ and $x_1,x_2,x_3,x_4,x_5 \geq 0$, is given in standard form. Find a basic solution corresponding to the basis $x_2$,  $x_3$, $x_4$. Is this a basic feasible solution?
+\end{subproblem}
+
+\begin{subproblem}
+    Transform the LP from \cref{problem:MAT-2202-eng-04-06-2014-problem-4a} to a related LP problem that can be solved graphically and use that to find an optimal solution to \cref{problem:MAT-2202-eng-04-06-2014-problem-4a}. 
+\end{subproblem}
+
+\begin{subproblem}
+    Here are two assertions:
+    %
+    \begin{romanrate*}
+        \item \label{item:MAT-2202-eng-04-06-2014-problem-4a-i} If the feasible set of an LP problem is unbounded, then the LP problem is unbounded, and 
+        \item 
+        \label{item:MAT-2202-eng-04-06-2014-problem-4a-ii} If an LP problem is unbounded, then its feasible set is unbounded
+    \end{romanrate*}
+    %
+    For each of \cref{item:MAT-2202-eng-04-06-2014-problem-4a-i,item:MAT-2202-eng-04-06-2014-problem-4a-ii} explain why it is true, or false, as the case may be.
+\end{subproblem}
+
+
+\Problem
+
+\begin{subproblem}
+    Consider the functional
+    %
+    \begin{equation}
+        J(y) 
+        = \int_0^2 2y(x)^2 + xy(x)y'(x) + 3y'(x)^2 \dx,
+    \end{equation}
+    %
+    on $C^2[0,2]$. For the extremal problem
+    %
+    \begin{align}
+        J(y) & \to \min, \\
+        y(0) & = 0, \\
+        y(2) & = 2,
+    \end{align}
+    %
+    find and solve the Euler-Lagrange equation with these boundary conditions.
+\end{subproblem}
+
+\begin{subproblem}
+    Consider the extremal problem
+    %
+    \begin{align}
+        \int_0^1 y'(x)^2 \dx 
+        & \to \min \\
+        \int_0^1 y(x) \dx & = \frac{1}{6}
+    \end{align}
+    %
+    with $y(0) = y(1) = 0$ for functions in $C^2[0,1]$. Establish a minimzer for this extremal problem.
+\end{subproblem}
+
+
+\Problem
+
+A company can produce at most $20$ units per week of a machine in a factory F$1$ in Europe and at most $30$ units per week in factory F$2$ in the USA. The machines are sold to three distributors D$1$, D$2$ and D$3$ in Europe, USA and Asia respectively. The profit on selling a machine (in thousands of dollars) from a factory to a distributor is given in the table 
+%
+\begin{table}[H]
+    \centering
+    \caption{}
+    \label{tab:my_label}
+    \begin{tabular}{|c|c|c|c|} \hline 
+         $\square$ &   D$1$    &    D$2$   & D$3$ \\ \hline 
+              F$1$ &    10     & $\square$ & $14$ \\ \hline 
+              F$2$ & $\square$ &    $12$   & $13$ \\ \hline 
+    \end{tabular}
+\end{table}
+%
+The factory in Europe does not sell to the USA, and the factory in the USA does not sell to Europe. At most $15$ machines per wek can be sol in europe, at most $20$ can be sold in the USA, and at most $25$ in Asia. 
+
+Formulate a linear programming model to maximize profit per week. Do not solve the model.
+
+\Problem
+
+Let $t = 0,1,2,3=T$ in the multistage optimization problem
+%
+\begin{align*}
+        X(t+1) 
+    & = \abs{X(t) - 2U(t)}, \quad t   
+      = 0,1,2, \\
+    0 \leq U(t) 
+    & \leq X(t) \leq 4 \\
+        f_3 
+    & = 0, \\
+        f_t 
+    & = \bigl((4 - X(t)\bigl)\bigr(U(t) + 1\bigl) + f_{t+1}, \quad t = 0,1,2\\
+    f_0 & \to \max.
+\end{align*}
+%
+The state variables $X(t)$ and control variables $U(t)$ are integers. It is clear that the constraints are state-specific and that $f_t$ is an increasing function of $f_{t+1}$. Thus, the dynamic programming algorithm applies to this problem.
+
+\begin{subproblem}
+    \label{problem:MAT-2202-eng-04-06-2014-problem-5a}
+    A backwards speed of the dynamic algorithm yields this table of the value function and the optimal policy:
+    
+    \begin{center}
+    \centering
+    \parbox{\linewidth}{\captionof{table}{For example: $V_2(3)=4$ and $\pi_2(3)=3$.}}
+    \begin{tabular}{C |C R R C C}
+    \toprule
+            X  & 0 &  1 &  2 & 3 & 4 \\
+           V_3 & 0 &  0 &  0 & 0 & 0 \\
+           V_2 & 4 &  6 &  6 & 4 & 0 \\
+         \pi_2 & 0 &  1 &  2 & 3 & 0 \\
+           V_1 & 8 & 12 & 10 & 9 & 6 \\ 
+         \pi_1 & 0 &  1 &  2 & \square  & 1\\
+         \pi_0 & 0 &  1 &  2 & 3 & 1 \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    %
+    Calculate the missing entry $\pi_1(3)$ in the table.
+\end{subproblem}
+
+\begin{subproblem}
+    Calculate an optimal sequence of control $U(0)$, $U(1)$, $U(2)$ from the initial state $x(0) = 4$. This can be done without knowing the missing table entry in \cref{problem:MAT-2202-eng-04-06-2014-problem-5a}.
+\end{subproblem}

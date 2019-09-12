@@ -1,0 +1,55 @@
+\documentclass[a4paper,11pt]{article}
+
+% Always keep your main language last
+\usepackage[norsk,nynorsk,samin,british]{babel}
+
+\usepackage{_sty/UiT}
+\usepackage{_sty/IMS}
+\usepackage{MAT-2202/MAT-2202}
+
+% ============================================================ 
+% COURSE INFORMATION
+% ============================================================
+
+% Default time is 09:00 - 13:00 | Uncomment and change the line below  \visif neccecary
+% \newcommand{\examtime}{15:00--19:00}
+\newcommand{\location}{\aasgard}
+\newcommand{\permittedAids}{%
+    \supportMaterial{c,r}}
+\newcommand{\paper}{}
+\newcommand{\pages}{} % Sets the total number of pages manually. Uncomment if neccecary
+\newcommand{\contact}{\MariusOve}
+\newcommand{\mobile}{}
+\settoggle{isVisit}{true} % Uncomment this line if examinator / person in charge is visiting
+\newcommand{\visitWhen}{ca. kl. 11:00}
+\settoggle{showVisit}{false} %Uncomment if unknown when visit
+
+% \newcommand{\ExerciseNumber}{1}
+
+\Published{2014}{06}{04}% YEAR {dddd} MONTH {01 - 12} DAY {01 - 31} 
+% \Deadline{2018}{11}{27}% Has to be set, not visible if exam
+
+\settoggle{isLF}{true}
+\settoggle{isLF}{false} % Comment this line to show solutions
+
+\settoggle{isEksamen}{false}
+\settoggle{isEksamen}{true} % Uncomment this if used for exams
+
+\settoggle{isEksamenUtsatt}{false}
+% \settoggle{isEksamenUtsatt}{true} % Uncomment this line if Re sit exam (kont / utsatt eksamen)
+
+% ============================================================ 
+% v OWN COMMANDS AND PACKAGES BELOW HERE v
+% ============================================================
+
+\begin{document}
+
+\FrontpageUiT[english]
+
+% \include{MAT-2202-Exam-bok-04-06-2014}
+
+% \include{MAT-2202-Exam-nyn-04-06-2014}
+
+\include{MAT-2202-Exam-eng-04-06-2014}
+
+\end{document}

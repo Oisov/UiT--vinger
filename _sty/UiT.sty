@@ -1,0 +1,1519 @@
+
+%
+%
+% UUUUUUUU     UUUUUUUU       iiii       TTTTTTTTTTTTTTTTTTTTTTT
+% U::::::U     U::::::U      i::::i      T:::::::::::::::::::::T
+% U::::::U     U::::::U       iiii       T:::::::::::::::::::::T
+% UU:::::U     U:::::UU                  T:::::TT:::::::TT:::::T
+%  U:::::U     U:::::U      iiiiiii      TTTTTT  T:::::T  TTTTTT
+%  U:::::D     D:::::U      i:::::i              T:::::T
+%  U:::::D     D:::::U       i::::i              T:::::T
+%  U:::::D     D:::::U       i::::i              T:::::T
+%  U:::::D     D:::::U       i::::i              T:::::T
+%  U:::::D     D:::::U       i::::i              T:::::T
+%  U:::::D     D:::::U       i::::i              T:::::T
+%  U::::::U   U::::::U       i::::i              T:::::T
+%  U:::::::UUU:::::::U      i::::::i           TT:::::::TT
+%   UU:::::::::::::UU       i::::::i           T:::::::::T
+%     UU:::::::::UU         i::::::i           T:::::::::T
+%       UUUUUUUUU           iiiiiiii           TTTTTTTTTTT
+%
+% MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+% MMMMMMMMMMMMWKOOOOOOOOOOOOOOOOOOOOO0XWMMMMMMMMMMMMMMMMMWX0OOOOOOOOKWMMMMMMMMMMMM
+% MMMMMMMMMMWOc.                     .'l0WMMMMMMMMMMMMWKx:.         .c0WMMMMMMMMMM
+% MMMMMMMMMWKl;;;;,.                    .;lxXMMMMMMN0d;.        .;;;;:oKMMMMMMMMMM
+% MMMMMMMN0kkkkkkxl.                        'o0WMNx,.           .okxxkkkk0WMMMMMMM
+% MMMMMMXl.                                   .:xKOc.                    .oNMMMMMM
+% MMMMMMXxdddddddddddddddddddd:.                 'oO0d,      .;oddddddddddkXMMMMMM
+% MMMMMMMMMMMMMMMMMMMMMMMMMMMMWO;                  .:x0kc..:dKWMMMMMMMMMMMMMMMMMMM
+% MMMMMMMMMMMMMMMWNXKKKKKKKKKKKKOc.                   'okkk0KKKKKKKKKKKKKKKKKKWMMM
+% MMMMMMMMMMWNOo:,................                       .....................dNMM
+% MMMMMMMMW0l'  .,clllll'  .;lc'                                              ,0MM
+% MMMMMMW0c. .:xKWMMMMMWl .oWMMK;                                    .okkkkkkkOXMM
+% MMMMMXo.  :kXNNNWMMMMWl  :0XXx.                                     .,,,,,,,,c0M
+% MMMMK:    .....,dKKKK0:   ...                               ..................xM
+% MMMMXxllllllll'  .....                                    .o00KKKKKKKKKKK0000KNM
+% MMMMMMMMMMMMMMKo:::::::::::::::::::::::::::::::::::::::::lOWMMMMMMMMMMMMMMMMMMMM
+% WXKKKKKKKKKKKKKKKKKKKKKKXWMMMMMMMMMMMMMMMMMMMMWXKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKNM
+% Nl.......................:dKWMMMMMMMMMMMMMMWKd:...............................oW
+% Wd.........                .;o0NMMMMMMMNX0d;.                       .........'xW
+% MN0kkkkkkkk:                  .,dXMMNOl,..                          ckkkkkkkk0NM
+% MNl........                  .,lkKkl'                               .........oNM
+% MW0olllllllllllllc;.      .;oO0xc.                  .;llllllllllllllllllllllo0MM
+% MMMMMMMMMMMMMMMMMMWKd:..:dOOd:.                   .l0WMMMMMMMMMMMMMMMMMMMMMMMMMM
+% MMMMWNXXXXXXXXXXXXXXXKOOOd;.                    .:kKXXXXXNWWMMMMMMMMMMMMMMMMMMMM
+% MMMMXl...................                        .........,;lxKWMMMMMMMMMMMMMMMM
+% MMMMM0:........                              .:l:.  .cllllc,. .;xXWMMMMMMMMMMMMM
+% MMMMMMNKOkkkkkkc.                           .OWMWk. ;XMMMMMWKx:. 'xNMMMMMMMMMMMM
+% MMMMMMMW0c......                            .oKXKl. ;XMMMMNK00Ol.  ;0WMMMMMMMMMM
+% MMMMMMMMW0c'.........                         ...   .oxxxd:......   cXMMMMMMMMMM
+% MMMMMMMMMMWNNNNNNNNNKl.                                    .lOOOOOOOKWMMMMMMMMMM
+% MMMMMMMMMMMMMMMMMMMMMWKkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk0WMMMMMMMMMMMMMMMMMMM
+% MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+
+% Main language last (overwritten by titlebox)
+\usepackage[nynorsk,british,samin,norsk]{babel}
+
+% English and British quotes  ”tørt”
+\newcommand{\bquote}[1]{\foreignquote*{british}{#1}}
+\newcommand{\equote}[1]{\foreignquote*{british}{#1}}
+
+\usepackage{ifxetex}
+    \ifxetex
+        \usepackage{fontspec}
+        \defaultfontfeatures{Ligatures=TeX}
+        \newfontfamily\myOpenSans{Open Sans}
+%        \newfontfamily\myOpenSansTight{Open Sans}[LetterSpace=25]
+%        \newfontfamily\myOpenSans{Open Sans}
+    \else
+        \usepackage[T1]{fontenc}
+        \usepackage[utf8]{inputenc}
+        % \usepackage[default,osfigures,scale=0.95]{opensans} %% Alternatively
+        %% use the option 'defaultsans' instead of 'default' to replace the
+        %% sans serif font only.
+        \usepackage[protrusion=true,expansion=true]{microtype}
+    \fi
+
+\usepackage[autostyle=true]{csquotes}
+%\usepackage{_sty/l3packages/xfp}
+
+% https://tex.stackexchange.com/questions/4152/how-do-i-prevent-widow-orphan-lines
+\widowpenalty10000
+\clubpenalty10000
+
+\usepackage[all]{nowidow} %removes widows and orphans
+\usepackage{iflang,ifthen,lipsum}
+\usepackage[useregional,calc]{datetime2}
+
+\usepackage{tabularx}
+
+% Tikz-euclide also loads tikz
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{tikzscale}
+\usetikzlibrary{decorations,decorations.text,fadings}  % altermundus.com/pages/tkz/ornament/
+
+\usepackage{mathtools,amsmath,amssymb}
+\usepackage[amsmath,amsthm,thmmarks]{ntheorem}
+\usepackage{thmtools}
+
+\definecolor{UiT-main}{HTML}{003349}
+\definecolor{UiT-red}{HTML}{CB333B}
+\definecolor{UiT-blue}{HTML}{007396}
+\definecolor{UiT-cyan}{HTML}{59BEC9}
+\definecolor{UiT-orange}{HTML}{F2A900}
+
+\colorlet{UiT-green}{green!50!black}
+\colorlet{correct}{green!50!black}
+\colorlet{wrong}{UiT-red}
+
+\newcommand{\UiTrefcolor}{UiT-blue}
+\newcommand{\UiTnumbercolor}{UiT-main}
+\newcommand{\UiTurlcolor}{UiT-orange}
+\newcommand{\UiTcitecolor}{UiT-cyan}
+\newcommand{\UiThyperlinkcolor}{}
+\newcommand{\UiTheaderFooterColor}{UiT-main}
+\newcommand{\UiTsolutionColor}{gray}
+\newcommand{\UiTtitleboxColor}{UiT-main}
+
+\usepackage{etoolbox}
+\providetoggle{isBlackAndWhite}   \settoggle{isBlackAndWhite}{false}
+\providetoggle{isLF}              \settoggle{isLF}{false}
+\providetoggle{isLFshort}         \settoggle{isLFshort}{false}
+\providetoggle{isEksamen}         \settoggle{isEksamen}{false}
+\providetoggle{showVisit}      \settoggle{showVisit}{true}
+\providetoggle{isVisit}           \settoggle{isVisit}{false}
+\providetoggle{isTextAroundLogo}  \settoggle{isTextAroundLogo}{true}
+\providetoggle{useTexLogo}        \settoggle{useTexLogo}{false}
+\providetoggle{isEksamenUtsatt}   \settoggle{isEksamenUtsatt}{false}
+
+\newcommand{\hvisLF}[2]%
+  {\iftoggle{isLF}{#1}{#2}}%
+
+\usepackage{xcolor}
+
+
+% This is the main function used to switch between the four languages
+% First it checks if the language is british, if not it checks if norsk
+% und zu weiter. If no Samin Language is provided it uses Norsk as default
+\DeclareDocumentCommand\switchLang{m m m G{#2}}
+  {\IfLanguageName {british} {#1}%
+  {\IfLanguageName {norsk} {#2}%
+    {\IfLanguageName {nynorsk} {#3}%
+      {\IfLanguageName {samin}%
+        {\ifstrempty{#4}{#2}{#4}}%
+        {#2}%
+      }%
+    }%
+  }%
+}
+
+
+% Does what it says on the box, uses \switchlang to switch between 4 logos.
+% \switchlang{img1}{img2}{img3}{img4}[scale=1]
+% If no [] argument is provided it uses scale=1 as default
+\DeclareDocumentCommand\switchLogo{ O{scale=1} m m m m  }{%
+  \switchLang%
+    {\includegraphics[#1]{#2}}%
+    {\includegraphics[#1]{#3}}%
+    {\includegraphics[#1]{#4}}%
+    {\includegraphics[#1]{#5}}%
+}
+
+% This allows the user to switch languages using a myriad of synonyms
+% The four provided languages are: English, Norsk, Nynorsk and Samin
+\makeatletter
+\newcommand*{\selectLang}[1]{%
+  \stringcases%
+  {#1}%
+  {%
+    % English synonyms
+    {en}{\selectlanguage{british}}%
+    {eng}{\selectlanguage{british}}%
+    {british}{\selectlanguage{british}}%
+    {britisk}{\selectlanguage{british}}%
+    {english}{\selectlanguage{british}}%
+    {engelsk}{\selectlanguage{british}}%
+    {eaŋgals}{\selectlanguage{british}}%
+    {eaŋgalasgiella}{\selectlanguage{british}}%
+    %
+    % Norsk (Bokmål) synonyms
+    {bm}{\selectlanguage{norsk}}%
+    {bok}{\selectlanguage{norsk}}%
+    {norsk}{\selectlanguage{norsk}}%
+    {norwegian}{\selectlanguage{norsk}}%
+    {norsk}{\selectlanguage{dárogiella}}%
+    {norsk}{\selectlanguage{dáru}}%
+    {bokmål}{\selectlanguage{norsk}}%
+    {bokmaal}{\selectlanguage{norsk}}%
+    %
+    % Nynorsk synonyms
+    {nn}{\selectlanguage{nynorsk}}%
+    {nyn}{\selectlanguage{nynorsk}}%
+    {nynorsk}{\selectlanguage{nynorsk}}%
+    {nenwnorwegian}{\selectlanguage{nynorsk}}%
+    %
+    % Samin synonyms
+    {sam}{\selectlanguage{samin}}%
+    {samisk}{\selectlanguage{samin}}%
+    {nordsamisk}{\selectlanguage{samin}}%
+    {samin}{\selectlanguage{samin}}%
+    {sámegielat}{\selectlanguage{samin}}%
+    {samegielat}{\selectlanguage{samin}}%
+    {davvisamegiella}{\selectlanguage{samin}}%
+    {davvisámegiella}{\selectlanguage{samin}}%
+  }%
+  {}%
+}
+
+% Helper functions to create the switch case above
+\newcommand{\stringcases}[3]{%
+  \romannumeral
+  \str@case{#1}#2{#1}{#3}\q@stop
+}
+\newcommand{\str@case}[3]{%
+  \ifnum\pdf@strcmp{\unexpanded{#1}}{\unexpanded{#2}}=\z@
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+  {\str@case@end{#3}}
+  {\str@case{#1}}%
+}
+\newcommand{\str@case@end}{}
+\long\def\str@case@end#1#2\q@stop{\z@#1}
+\makeatother
+
+% This function provides the correct logo corresponding to the choosen
+% language. It also provides a black and white logo if the toggle
+% isBlackAndWhite is true
+\DeclareDocumentCommand\BareLogoBW{ O{scale=1} m }{%
+  \switchLogo[#1]%
+    {_logo/UiT_Segl_Eng_Sort_960px.png}%
+    {_logo/UiT_Segl_Bok_Sort_960px.png}%
+    {_logo/UiT_Segl_Nyn_Sort_960px.png}%
+    {_logo/UiT_Segl_Sam_Sort_960px.png}%
+}
+
+\DeclareDocumentCommand\BareLogoFarger{ O{scale=1} m }{%
+  \switchLogo[#1]%
+    {_logo/UiT_Segl_Eng_Bla_960px.png}%
+    {_logo/UiT_Segl_Bok_Bla_960px.png}%
+    {_logo/UiT_Segl_Nyn_Bla_960px.png}%
+    {_logo/UiT_Segl_Sam_Bla_960px.png}%
+}
+
+\DeclareDocumentCommand\BareLogo{ O{scale=1} }{%
+  \iftoggle{isBlackAndWhite}%
+    {\BareLogoBW[#1]}%
+    \BareLogoFarger[#1]{}
+}%
+
+%==============================================================================%
+%                     ENGLISH, NORSK, NEW NORWEGIAN, SAMIN                     %
+%==============================================================================%
+%
+% Here we (pain stakingly) translate some common words into the 4 main languages.
+
+\newcommand{\Spraak}{%
+  \switchLang{English}{Bokmål}{Nynorsk}{Davvisámegiella}%
+}
+
+\newcommand{\frist}{%
+  \switchLang{Deadline}{Frist}{Frist}{áigemearri}%
+}
+
+\newcommand{\av}{%
+  \switchLang{of}{av}{av}{alde}%
+}
+
+\newcommand{\og}{%
+  \switchLang{and}{og}{og}{ja}%
+}
+
+\newcommand{\Norge}{%
+  \switchLang{Norway}{Norge}{Noreg}{Norgga}%
+}
+\newcommand{\arktisk}{%
+  \switchLang{arctic}{arktisk}{arktisk}{árktalaš}%
+}
+\newcommand{\universitet}{%
+  \switchLang{university}{universitet}{universitet}{universitehta}%
+}
+
+\newcommand{\BFEfak}{%
+  \switchLang{%
+    Faculty of Biosciences, Fisheries and Economics}{%
+    Fakultet for biovitenskap, fiskeri og økonomi}{%
+    Fakultet for biovitenskap, fiskeri og økonomi}{%
+    Biodiehtaga, guolástusa ja ekonomiija fakultehta%
+  }%
+}
+
+\newcommand{\HSLfak}{%
+  \switchLang{%
+    Faculty of Humanities, Social Sciences and Education}{%
+    Fakultet for humaniora, samfunnsvitenskap og lærerutdanning}{%
+    Fakultet for humaniora, samfunnsvitenskap og lærerutdanning}{%
+    Humaniora, servodatdiehtaga ja oahpaheaddjeoahpu fakultehta%
+  }
+}
+
+\newcommand{\IVTfak}[1]{%
+  \switchLang{%
+    Faculty of Engineering Science and Technology}{%
+    Fakultet for ingeniørvitenskap og teknologi}{%
+    Fakultet for ingeniørvitenskap og teknologi}{%
+    Inšenevradiehtaga ja teknologiija fakultehta
+  }%
+}
+
+
+\newcommand{\NTfak}[1]{%
+  \switchLang{%
+    Faculty of Science and Technology}{%
+    Fakultet for naturvitenskap og teknologi}{%
+    Fakultet for naturvitenskap og teknologi}{%
+    Luonddudiehtaga ja teknologiija fakultehta
+  }%
+}
+
+\newcommand{\Helsefak}{%
+  \switchLang{%
+    Faculty of Health Sciences}{%
+    Det helsevitenskapelige fakultet}{%
+    Det helsevitenskapelige fakultet}{%
+    Dearvvašvuođadiehtaga fakultehta%
+  }%
+}
+
+\newcommand{\Jurfak}{%
+  \switchLang{%
+    Faculty of Law}{%
+    Det juridiske fakultet}{%
+    Det juridiske fakultet}{%
+    Juridihka fakultehta
+  }%
+}
+
+\ExplSyntaxOn
+
+\msg_new:nnn
+  { switchcase }
+  { no-match }
+  { There~is~no~entry~`#1'~in~the~switch~statement! }
+
+\NewDocumentCommand \switchcase { m m }
+  {
+    \str_case:nnF { #1 } { #2 } { \msg_error:nnn { switchcase } { no-match } { #1 } }
+  }
+
+\ExplSyntaxOff
+
+\newcommand{\getUiTFaculty}{}
+
+\newcommand{\UiTFaculty}[1]{%
+  \switchcase{#1}%
+  {%
+    {BFE}{\renewcommand{\getUiTFaculty}{\BFEfak}}
+    {HSL}{\renewcommand{\getUiTFaculty}{\HSLfak}}
+    {IVT}{\renewcommand{\getUiTFaculty}{\IVTfak}}
+    {NT}{\renewcommand{\getUiTFaculty}{\NTfak}}
+    {HELSE}{\renewcommand{\getUiTFaculty}{\Helsefak}}
+    {JUR}{\renewcommand{\getUiTFaculty}{\Jurfak}}
+    %
+    {bfe}{\renewcommand{\getUiTFaculty}{\BFEfak}}
+    {hsl}{\renewcommand{\getUiTFaculty}{\HSLfak}}
+    {ivt}{\renewcommand{\getUiTFaculty}{\IVTfak}}
+    {nt}{\renewcommand{\getUiTFaculty}{\NTfak}}
+    {helse}{\renewcommand{\getUiTFaculty}{\Helsefak}}
+    {Helse}{\renewcommand{\getUiTFaculty}{\Helsefak}}
+    {jur}{\renewcommand{\getUiTFaculty}{\Jurfak}}
+    %
+    {bfefak}{\renewcommand{\getUiTFaculty}{\BFEfak}}
+    {hslfak}{\renewcommand{\getUiTFaculty}{\HSLfak}}
+    {ivtfak}{\renewcommand{\getUiTFaculty}{\IVTfak}}
+    {ntfak}{\renewcommand{\getUiTFaculty}{\NTfak}}
+    {helsefak}{\renewcommand{\getUiTFaculty}{\Helsefak}}
+    {jurfak}{\renewcommand{\getUiTFaculty}{\Jurfak}}
+    %
+    {BFEfak}{\renewcommand{\getUiTFaculty}{\BFEfak}}
+    {HSLfak}{\renewcommand{\getUiTFaculty}{\HSLfak}}
+    {IVTfak}{\renewcommand{\getUiTFaculty}{\IVTfak}}
+    {NTfak}{\renewcommand{\getUiTFaculty}{\NTfak}}
+    {Helsefak}{\renewcommand{\getUiTFaculty}{\Helsefak}}
+    {Jurfak}{\renewcommand{\getUiTFaculty}{\Jurfak}}
+    %
+    {BFEFak}{\renewcommand{\getUiTFaculty}{\BFEfak}}
+    {HSLFak}{\renewcommand{\getUiTFaculty}{\HSLfak}}
+    {IVTFak}{\renewcommand{\getUiTFaculty}{\IVTfak}}
+    {NTFak}{\renewcommand{\getUiTFaculty}{\NTfak}}
+    {HelseFak}{\renewcommand{\getUiTFaculty}{\Helsefak}}
+    {JurFak}{\renewcommand{\getUiTFaculty}{\Jurfak}}
+  }%
+}
+
+\newcommand{\EKSAMENSOPPGAVE}{%
+  \switchLang{%
+    EXAMINATION \\ QUESTION PAPER}{%
+    EKSAMENSOPPGAVE}{%
+    EKSAMENSOPPGÅVE}{%
+    EKSÁMENBIHTTÁ
+  }%
+}
+
+\newcommand{\Eksameni}{%
+  \Eksamen~\switchLang{in}{i}{i}{i}%
+}
+
+\newcommand{\remarkNavn}{%
+  \switchLang{remark}{merk at}{merk at}{kommeanta}%
+}
+\newcommand{\RemarkNavn}{%
+  \switchLang{Remark}{Merk at}{Merk at}{Kommeanta}%
+}
+
+\newcommand{\Dato}{
+  \switchLang{Date}{Dato}{Dato}{Beaivemearri}%
+}
+
+\newcommand{\Tid}{
+  \switchLang{Time}{Klokkeslett}{Klokkeslett}{Áigemuddu}%
+}
+
+\newcommand{\Sted}{
+  \switchLang{Place}{Sted}{Stad}{Jalvi}%
+}
+
+\newcommand{\Oppklaringsrunde}{%
+  \switchLang{%
+    Will a lecturer/person in charge visit the venue? Answer:}{%
+    Vil det bli gått oppklaringsrunde i eksamenslokalet? Svar:}{%
+    Skal det gåast trøysterunde i eksamenslokalet? Svar:}{%
+  }%
+}
+
+\newcommand{\TillatteHjelpemidler}{%
+  \switchLang{%
+    \mbox{Approved} \mbox{aids}}{%
+    \mbox{Tillatte} \mbox{hjelpemidler}}{%
+    \mbox{Lovlege}  \mbox{hjelpemiddel}}{%
+  }%
+}
+
+\newcommand{\TypeArk}{%
+  \switchLang{%
+    Type of sheets \newline (squares/lines)}{%
+    Type \newline innføringsark \newline (rute/linje)}{%
+    Type \newline innføringsark \newline (rute/linje)}{%
+  }%
+}
+
+\newcommand{\Squares}{%
+  \switchLang{squares}{ruter}{ruter}{}%
+}
+
+\newcommand{\Lines}{%
+  \switchLang{lines}{linjer}{linjer}{}%
+}
+
+\newcommand{\totaltSider}{
+  \switchLang{%
+    \mbox{Number of} \mbox{pages incl.} \mbox{cover page}}{%
+    \mbox{Antall sider} \mbox{inkl. forside}}{%
+    \mbox{Antall sider} \mbox{inkl. forside}}{%
+  }%
+}
+
+\newcommand{\Telefon}{
+  \switchLang{Phone}{Telefon}{Telefon}{telefovdna}%
+}
+
+\newcommand{\Mobil}{
+  \switchLang{Mobile phone}{Mobil}{Mobil}{mobiltelefovdna}%
+}
+
+\newcommand{\Kontaktperson}{
+  \switchLang{%
+    Contact person \newline during the \newline exam}{%
+    Kontaktperson under eksamen}{%
+    \mbox{Kontaktperson}  \mbox{under} \mbox{eksamen}}{%
+  }%
+}
+
+\newcommand{\Kladdepapir}{%
+  \switchLang{%
+    NB! It is not allowed to submit rough paper along with the answer sheets.
+    If you do submit rough paper it will not be evaluated.}{%
+    NB! Det er ikke tillatt å levere inn kladdepapir som del av
+    eksamensbesvarelsen. Hvis det likevel leveres inn, vil kladdepapiret bli
+    holdt tilbake og ikke bli sendt til sensur.}{%
+    NB! Det er ikkje lov å levere inn kladd saman med svaret. Om det likevel
+    leverast inn, vil kladden bli heldt tilbake og ikkje sendt til sensur.}{%
+  }%
+}
+
+\newcommand{\postboks}{%
+  \switchLang{%
+    PO Box 6050 Langnes, NO-9037 Tromsø/+47 77 64 40 00/postmottak@uit.no/uit.no}{%
+    Postboks 6050 Langnes, N-9037 Tromsø / 77 64 40 00 / postmottak@uit.no / uit.no}{%
+    Postboks 6050 Langnes, N-9037 Tromsø / 77 64 40 00 / postmottak@uit.no / uit.no}{%
+    Postboks 6050 Langnes, N-9037 Tromsø / 77 64 40 00 / postmottak@uit.no / uit.no
+  }%
+}
+
+\newcommand{\JA}{%
+  \switchLang{YES}{JA}{JA}{JÁ}%
+}
+
+\newcommand{\NEI}{%
+  \switchLang{NO}{NEI}{NEI}{LI}%
+}
+
+\newcommand{\Hvis}{%
+  \switchLang{If}{Hvis}{Hvis}{Jes}%
+}
+
+\newcommand{\lf}{%
+  \switchLang{Solutions}{Løsningsforslag}{Løysningsforslag}{čoavddagirji}%
+}
+
+\newcommand{\eksamen}{%
+  \switchLang{exam}{eksamen}{eksamen}{eksámen}%
+}
+\newcommand{\Eksamen}{%
+  \switchLang{Exam}{Eksamen}{Eksamen}{Eksámen}%
+}
+
+\newcommand{\Utsatt}{%
+  \switchLang{Re-sit}{Utsatt}{Utsatt}{uhkiduvvon}%
+}
+
+\newcommand{\oving}{%
+  \switchLang{exercise}{øving}{øving}{doaibma}%
+}
+\newcommand{\Oving}{%
+  \switchLang{Exercise}{Øving}{Øving}{Doaibma}%
+}
+
+\newcommand{\AarSI}{%
+  \switchLang{yr}{\text{å}r}{\text{å}r}{jahki}%
+}
+
+\newcommand{\Spring}{%
+  \switchLang{Spring}{Vår}{Vår}{Giđđat}%
+}
+
+\newcommand{\Fall}{%
+  \switchLang{Fall}{Høst}{Haust}{čakča}%
+}
+
+\newcommand{\itemNavn}{%
+  \switchLang{item}{punkt}{punkt}{punkta}%
+}
+\newcommand{\ItemNavn}{%
+  \switchLang{Item}{Punkt}{punkt}{Punkta}%
+}
+\newcommand{\itemNavnFlertall}{%
+  \switchLang{items}{punkt}{punkt}{punktah}%
+}
+\newcommand{\ItemNavnFlertall}{%
+  \switchLang{Items}{Punkt}{Punkt}{Punktah}%
+}
+
+\newcommand{\likningNavn}{%
+  \switchLang{equation}{likning}{likning}{livnnet}%
+}
+\newcommand{\likningNavnFlertall}{%
+  \switchLang{equations}{likningene}{likningene}{livnnet}%
+}
+\newcommand{\LikningNavn}{%
+  \switchLang{Equation}{Likning}{Likning}{Livnnet}%
+}
+\newcommand{\LikningNavnFlertall}{%
+  \switchLang{Equations}{Likningene}{Likningene}{Livnnet}%
+}
+
+\newcommand{\figurNavn}{%
+  \switchLang{figure}{figur}{figur}{govus}%
+}
+\newcommand{\figurNavnFlertall}{%
+  \switchLang{figures}{figurene}{figurene}{Govus}%
+}
+\newcommand{\FigurNavnFlertall}{%
+  \switchLang{Figures}{Figurene}{Figurene}{Govus}%
+}
+\newcommand{\FigurNavn}{%
+  \switchLang{Figure}{Figur}{Figur}{Govus}%
+}
+
+\newcommand{\sideNavn}{%
+  \switchLang{page}{side}{side}{siidu}%
+}
+\newcommand{\sideNavnFlertall}{%
+  \switchLang{pages}{side}{side}{siiduh}%
+}
+\newcommand{\SideNavn}{%
+  \switchLang{Page}{Side}{Side}{Siidu}%
+}
+\newcommand{\SideNavnFlertall}{%
+  \switchLang{Pages}{Side}{Side}{Siiduh}%
+}
+
+\newcommand{\tabellNavn}{%
+  \switchLang{table}{tabell}{tabell}{tabealla}%
+}
+\newcommand{\tabellNavnFlertall}{%
+  \switchLang{tables}{tabellene}{tabellene}{tabealla}%
+}
+\newcommand{\TabellNavn}{%
+  \switchLang{Table}{Figur}{Figur}{Tabealla}%
+}
+\newcommand{\TabellNavnFlertall}{%
+  \switchLang{Tables}{Tabellene}{Tabellene}{Tabealla}%
+}
+
+\newcommand{\teoremNavn}{%
+  \switchLang{theorem}{teorem}{teorem}{teorema}%
+}
+\newcommand{\teoremNavnFlertall}{%
+  \switchLang{theorems}{teoremene}{teoremene}{teorema}%
+}
+\newcommand{\TeoremNavn}{%
+  \switchLang{Theorem}{Teorem}{Teorem}{Teorema}%
+}
+\newcommand{\TeoremNavnFlertall}{%
+  \switchLang{Theorems}{Teoremene}{Teoremene}{Teorema}%
+}
+
+\newcommand{\lemmaNavn}{%
+  \switchLang{lemma}{lemma}{lemma}{lemma}%
+}
+\newcommand{\lemmaNavnFlertall}{%
+  \switchLang{lemmas}{lemma}{lemma}{lemma}%
+}
+\newcommand{\LemmaNavn}{%
+  \switchLang{Lemma}{Lemma}{Lemma}{Lemma}%
+}
+\newcommand{\LemmaNavnFlertall}{%
+  \switchLang{Lemmas}{Lemma}{Lemma}{Lemma}%
+}
+
+\newcommand{\eksempelNavn}{%
+  \switchLang{example}{eksempel}{eksempel}{ovdamearka}%
+}
+\newcommand{\eksempelNavnFlertall}{%
+  \switchLang{examples}{eksemplene}{eksemplene}{ovdamearka}%
+}
+\newcommand{\EksempelNavn}{%
+  \switchLang{Example}{Eksempel}{Eksempel}{Ovdamearka}%
+}
+\newcommand{\EksempelNavnFlertall}{%
+  \switchLang{Examples}{Eksemplene}{Eksemplene}{Ovdamearka}%
+}
+
+\newcommand{\oppgaveNavn}{%
+  \switchLang{problem}{oppgave}{oppgåve}{doaibma}%
+}
+\newcommand{\OppgaveNavn}{%
+  \switchLang{Problem}{Oppgave}{Oppgåve}{Doaibma}%
+}
+\newcommand{\oppgaveNavnFlertall}{%
+  \switchLang{problems}{oppgaver}{oppgåve}{doaibma}%
+}
+\newcommand{\OppgaveNavnFlertall}{%
+  \switchLang{Problems}{Oppgaver}{Oppgåve}{Doaibma}%
+}
+
+\newcommand{\propositionNavn}{%
+  \switchLang{proposition}{setning}{setning}{njuolggadus}%
+}
+\newcommand{\propositionNavnFlertall}{%
+  \switchLang{proposition}{setningene}{setningene}{njuolggadus}%
+}
+\newcommand{\PropositionNavn}{%
+  \switchLang{proposition}{Eksempel}{Eksempel}{Njuolggadus}%
+}
+\newcommand{\PropositionNavnFlertall}{%
+  \switchLang{roposition}{Setningene}{Setningene}{Njuolggadus}%
+}
+
+\newcommand{\definisjonNavn}{%
+  \switchLang{definition}{definisjon}{definisjon}{definišuvdna}%
+}
+\newcommand{\definisjonNavnFlertall}{%
+  \switchLang{definition}{definisjonene}{definisjonene}{definišuvdna}%
+}
+\newcommand{\DefinisjonNavn}{%
+  \switchLang{Definition}{Definisjon}{Definisjon}{Definišuvdna}%
+}
+\newcommand{\DefinisjonNavnFlertall}{%
+  \switchLang{Definition}{Definisjonene}{Definisjonene}{Definišuvdna}%
+}
+
+\newcommand{\korollarNavn}{%
+  \switchLang{corollary}{korollar}{korollar}{korollar}%
+}
+\newcommand{\korollarNavnFlertall}{%
+  \switchLang{corollary}{korollarene}{korollarene}{korollar}%
+}
+\newcommand{\KorollarNavn}{%
+  \switchLang{Corollary}{Korollar}{Korollar}{Korollar}%
+}
+\newcommand{\KorollarNavnFlertall}{%
+  \switchLang{Corollary}{Korollarene}{Korollarene}{Korollar}%
+}
+
+\def\stripzero#1{\expandafter\stripzerohelp#1}
+\def\stripzerohelp#1{\ifx 0#1\expandafter\stripzerohelp\else#1\fi}
+
+  \newcommand{\Published}[3]{%
+    \newcommand{\Pyear}{#1}
+    \newcommand{\Pmonth}{\stripzero{#2}}
+    \newcommand{\Pday}{\stripzero{#3}}
+    \newcommand{\PublishedDate}{\DTMdisplaydate{\Pyear}{\Pmonth}{\Pday}{-1}}
+  }
+
+  \newcommand{\Deadline}[3]{%
+    \newcommand{\Dyear}{#1}
+    \newcommand{\Dmonth}{\stripzero{#2}}
+    \newcommand{\Dday}{\stripzero{#3}}
+    \newcommand{\DeadlineDate}{\DTMdisplaydate{\Dyear}{\Dmonth}{\Dday}{-1}}
+  }
+
+%==============================================================================%
+%                              HEADER AND FOOTER                               %
+%==============================================================================%
+
+  \usepackage{lastpage} % number of last page
+  \usepackage{fancyhdr}
+
+  \fancypagestyle{UiT-frontpage}{
+    \fancyhf{}
+    \renewcommand\footrule{}
+    \renewcommand\headrule{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+    \fancyhead[R]{\color{\UiTheaderFooterColor}\getUiTFaculty}
+    % this simply resizes the \postbox to fit the width
+    \fancyfoot[L]{%
+      \color{\UiTheaderFooterColor}\resizebox{\textwidth}{\textheight}{\postboks}}
+  }
+
+  \pagestyle{fancy}
+  \fancyhf{}
+  % This creates the thick and thin lines at the bottom of the page
+  \renewcommand\footrule{\begin{minipage}{1\textwidth}
+      \hrule width \hsize \kern 1mm \hrule width \hsize height 2pt
+  \end{minipage}\par}%
+
+  % This creates the thick and thin lines at the top of the page
+  \renewcommand\headrule{\begin{minipage}{1\textwidth}
+      \hrule width \hsize height 2pt \kern 1mm \hrule width \hsize
+  \end{minipage}\par}%
+
+  \newcommand{\UiTFooterL}{%
+    \textcolor{\UiTheaderFooterColor}{\PublishedDate}%
+  }
+  \newcommand{\UiTFooterC}{%
+    \textcolor{\UiTheaderFooterColor}{\iftoggle{isLF}{\lf}{}}%
+  }
+
+  \newcommand{\UiTFooterR}{%
+    \textcolor{\UiTheaderFooterColor}{%
+      \SideNavn~\thepage~\av~%
+      \hypersetup{linkcolor=\UiTheaderFooterColor}%
+      \pageref{LastPage}%
+      \hypersetup{linkcolor=\UiThyperlinkcolor}
+    }
+  }
+
+  \lfoot{\UiTFooterL \hfill \UiTFooterC \hfill \UiTFooterR\!\!\!}
+  %\cfoot{\UiTFooterC}
+  %\rfoot{\UiTFooterR}
+
+  \lhead{%
+    \textcolor{\UiTheaderFooterColor}{UiT~--~\courseCode~--~\courseName}%
+  }
+  \rhead{\textcolor{\UiTheaderFooterColor}{%
+    \iftoggle{isEksamen}{%
+      \iftoggle{isEksamenUtsatt}{\Utsatt~\eksamen}{\Eksamen}}{%
+      \Oving~\padinteger{2}{\arabic{ExerciseNumber}}}%
+    }%
+  }
+
+  % The plain style is invoked every time the \titlebox is used, this
+  % removes all stylings to the header, and only applies it to the footer
+  \fancypagestyle{plain}{% Redefine ``plain'' style for chapter boundaries
+    \fancyhf{} % clear all header and footer fields
+    \renewcommand{\footrule}{%
+      \begin{minipage}{1\textwidth}
+        \hrule width \hsize \kern 1mm \hrule width \hsize height 2pt
+    \end{minipage}\par}%
+    \renewcommand{\headrulewidth}{0pt}
+    %
+    \renewcommand{\headrule}{}% <- added
+    %
+    \fancyfoot[L]{\UiTFooterL \hfill \UiTFooterC \hfill \UiTFooterR\!\!\!} % except the center
+    %\fancyfoot[C]{\UiTFooterC} % except the center
+    %\fancyfoot[R]{\UiTFooterR} % except the center
+  }
+
+
+%==============================================================================%
+%                                   PROBLEMS                                   %
+%==============================================================================%
+
+
+    % \usepackage{comment} % Enables the use of the answers environment (hide solutions)
+    % \excludecomment{answer}
+    \usepackage{comment}
+    %\excludecomment{solution}
+    % \includecomment{solution} % Uncomment this to include answers
+    \iftoggle{isLF}{%
+      \includecomment{solution}}{%
+      \excludecomment{solution}%
+    }
+    
+    \newenvironment{answer}{\startanswer}{}
+    \def\startanswer#1\end{\iftoggle{isLF}{#1}{}\end}
+
+    \newcommand{\newpageLF}{\iftoggle{isLF}{\newpage}{}}
+    \newcommand{\newpageNotLF}{\iftoggle{isLF}{}{\newpage}}
+
+    \newcommand{\changeColorIfLF}{\iftoggle{isLF}{\color{gray}\color{\UiTsolutionColor}\definecolor{UiT-main}{HTML}{808080}}{}}
+
+    \newcommand{\rightans}[1]{\bgroup\hvisLF{\color{correct}}{} #1 \egroup}
+    \newcommand{\wrongans}[1]{\bgroup\hvisLF{\color{wrong}}{} #1 \egroup}
+
+    \usepackage[inline]{enumitem}\setlistdepth{9}
+    \newlist{romanrate*}{enumerate*}{1}
+    \setlist[romanrate*, 1]{%
+      label=(\textcolor{\UiTnumbercolor}{\roman*}),%
+      ref=(\textcolor{\UiTrefcolor}{\roman*})%
+    }
+
+    \newlist{problemList}{enumerate}{1}
+    \setlist[problemList, 1]{%
+      leftmargin=0pt,
+      label*=\protect\fbox{\bfseries\color{\UiTnumbercolor}\arabic{problemListi}},
+      ref=\textcolor{\UiTrefcolor}{\arabic*},
+      labelindent=-\labelwidth,
+      resume=problemList%
+    }
+
+    \newcounter{subCounter}[problemListi]
+
+    \newlist{subproblemList}{enumerate}{1}
+    \setlist[subproblemList, 1]{%
+      label=\bfseries\textcolor{\UiTnumbercolor}{\alph*}),%
+      ref=\textcolor{\UiTrefcolor}{\thesection\alph*}\textcolor{black}{)},
+      align=left,style=nextline,leftmargin=*,
+      resume=subproblemList%
+    }
+    \newlist{subproblemListInline}{enumerate*}{1}
+    \setlist[subproblemListInline, 1]{%
+      itemjoin=\hspace{1cm},%
+      label=\bfseries\textcolor{\UiTnumbercolor}{\alph*}),%
+      ref=\textcolor{\UiTrefcolor}{\thesection\alph*}\textcolor{black}{)},
+      align=left,style=nextline,leftmargin=*,
+      resume=subproblemListInline%
+    }
+
+    \newlist{subsubproblemList}{enumerate}{1}
+    \setlist[subsubproblemList, 1]{%
+        label=\bfseries(\textcolor{\UiTnumbercolor}{\itshape\roman*}\,),%
+        ref=\textcolor{\UiTrefcolor}{\thesection\alph{subCounter}})~%
+            (\textit{\textcolor{\UiTrefcolor}{\roman*}}\,),%
+        resume=subsubproblemList%
+    }
+    \newlist{subsubproblemListInline}{enumerate*}{1}
+    \setlist[subsubproblemListInline, 1]{%
+        label=\bfseries(\textcolor{\UiTnumbercolor}{\itshape\roman*}\,),%
+        ref=\textcolor{\UiTrefcolor}{\thesection\alph{subCounter}})~%
+            (\textit{\textcolor{\UiTrefcolor}{\roman*}}\,),%
+        itemjoin=\hspace{1cm},%
+        resume=subsubproblemListInline%
+    }
+    \newcounter{subsubCounter}[subproblemListi]
+
+    % Defines the problem environment
+    \DeclareDocumentEnvironment{problem}{ o } {%
+      \begin{problemList}
+          \changeColorIfLF
+        \IfNoValueTF {#1} {%
+          }{%
+          {\setcounter{problemListi}{#1-1}}%
+        }%
+      \item\setcounter{subproblemListi}{0}\setcounter{subsubCounter}{0}%
+            \setcounter{section}{\arabic{problemListi}}
+      }{\end{problemList}}
+      
+    \DeclareDocumentEnvironment{subproblem}{ o g } {%
+          \changeColorIfLF % If LF color this part gray
+    %
+    % If starred environment do it inline: (i) ... (ii) otherwise do it like a normal list
+      \IfValueT {#2}{%
+        \begin{multicols}{#2}%
+      }%
+        \begin{subproblemList}
+            \IfNoValueTF {#1} {%
+                {\setcounter{subproblemListi}{\thesubCounter}\stepcounter{subCounter}}%
+            }{%
+                {\setcounter{subCounter}{#1}\setcounter{subproblemListi}{#1-1}}%
+            }%
+        \IfValueF{#2}{%
+            \item%
+        }
+        }{\end{subproblemList}%
+        \IfValueT{#2}{%
+            \end{multicols}%
+        }
+      }%
+      
+    \DeclareDocumentEnvironment{subsubproblem}{ s o } {%
+      \changeColorIfLF % If LF color this part gray
+    % If starred environment do it inline: (i) ... (ii) otherwise do it like a normal list
+      \IfBooleanTF {#1}{%
+        \begin{center}\begin{subsubproblemListInline}%
+            \IfNoValueTF {#2} {%
+                {\setcounter{subsubproblemListInlinei}{\thesubsubCounter}\stepcounter{subsubCounter}}%
+            }{%
+                {\setcounter{subsubCounter}{#2}\setcounter{subsubproblemListInlinei}{#2-1}}%
+            }%
+        }{%
+        \begin{subsubproblemList}
+            \IfNoValueTF {#2} {%
+                {\setcounter{subsubproblemListi}{\thesubsubCounter}\stepcounter{subsubCounter}}%
+            }{%
+                {\setcounter{subsubCounter}{#2}\setcounter{subsubproblemListi}{#2-1}}%
+            }%
+            \item%
+        }%
+        % At the end of the enviroment close it
+      }{\IfBooleanTF{#1}{%
+            \end{subsubproblemListInline}\end{center}%
+        }{%
+            \end{subsubproblemList}%
+        }%
+      }%
+      %
+    \ExplSyntaxOn
+        \cs_new:cpn {subproblem*} {\subproblem*}
+        \cs_new_eq:cN {endsubproblem*} \endsubproblem
+        \cs_new:cpn {subsubproblem*} {\subsubproblem*}
+        \cs_new_eq:cN {endsubsubproblem*} \endsubsubproblem
+    \ExplSyntaxOff
+
+%==============================================================================%
+%                                     LOGO                                     %
+%==============================================================================%
+
+\newdimen\imageheight % goes into the preamble
+
+\settoheight{\imageheight}{%
+  \includegraphics[scale=0.095,keepaspectratio]{_logo/UiT_Logo_Bok_2l_Bla_RGB.png}%
+}
+
+% This is just the plain logo
+\newcommand{\UiTlogo}[1]{%
+  \leavevmode
+  \vtop{
+    \hrule height 0pt
+    \hbox{%
+      \iftoggle{isBlackAndWhite}{%
+          \switchLogo[height=\imageheight]{%
+            _logo/UiT_Logo_Eng_2l_Sort.png}{%
+            _logo/UiT_Logo_Bok_2l_Sort.png}{%
+            _logo/UiT_Logo_Nyn_2l_Sort.png}{%
+            _logo/UiT_Logo_Sam_2l_Sort.png%
+          }%
+          }{\switchLogo[height=\imageheight]{%
+            _logo/UiT_Logo_Eng_2l_Bla_RGB.png}{%
+            _logo/UiT_Logo_Bok_2l_Bla_RGB.png}{%
+            _logo/UiT_Logo_Nyn_2l_Bla_RGB.png}{%
+            _logo/UiT_Logo_Sam_2l_Bla_RGB.png%
+          }%
+        }%
+      }%
+    }%
+  }
+
+\ifxetex
+    \newcommand{\atT}[1]{%
+        \'{#1}%
+    }%
+    \newcommand{\atC}[1]{%
+        \v{#1}%
+    }%
+\else
+    \usepackage{_sty/accentbx}
+    \newcommand{\atT}[1]{%
+        \upaccent{\aboxshift{\char"1}}{#1}%
+    }
+    \newcommand{\atC}[1]{%
+        \upaccent{\aboxshift{\char"7}}{#1}%
+    }
+\fi
+
+\newcommand{\titleEnglish}{THE ARCTIC UNIVERSITY OF NORWAY}
+\newcommand{\titleBokmaal}{{\hspace*{-.1em}}NORGES ARKTISKE UNIVERSITET}
+\newcommand{\titleNynorsk}{NOREGS ARKTISKE UNIVERSITET}
+\newcommand{\titleSamin}{NORGGA {\atT{A}}RKTALA{\atC{S}} UNIVERSITEHTA}
+
+\newcommand{\UiTtitle}{\huge\textbf{UiT}
+  \switchLang{
+    The Arctic\newline\vspace*{-0.1cm}\hspace*{-0.01cm}University of Norway}{%
+    Norges\newline\vspace{-0.1cm}\hspace*{-0.02cm}arktiske universitet}{%
+    Noregs\newline\vspace*{-0.1cm}\hspace*{-0.01cm}arktiske universitet}{%
+    Norgga\newline\vspace*{-0.1cm}\hspace*{-0.01cm}\'{a}rktala\v{s} universitehta
+  }%
+}
+
+\usepackage{adjustbox}
+
+% use UiT_Segl_Bok_Bla_960px.pdf to make a fading (a mask)
+\begin{tikzfadingfrompicture}[name=UiT_logo_norsk,inner sep=0]
+\node [circle, minimum width = 5.65cm,fill=transparent!0,
+    path picture = {
+      \node [] at (path picture bounding box.center) {
+        \includegraphics[scale=0.25]{_sty/UiT_logo_norsk.png}};
+    }] {};
+\end{tikzfadingfrompicture}
+
+
+\newcommand{\UiTlogoIMG}[3]{%
+  \begin{adjustbox}{#3}
+    \begin{tikzpicture}[inner sep=0]
+      \iftoggle{isTextAroundLogo}{%
+          \path
+          [rotate=#2,%
+          postaction={decoration={text along path,%
+              text={|\Huge\bfseries\switchLang{}{\myOpenSansTight}{\myOpenSansTight}{}%
+                \color{\UiTtitleboxColor}|\ #1
+                {\raisebox{0.00em}{\resizebox{0.38cm}{!}{\textbullet}}} %
+                {\rotatebox[origin=c]{180}{T}}%
+                {\rotatebox[origin=c]{180}{I}}%
+                {\rotatebox[origin=c]{180}{U}} %
+              {\raisebox{0.01em}{\resizebox{0.38cm}{!}{\textbullet}}}},
+          text align=fit to path,reverse path}, decorate}]
+          circle[radius=3.01cm];%
+      }{}
+
+      % fill a region with red
+      \node[fill=\iftoggle{isBlackAndWhite}{black}{\UiTtitleboxColor},minimum width=45.3mm,minimum height=34mm](a){};
+      % fill the same region with yellow but using a fading as mask
+      \path[scope fading=UiT_logo_norsk,fit fading=false];
+
+      \iftoggle{isTextAroundLogo}{%
+        \node[fill=white,minimum width=70mm,minimum height=70mm]{};}{%
+        \node[fill=white,minimum width=46mm,minimum height=45mm]{};%
+      }
+    \end{tikzpicture}
+  \end{adjustbox}
+}
+
+\newcommand{\UiTLogoNEW}[1]{%
+  \switchLang{%
+    \UiTlogoIMG{\titleEnglish}{245}{#1}}{%
+    \UiTlogoIMG{\titleBokmaal}{240}{#1}}{%
+    \UiTlogoIMG{\titleNynorsk}{240}{#1}}{%
+    \UiTlogoIMG{\titleSamin}{242}{#1}%
+  }%
+}
+
+\newcommand{\courseName}{%
+  \switchLang{%
+    \courseNameEnglish}{%
+    \courseNameBokmaal}{%
+    \courseNameNynorsk}{%
+    \courseNameSamin%
+  }%
+}
+
+\usepackage{graphicx,array,booktabs}
+\usepackage{caption,subcaption} % Removes the : if caption is empty
+\usepackage{float}
+
+\let\oldcaptionof\captionof
+\let\captionof\relax
+\DeclareDocumentCommand{\captionof}{s m m}{%
+    \IfBooleanTF{#1}%
+        {\parbox{\linewidth}{\oldcaptionof*{#2}{#3}}}%
+        {\parbox{\linewidth}{\oldcaptionof{#2}{#3}}}%
+}
+
+% This scales text to width
+% https://blogs.gnome.org/muelli/2013/04/scale-text-to-the-maximum-of-a-page-with-latex/
+\setkeys{Gin}{keepaspectratio}
+% \newcommand{\vstretch}[1]{\vspace*{\stretch{#1}}}
+
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{Y}{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}X}
+
+
+\DeclareDocumentCommand{\titlebox}{o g g g g}{%
+  \iftoggle{isBlackAndWhite}{%
+      \selectcolormodel{gray}%
+      \definecolor{UiT-main}{HTML}{808080}%
+      \renewcommand{\UiTtitleboxColor}{black}
+  }{}
+  \IfNoValueTF{#1}{%
+    }{%
+    \selectLang{#1}%
+  }%
+  \IfLanguageName{nynorsk}{\DTMsetstyle{norsk}}{}%
+  %
+  \def\upperLeft{%
+    \IfNoValueTF{#2}{%
+      \courseCode~--~\courseName}{%
+      \ifauto{#2}{\courseCode~--~\courseName}{#2}}%
+  }%
+  %
+  \def\upperRight{%
+    \def\upperRightDefault{%
+      \iftoggle{isEksamen}{\Spraak}{%
+        \iftoggle{isLF}{\lf}{\textcolor{UiT-red}{\frist}}}{%
+      }
+    }%
+    \IfNoValueTF{#3}{%
+      \upperRightDefault}{%
+      \ifauto{#3}{\hfill\upperRightDefault}{\hfill#3}}%
+  }%
+  %
+  \def\lowerLeft{%
+    \def\lowerLeftDefault{%
+      \iftoggle{isEksamen}{\iftoggle{isEksamenUtsatt}{\Utsatt~\eksamen}{\Eksamen}}{%
+      \iftoggle{isOving}{\Oving~\padinteger{2}{\arabic{ExerciseNumber}}}}
+    }%
+    \IfNoValueTF{#4}{%
+      \lowerLeftDefault}{%
+      \ifauto{#4}{\lowerLeftDefault}{#4}}%
+  }%
+  %
+  \def\lowerRight{%
+    \def\lowerRightDefault{%
+      \iftoggle{isEksamen}{\PublishedDate}{%
+        \iftoggle{isLF}{\PublishedDate}{%
+        \hfill\textcolor{UiT-red}{\DeadlineDate}}
+      }
+    }%
+    \IfNoValueTF{#5}{
+      \lowerRightDefault}{%
+      \ifauto{#5}{\lowerRightDefault}{\hfill#5}}%
+  }%
+  %
+  %
+  %\clearpage
+  \vspace*{-2cm}
+  % If the language is English make sure to use , as decimal marker
+  \sisetupUiT
+  % Some default settings: clear the section and equation counters
+  \thispagestyle{plain}
+  \setcounter{section}{0}
+  \setcounter{equation}{0}
+  \setcounter{table}{0}
+  \setcounter{figure}{0}
+  %
+  \begin{center}
+    \setlength{\fboxsep}{0pt}
+    \fbox{%
+      \begin{minipage}{\dimexpr\textwidth-2\fboxrule}
+        \vspace{1pt}
+        \hrule height 1pt
+        \vspace{1.2em}
+        \ifxetex % If XeLaTeX use the \myOpenSans font
+          \bgroup\myOpenSans
+        \fi
+        \noindent\color{\UiTtitleboxColor}
+        \iftoggle{useTexLogo}{%
+            \mbox{}\hspace*{0.575em}%
+            \begin{tabular}{L{1.60cm} L{16cm}}
+              \UiTLogoNEW{width=\linewidth} & \hspace*{-0.05em}\UiTtitle \\
+            \end{tabular}}{%
+            \mbox{}\quad\UiTlogo{0.095}%
+            \vspace*{0.05cm}
+        }\\[1em]
+
+          \mbox{}\quad\upperLeft\hfill\upperRight\quad\mbox{}\\[5pt]
+          \mbox{}\quad\lowerLeft\hfill\lowerRight\quad\mbox{}%
+          \color{black}
+          \ifxetex
+            \egroup
+          \fi
+          \vspace{1em}
+          \hrule height1pt
+          \vspace{1pt}
+        \end{minipage}%
+      }
+    \end{center}%
+    % This makes sure the answers are hidden or shown deppending on isLF
+      \medskip
+    }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FRONTPAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{_sty/frontpageUiT}
+
+\newcommand{\nonEmptyExist}[3]{%
+    \ifdef{#1}{%
+        \ifdefempty{#1}{#2}{#3}%%
+    }{%
+        #2%
+    }%
+}
+
+\newcommand{\ml}[1]{%
+    \begin{tabular}{@{}l} #1 \end{tabular}
+}
+
+\newcommand{\mlBlank}{& \\}
+
+\DeclareDocumentCommand{\FrontpageUiT}{o}{%
+    \iftoggle{isBlackAndWhite}{\selectcolormodel{gray}}{}
+    \sisetupUiT
+    \IfNoValueTF{#1}%
+        {}%
+        {\selectLang{#1}%
+    }%
+    \IfLanguageName{nynorsk}{\DTMsetstyle{norsk}}{}%
+    \clearpage%
+    \thispagestyle{UiT-frontpage}
+    \bgroup%
+        \renewcommand{\headrule}{}
+        \renewcommand{\footrule}{}
+        \vspace*{-2cm}\hspace{-0.25cm}\BareLogo[scale=0.1]
+        \begin{center}
+        \ifxetex
+            \myOpenSans
+        \fi
+            \Huge \bfseries \color{UiT-main} \EKSAMENSOPPGAVE \medskip
+        \end{center}
+
+        \def\arraystretch{1.5}\noindent
+        \begin{tabular}{|p{0.2\textwidth}|p{0.728\textwidth}|}
+        \hline
+            \Eksameni: & \courseCode, \courseName\\ \hline
+            \Dato: & \PublishedDate \\ \hline
+            \Tid: & \nonEmptyExist{\examtime}{09:00 -- 13:00}{\examtime} \\ \hline
+            \Sted: & \location \\ \hline
+            \ml{\TillatteHjelpemidler} & \permittedAids \\
+            \hline
+            \ml{\TypeArk} & \paper \\ \hline
+            \ml{\totaltSider} & \bfseries\textcolor{\UiTnumbercolor}{\nonEmptyExist{\pages}{\pageref*{LastPage}}{\pages}} \\ \hline
+            \ml{\Kontaktperson \\ \\ \Telefon} & \color{UiT-main}\bfseries\vspace{-1cm}\ml{\contact \\ \mobile}\\ \hline
+            \iftoggle{showVisit}{%
+            \multicolumn{2}{|l|}{\Oppklaringsrunde \iftoggle{isVisit}{\JA}{\NEI}}
+            \iftoggle{isVisit}{\\ \multicolumn{2}{|l|}{\Hvis~\JA: \visitWhen}}{} \\ \hline}{}%
+        \end{tabular}
+        \egroup
+
+    \bigskip
+
+    \textcolor{UiT-red}{\bfseries \Large \Kladdepapir}%
+    \clearpage%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyperref
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Hyperlenker og klikkbare lenker.
+\usepackage{hyperref}
+
+\hypersetup{
+  pdftoolbar=true,        % show Acrobatâ€™s toolbar?
+  pdfmenubar=false,       % show Acrobatâ€™s menu?
+  pdffitwindow=false,     % window fit to page when opened
+  pdfstartview={FitH},    % fits the width of the page to the window
+  pdftitle={My title},    % title
+  linktoc=all,            % Link all the things in the toc
+  colorlinks=true,        % false: boxed links; true: colored links
+  linkcolor=black,        % color of internal links (change box color with linkbordercolor)
+  citecolor=\UiTcitecolor,        % color of links to bibliography
+  filecolor=UiT-orange,      % color of file links
+  urlcolor=\UiTurlcolor          % color of external links
+}
+
+\ifxetex
+    \hypersetup{unicode=true} % non-Latin characters in Acrobat bookmarks
+\else
+    \hypersetup{unicode=false} % non-Latin characters in Acrobat bookmarks
+\fi
+
+% ===================================
+% Make everything blue ;-)
+% ===================================
+
+\usepackage{titlesec}
+
+\newtagform{UiTag}[\textcolor{\UiTnumbercolor}]{\color{black}(}{)}
+\usetagform{UiTag}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\raggedright\color{black}}{\OppgaveNavn~\color{\UiTnumbercolor}\thesection\setcounter{subproblemListi}{0}\setcounter{subCounter}{0}}{1em}{}
+
+\newcounter{mysection}
+\titleclass{\mysection}{straight}[\part]
+\titleformat{\mysection}[hang]
+  {\normalfont\LARGE\bfseries}{\themysection}{1em}{}
+\titlespacing*{\mysection}{0pt}{3.5ex plus 1ex minus .2ex}{2.3 ex plus .2ex}
+\renewcommand{\themysection}{\arabic{mysection}}
+
+\DeclareDocumentCommand{\Problem}{g}{%
+    \IfNoValueTF {#1}{\section{}}{\section{#1}}
+}
+
+\DeclareCaptionLabelFormat{uit-colors}{#1~\color{\UiTnumbercolor}#2}
+\captionsetup{labelformat=uit-colors}
+
+\renewcommand{\thesubfigure}{\textcolor{UiT-main}{\alph{subfigure}}}
+
+
+\renewcommand\proofSymbol{\ensuremath{\textcolor{UiT-main}{\blacksquare}}}
+
+\renewcommand{\eqref}[1]{\hyperlink{#1}{(}%
+  \begingroup
+  \leavevmode
+  \hypersetup{linkcolor=\UiTrefcolor}%
+  \ref{#1}%
+  \endgroup
+\hyperlink{#1}{)}}
+
+% ===================================
+% Non slanted mathematics
+% ===================================
+
+\usepackage{scalerel}
+\newsavebox{\foobox}
+\newcommand{\slantbox}[2][0]{\mbox{%
+        \sbox{\foobox}{#2}%
+        \hskip\wd\foobox
+        \pdfsave
+        \pdfsetmatrix{1 0 #1 1}%
+        \llap{\usebox{\foobox}}%
+        \pdfrestore
+}}
+
+\newcommand\unslant[2][-.25]{%
+  \mkern1mu%
+  \ThisStyle{\slantbox[#1]{$\SavedStyle#2$}}%
+  \mkern-1mu%
+}
+
+% ===================================
+% Siunits
+% ===================================
+
+\usepackage{siunitx}
+	\sisetup{exponent-product = \cdot,      % Dot as multiplication symbol (instead of x).
+ 	         output-decimal-marker  =  {.}, % dot as desimalskilletegn (in stead of comma).
+ 	         separate-uncertainty = true,   % Pluss-minus on uncertanty (instead of parenthesis).
+ 	         table-number-alignment = right ,
+             table-format=2.3,
+             list-final-separator = { \og }, % 1, 2, 3, \og 4 (where \og deppends on language),
+  }
+
+%  https://no.wikipedia.org/wiki/Desimaltall
+%  Desimalskilletegnet er det tegnet som brukes for å skille heltallsdelen og
+%  fraksjonsdelen av et desimaltall. I Skandinavia (inkludert Norge) og en mengde andre
+%  land brukes «,» (komma), mens i USA, Storbritannia og andre engelskspråklige land
+%  brukes «.» (punktum).
+\newcommand{\sisetupUiT}{%
+    \switchLang{\sisetup{output-decimal-marker  =  {.}}}%
+               {\sisetup{output-decimal-marker  =  {,}}}%
+               {\sisetup{output-decimal-marker  =  {,}}}%
+               {\sisetup{output-decimal-marker  =  {,}}}%
+}
+
+% ===================================
+% Hyperlinks
+% ===================================
+
+
+\usepackage[nameinlink, noabbrev]{cleveref}
+
+% Use \og in refferences \cref{label1,label2,label3} = \label1, \label2 \og \label3.
+\newcommand\crefpairconjunction{~\og~}
+
+\declaretheoremstyle[
+  spaceabove = 2mm,
+  spacebelow = 2mm,
+  headfont = \color{black}\normalfont\bfseries,
+  headformat = \NAME,
+  headpunct = {:},
+  bodyfont = \normalfont\itshape
+]{plainUiT}
+
+\declaretheoremstyle[
+  spaceabove = 2mm,
+  spacebelow = 2mm,
+  headfont = \color{black}\normalfont\bfseries,
+  headformat = \NAME,
+  headpunct = {:},
+  bodyfont = \normalfont
+]{nonumberplainUiT}
+
+\theoremstyle{plainUiT}
+\newtheorem*{remark}{\protect\remarkname}
+\theoremstyle{plainUiT}
+\newtheorem*{hint}{\protect\hintname}
+
+\newcommand{\remarkname}{} % initialization
+\newcommand{\hintname}{} % initialization
+
+\addto\captionsbritish{%
+  \renewcommand{\remarkname}{Remark}%
+  \renewcommand{\hintname}{Hint}%
+}
+\addto\captionsnorsk{%
+  \renewcommand{\remarkname}{Merk at}%
+  \renewcommand{\hintname}{Hint}%
+}
+\addto\captionsnynorsk{%
+  \renewcommand{\remarkname}{Merk at}%
+  \renewcommand{\hintname}{Hint}%
+}
+\addto\captionsamin{%
+  \renewcommand{\remarkname}{Kommeanta}%
+  \renewcommand{\hintname}{Ráđđi}%
+}
+
+\makeatletter
+  \newtoks\thm@headfont
+\makeatother
+
+\declaretheoremstyle[
+  spaceabove = 7mm,
+  spacebelow = 7mm,
+  headfont = \color{black}\normalfont\bfseries,
+  headformat = \NAME~\textcolor{\UiTnumbercolor}{\NUMBER},
+  headpunct = {},
+  bodyfont = \normalfont\itshape
+]{plainColoredUiT}
+
+
+% Set correct names, this is only neccecary for Samin and Nynorsk.
+\crefname{mathenv}{\teoremNavn}{\teoremNavnFlertall}
+\Crefname{mathenv}{\TeoremNavn}{\TeoremNavnFlertall}
+\crefname{theorem}{\teoremNavn}{\teoremNavnFlertall}
+\Crefname{theorem}{\TeoremNavn}{\TeoremNavnFlertall}
+\crefname{lemma}{\lemmaNavn}{\lemmaNavnFlertall}
+\Crefname{lemma}{\LemmaNavn}{\LemmaNavnFlertall}
+\crefname{corollary}{\korollarNavn}{\korollarNavnFlertall}
+\Crefname{corollary}{\KorollarNavn}{\KorollarNavnFlertall}
+\crefname{proposition}{\propositionNavn}{\propositionNavnFlertall}
+\Crefname{proposition}{\PropositionNavn}{\PropositionNavnFlertall}
+\crefname{definition}{\definisjonNavn}{\definisjonenNavnFlertalle}
+\Crefname{definition}{\DefinisjonNavn}{\DefinisjonenNavnFlertalle}
+\crefname{example}{\eksempelNavn}{\eksempelNavnFlertall}
+\crefname{example}{\EksempelNavn}{\EksempelNavnFlertall}
+
+\crefname{equation}{\likningNavn}{\likningNavn}
+\Crefname{equation}{\LikningNavn}{\LikningNavnFlertall}
+\crefname{table}{\tabellNavn}{\tabellNavnFlertall}
+\Crefname{table}{\TabellNavn}{\TabellNavnFlertall}
+\crefname{figure}{\figurNavn}{\figurNavnFlertall}
+\Crefname{figure}{\FigurNavn}{\FigurNavnFlertall}
+
+\crefname{page}{\sideNavn}{\sideNavnFlertall}
+\Crefname{page}{\SideNavn}{\SideNavnFlertall}
+
+\crefname{subsubproblemListInlinei}{\oppgaveNavn}{\oppgaveNavnFlertall}
+\Crefname{subsubproblemListInlinei}{\OppgaveNavn}{\OppgaveNavnFlertall}
+
+\crefname{problemListi}{\oppgaveNavn}{\oppgaveNavnFlertall}
+\Crefname{problemListi}{\OppgaveNavn}{\OppgaveNavnFlertall}
+
+\crefname{subproblemListi}{\oppgaveNavn}{\oppgaveNavnFlertall}
+\Crefname{subproblemListi}{\OppgaveNavn}{\OppgaveNavnFlertall}
+\crefname{subsubproblemListi}{\oppgaveNavn}{\oppgaveNavnFlertall}
+\Crefname{subsubproblemListi}{\OppgaveNavn}{\OppgaveNavnFlertall}
+\crefname{section}{\oppgaveNavn}{\oppgaveNavnFlertall}
+\Crefname{section}{\OppgaveNavn}{\OppgaveNavnFlertall}
+
+\crefname{enumi}{\itemNavn}{\itemNavnFlertall}
+\Crefname{enumi}{\ItemNavn}{\ItemNavnFlertall}
+\crefname{romanrate*i}{\itemNavn}{\itemNavnFlertall}
+\Crefname{romanrate*i}{\ItemNavn}{\ItemNavnFlertall}
+
+%Makes only the number in "equation (3.4)" colored.
+    \creflabelformat{example}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{subproblemListi}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{table}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{figure}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{enumi}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{enumii}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{enumiii}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{equation}{#2\!(\textcolor{\UiTrefcolor}{#1})#3}
+    \creflabelformat{section}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{mathenv}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{theorem}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{lemma}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{corollary}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{proposition}{#2\textcolor{\UiTrefcolor}{#1}#3}
+    \creflabelformat{definition}{#2\textcolor{\UiTrefcolor}{#1}#3}
+
+\newcounter{dummy}
+\numberwithin{dummy}{section}
+
+% This makes sure the lemma, theorems are increasing
+%
+% Lemma 1
+%
+% Theorem 2
+%
+% Usw
+\theoremstyle{plainColoredUiT}
+\newtheorem{example}[dummy]{\EksempelNavn}
+\newtheorem{lemma}[dummy]{\LemmaNavn}
+\newtheorem{theorem}[dummy]{\TeoremNavn}
+\newtheorem{proposition}[dummy]{\PropositionNavn}
+\newtheorem{corollary}[dummy]{\KorollarNavn}
+
+
+\setlength{\parindent}{0pt}

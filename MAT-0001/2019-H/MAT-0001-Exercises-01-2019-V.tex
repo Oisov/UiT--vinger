@@ -1,0 +1,1315 @@
+\documentclass[a4paper,11pt]{article}
+
+% Always keep your main language last
+\usepackage[british,nynorsk,samin,norsk]{babel}
+
+\usepackage{_sty/UiT}
+\usepackage{_sty/IMS}
+\usepackage{MAT-0001/MAT-0001}
+
+%==============================================================================%
+%                              COURSE INFORMATION                              %
+%==============================================================================%
+
+\settoggle{isLF}{true}
+% \settoggle{isLF}{false} % Comment this line to show solutions
+
+\frontpageUiTsetup{%
+  Language = {norsk}, %auto = language defined by babel
+  isExam = {false}, % Is this an exam? true / false
+  isExercise = {true}, % Is this an exercise? true / false
+  ExerciseNumber = {1}, % Which exercise number is this?
+  CourseCode = {auto}, % auto = \courseCode (defined in courseCode.sty, e.g. MAT-1001.sty)
+  CourseName = {auto}, % auto = \courseName (defined in courseCode.sty, e.g. MAT-1001.sty)
+  Year = {2019}, % No auto setting for this, as it might change on recompilation
+  Month = {8}, % No auto setting for this, as it might change on recompilation
+  Day = {27},% No auto setting for this, as it might change on recompilation
+  %    DeadlineYear = {2020},
+  %    DeadlineMonth = {12},
+  %    DeadlineDay = {22},
+  DurationDays = {3}, % Set the number of days the exam should last
+}
+
+%==============================================================================%
+%                     OWN COMMANDS AND PACKAGES BELOW HERE                     %
+%==============================================================================%
+
+\def\firstcircle{(0,0) circle(1cm)}
+\def\secondcircle{(0:1cm) circle (1cm)}
+\def\middlecircle{(0:1cm) circle (0.5cm)}
+
+\excludecomment{solution}
+
+\begin{document}
+
+%==============================================================================%
+%                                 EXERCISE 01                                  %
+%==============================================================================%
+
+\frontpageUiT
+
+\settoggle{isLF}{false}
+\settoggle{isLFshort}{false}
+\excludecomment{solution}
+
+\titlebox[norsk]{auto}{\Spraak}{auto}{\dateDuration}
+
+%==============================================================================%
+%                                 SEKSJON 1.1                                  %
+%==============================================================================%
+
+\subsection*{Seksjon 1.1}
+
+\begin{problem}[1]
+  La $A = \Set{3, 4, 5}$ og $B = \Set{3, 5}$. Hvilke 
+  utsagn er sanne?
+  %
+  \begin{tabenum}[\color{\UiTnumbercolor}\bfseries a\color{black})]%
+    \tabenumitem {$3 \in B$} \UiTcorrect
+    \tabenumitem {$4, 5 \in A$} \UiTcorrect
+    \tabenumitem {$2 \in A$} \UiTwrong \\[1ex]
+    \tabenumitem {$B \subseteq A$} \UiTcorrect
+    \tabenumitem {$A \subseteq B$} \UiTwrong
+    \tabenumitem {$7 \not\in A$} \UiTcorrect
+  \end{tabenum}
+  %
+\end{problem}
+
+\excludecomment{solution}
+
+\begin{solution}
+  Svarene står ovenfor, men la oss raskt forklare symbolene. $\in$ betyr
+  \bquote{element}, og $3 \in B$ spør enkelt og greit om $3$ er et element i
+  $B$.  Med andre ord om $3$ er inneholdt i $B$.
+
+  Symbolet $\subseteq$ minner om krokodillemunnen fra barneskolen, og betyr
+  \emph{delmengde} eller \emph{undermengde}. $B \subseteq A$ spør om \emph{alle}
+  elementene i $A$ er inneholdt i $B$, dersom dette er sant er $A$ en
+  undermengde av $B$.
+\end{solution}
+
+\begin{problem}
+  Gitt mengden $M = \Set{1, 2, 3, 4, 5, 6, 7}$. Skriv følgende
+  mengder på listeform:
+    \begin{subproblem}{2}
+      \item $\Set{x \in M \given x \neq 2 \ \text{og} \ x \neq 5}$
+        \label{subproblem:1.1-2a-oving-01-2019-MAT-0001}
+      \item $\Set{x + 7 \given x \in M}$
+        \label{subproblem:1.1-2b-oving-01-2019-MAT-0001}
+    \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  \Opg{subproblem:1.1-2a-oving-01-2019-MAT-0001} Ønsker å skrive mengden
+  $\Set{x \in M \given x \neq 2 \ \text{og} \ x \neq 5}$ på listeform.
+  Notasjonen kan og leses slik: Ønsker alle elementer i $M$ slik at elementene
+  er ulik $2$ og $5$. Hvor tegnet $\mid$ leses som \bquote{slik at}.  Dette er
+  selvsagt mengden
+  %
+  \begin{equation*}
+    \Set{1, 3, 4, 6, 7}
+  \end{equation*}
+  %
+  \Opg{subproblem:1.1-2b-oving-01-2019-MAT-0001} Ønsker å skrive mengden
+  $\Set{x + 7 \given x \in M}$ på listeform. Her kan vi tenke oss at vi ønsker å
+  gjøre $x + 7$ gitt at $x$ ligger i $M$.  Altså må vi ta alle verdiene i
+  mengden $M$ og legge til $7$:
+  %
+  \begin{equation*}
+    \Set{8, 9, 10, 11, 12, 13, 14}
+  \end{equation*}
+\end{solution}
+
+\newpageLF
+
+\begin{problem}
+  La $R = \Set{1, 3, 5, 7}$ og $S = \Set{3, 5, 7, 9}$.
+  Finn $R \cap S$, $R \cup S$, $R \setminus S$, $S \setminus R$.
+\end{problem}
+
+\begin{solution}
+    \def\firstcircle{(0,0) circle(1cm)}
+    \def\secondcircle{(0:1cm) circle (1cm)}
+    %
+  \textcolor{UiT-main}{$R \cup S$}: Husk at du kan tenke på $\cup$ som addisjon.
+  Vi ønsker å legge sammen alle elementene i $R$ og $S$. \textbf{NB:} husk at i
+  en mengde er alle elementene unike så vi skriver ikke ett element mer enn èn
+  gang.
+
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \begin{align*}
+      R & = \Set{1, 3, 5, 7} \\
+      S & = \quad \Set{3, 5, 7, 9} \\
+      R \cup S & = \Set{1, 3, 5, 7, 9}
+    \end{align*}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}
+        \fill[opacity=0.75,UiT-blue] \firstcircle;
+        \fill[opacity=0.75,UiT-blue] \secondcircle;
+        \draw[thick] \firstcircle node[left] {\color{black}$R$};
+        \draw[thick] \secondcircle node[right]{\color{black}$S$};
+        \node at (0.5, 0)  (m)    {$\cup$};
+        \pgfresetboundingbox
+        \path[use as bounding box] (-1,-1) rectangle (2,1);
+    \end{tikzpicture}
+  \end{minipage} \medskip
+
+  \textcolor{UiT-main}{$R \cap S$}: Her leses symbolet $\cap$ som \emph{snitt},
+  det er altså snakk bare det som ligger i \emph{begge} mengdene. Dersom noe
+  ligger i bare en av mengdene skal det altså ikke tas med.
+
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \begin{align*}
+      R & = \Set{1, 3, 5, 7} \\
+      S & = \quad \Set{3, 5, 7, 9} \\
+      R \cap S & = \quad \Set{3, 5, 7}
+    \end{align*}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}
+        \begin{scope}
+          \clip \firstcircle;
+          \fill[opacity=0.75,fill=UiT-blue] \secondcircle;
+        \end{scope}
+        \draw[thick] \firstcircle node[left] {\color{black}$R$};
+        \draw[thick] \secondcircle node[right]{\color{black}$S$};
+        \node at (0.5, 0)  (m)    {$\cap$};
+        \pgfresetboundingbox
+        \path[use as bounding box] (-1,-1) rectangle (2,1);
+    \end{tikzpicture}
+  \end{minipage} \medskip
+
+  \textcolor{UiT-main}{$R \setminus S$}: Her leses $\setminus$ som
+  \emph{komplimentet} til.  Dette kan en litt feilaktig tenke på som
+  \emph{subtraksjon} eller minus. Vi ønsker med andre ord alt som ligger i $R$
+  men \emph{ikke} i $S$:
+
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \begin{align*}
+      R & = \Set{1, 3, 5, 7} \\
+      S & =   \quad \Set{3, 5, 7, 9} \\
+      R \setminus S & =  \Set{1}
+    \end{align*}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}
+        \begin{scope}[even odd rule]% first circle without the second
+            \clip \secondcircle (-1.5,-1.6) rectangle (2,1.6);
+            \fill[UiT-blue,opacity=0.75] \firstcircle;
+        \end{scope}
+        \draw[thick] \firstcircle node[left,xshift=0.35em] {\color{black}$R\setminus S$};
+        \draw[thick] \secondcircle node[right]{\color{black}$S$};
+        \pgfresetboundingbox
+        \path[use as bounding box] (-1,-1) rectangle (2,1);
+    \end{tikzpicture}
+  \end{minipage} \medskip
+
+  \textcolor{UiT-main}{$S \setminus R$}: Akkuratt som i forrige deloppgave
+  ønsker vi nå alt som ligger i mengden $S$, men ikke i $R$
+
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \begin{align*}
+      R & = \Set{1, 3, 5, 7} \\
+      S & =   \quad \Set{3, 5, 7, 9} \\
+      S \setminus R & =  \qquad \qquad \Set{9}
+    \end{align*}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}
+        \begin{scope}[even odd rule]% first circle without the second
+            \clip \firstcircle (-1,-1.6) rectangle (3.5,1.6);
+            \fill[UiT-blue,opacity=0.75] \secondcircle;
+        \end{scope}
+        \draw[thick] \firstcircle node[left] {\color{black}$R$};
+        \draw[thick] \secondcircle node[right,xshift=-0.35em] {\color{black}$S\setminus R$};
+        \pgfresetboundingbox
+        \path[use as bounding box] (-1,-1) rectangle (2,1);
+    \end{tikzpicture}
+  \end{minipage} \medskip
+\end{solution}
+
+\newpageLF
+
+%==============================================================================%
+%                                 SEKSJON 1.2                                  %
+%==============================================================================%
+
+\subsection*{Seksjon 1.2}
+
+%==============================================================================%
+%                                PROBLEM 1.2.1                                 %
+%==============================================================================%
+
+\begin{problem}[1]
+  Skriv følgende mengder som intervaller:
+  %
+  \begin{subproblem}{2}
+    \item $\Set{x \in \R \given        x \leq 10}$
+      \label{subproblem:1.2-1a-oving-01-2019-MAT-0001}
+    \item $\Set{x \in \R \given 2 \leq x \leq  5}$
+      \label{subproblem:1.2-1b-oving-01-2019-MAT-0001}
+  \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  \Opg{subproblem:1.2-1a-oving-01-2019-MAT-0001}
+  Her ønsker vi enkelt og greit alle reelle tall mindre eller lik $10$:
+  %
+  \begin{equation*}
+    \Set{x \in \R \given        x \leq 10}
+    \quad \Leftrightarrow \quad
+    x \in (\infty,10],
+  \end{equation*}
+  %
+  hvor $($ ble brukt for å \emph{ekskludere} $\infty$\footnote{Grunnen til at vi
+  må ekskludere $\infty$ er at dette ikke er ett tall, men en grenseverdi vi
+bare kan \emph{nærme} oss, men aldri nå.  Det er derfor vi bruker opp til, men
+ikke inkludert.} mens $]$ ble brukt for å \emph{inkludere} $10$.
+\end{solution}
+
+\medskip
+
+\begin{solution}
+  \Opg{subproblem:1.2-1b-oving-01-2019-MAT-0001}
+  Mengden $\Set{x \in \R \given 2 \leq x \leq  5}$ kan leses som at vi ønsker
+  alle relle tall som er større eller lik $2$ og mindre eller lik $5$:
+  %
+  \begin{equation*}
+    \Set{x \in \R \given 2 \leq x \leq  5}
+    \quad \Leftrightarrow \quad
+    x \in [2,5]
+  \end{equation*}
+  %
+  hvor $[$ ble brukt for å vise at dette er ett \emph{lukket} intervall; 
+  altså ett intervall der endepunktet er inkludert. 
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.2.2                                 %
+%==============================================================================%
+
+\begin{problem}
+  Hvilke mengder er like?
+  %
+  \begin{alignat*}{2}
+    A &= \Set{x\in\R\given2\leq x<5} \qquad && E=(2,\infty)\\
+    B &= \Set{x\in\R\given2 < x\leq5}     && F=[2,5)\\
+    C &= \Set{x\in\R\given x\leq5}          && G=(2,5]\\
+    D &= \Set{x\in\R\given2<x}              && H=(-\infty,5]
+  \end{alignat*}
+\end{problem}
+
+\begin{solution}
+  Det enkleste er nok enten å skrive mengdene som intervaller, eller skrive alle
+  intervallene som mengder. Dette er akkurat det samme, men vi velger å gjøre
+  førstnevnte:
+  %
+  \begin{alignat*}{2}
+    A &= \Set{x\in\R\given2\leq x<5} \quad && \Leftrightarrow \quad x \in [2,5) = F\\
+    B &= \Set{x\in\R\given2< x\leq5}       && \Leftrightarrow \quad x \in (2,5] = G \\
+    C &= \Set{x\in\R\given x\leq5}         && \Leftrightarrow \quad x \in (-\infty,5] = H\\
+    D &= \Set{x\in\R\given2<x}             && \Leftrightarrow \quad x \in (2,\infty) = E
+  \end{alignat*}
+  %
+  Her byttet vi i praksis ut hver $\leq$ med enten $[$ eller $]$, og $<$ med
+  enten $($ eller $)$.
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.2.3                                 %
+%==============================================================================%
+
+\begin{problem}
+  \label{problem:1.2-1b-oving-01-2019-MAT-0001} Skriv følgende uttrykk som et
+  enkelt intervall (eller som den tomme mengden, $\varnothing$, om nødvendig)
+  %
+  \begin{tabenum}[\color{\UiTnumbercolor}\bfseries a\color{black})]%
+    \tabenumitem \hypertarget{subproblem:1.2-1b-oving-01-2019-MAT-0001}{$[1, 3] \cap (2, 4]$}
+    \tabenumitem \hypertarget{subproblem:1.2-1b-oving-01-2019-MAT-0001}{$[1, 3] \cup (2, 4]$} \\[1ex]
+    \tabenumitem \hypertarget{subproblem:1.2-1b-oving-01-2019-MAT-0001}{$[1, 3] \cap [3, 4]$}
+    \tabenumitem \hypertarget{subproblem:1.2-1b-oving-01-2019-MAT-0001}{$(1, 3) \cap (3, 4)$} \\[1ex]
+    \tabenumitem \hypertarget{subproblem:1.2-1b-oving-01-2019-MAT-0001}{$(-\infty, 3) \cap (2, \infty)$}
+    \tabenumitem \hypertarget{subproblem:1.2-1b-oving-01-2019-MAT-0001}{$(-\infty,30) \cap \Set{30}$}
+  \end{tabenum}
+\end{problem}
+
+\hvisLF{%
+  \begin{figure*}[htbp!]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}[scale=1]
+        \standardAxis
+        \drawIntervalCC{1}{3}{UiT-blue}
+        \drawIntervalOC{2}{4}{UiT-orange}
+        \fill[opacity = 0.2, green,rounded corners=1ex]%
+        (2,-1.12ex) -- (3, -1.12ex) -- (3, 1.12ex) -- (2,1.12ex) -- cycle;
+      \end{tikzpicture}
+      \caption{$\textcolor{UiT-blue}{[1, 3]} \cap \textcolor{UiT-orange}{(2,4]} =  \UiTcorrectColor{(2,3]}$}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}[scale=1]
+        \standardAxis
+        \drawIntervalCC{1}{3}{UiT-blue} 
+        \drawIntervalCC{2}{4}{UiT-blue}
+        \fill[opacity = 0.2, green,rounded corners=1ex]%
+        (1,-1.12ex) -- (4, -1.12ex) -- (4, 1.12ex) -- (1,1.12ex) -- cycle;
+      \end{tikzpicture}
+      \caption{$\textcolor{UiT-blue}{[1, 3]} \cup \textcolor{UiT-orange}{(2,4]} =  \UiTcorrectColor{[1,4]}$}
+    \end{subfigure}
+
+    \vspace{\baselineskip}
+
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}[scale=1]
+        \standardAxis
+        \drawIntervalCC{1}{3}{UiT-blue} 
+        \drawIntervalCC{3}{4}{UiT-orange}
+      \end{tikzpicture}
+      \caption{$\textcolor{UiT-blue}{[1, 3]} \cap \textcolor{UiT-orange}{[3,4]} =  \UiTcorrectColor{[3,3]}$}
+      \label{fig:1.2-3c-MAT-0001-2019-V}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}[scale=1]
+        \standardAxis
+        \drawIntervalOO{1}{3}{UiT-blue} 
+        \drawIntervalOO{3}{4}{UiT-orange}
+      \end{tikzpicture}
+      \caption{$\textcolor{UiT-blue}{(1, 3)} \cap \textcolor{UiT-orange}{(3,4)} =  \UiTcorrectColor{\varnothing}$}
+    \end{subfigure}
+
+    \vspace{\baselineskip}
+
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}[scale=1]
+        \standardAxis
+        \draw[{-)}, ultra thick, blue] (2.99,0) -- (3,0);
+        \fill[opacity = 0.2, UiT-blue,rounded corners=1ex]%
+        (0.5,-1.12ex) -- (3, -1.12ex) -- (3, 1.12ex) -- (0.5,1.12ex) -- cycle;
+        \draw[{(-}, ultra thick, UiT-orange] (2,0) -- (2.01,0);
+        \fill[opacity = 0.2, UiT-orange,rounded corners=1ex]%
+        (2,-1.12ex) -- (4.5, -1.12ex) -- (4.5, 1.12ex) -- (2,1.12ex) -- cycle;
+        \fill[opacity = 0.2, green,rounded corners=1ex]%
+        (2,-1.12ex) -- (3, -1.12ex) -- (3, 1.12ex) -- (2,1.12ex) -- cycle;
+      \end{tikzpicture}
+      \caption{$\textcolor{UiT-blue}{(-\infty,3)} \cap \textcolor{UiT-orange}{(2, \infty)} = \UiTcorrectColor{(2,3)}$}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}[scale=1]
+        \draw[->, thick] (27.5,0) -- (31.5,0);
+        \foreach \x/\xtext in {28/28,29/29,30/30,31/31}
+        \draw[thick] (\x,1pt) -- (\x,-1pt) node[below] {\xtext};
+        \pgfmathsetmacro\asnub{0.999*30}
+        \draw[{-)}, ultra thick, UiT-blue] (\asnub,0) -- (30,0);
+        \fill[opacity = 0.2, UiT-blue,rounded corners=1ex]%
+        (27.5,-1.12ex) -- (30, -1.12ex) -- (30, 1.12ex) -- (27.5,1.12ex) -- cycle;
+        \draw[{(-}, ultra thick, UiT-orange] (29.9,0) -- (30,0);
+      \end{tikzpicture}
+      \caption{$\textcolor{UiT-blue}{(-\infty,30)} \cap \textcolor{UiT-orange}{\{30\}} =  \UiTcorrectColor{\varnothing}$}
+    \end{subfigure}
+    \caption{Illustrasjoner av intervallene fra \cref{problem:1.2-1b-oving-01-2019-MAT-0001}.}
+    \label{fig:1.2-3-MAT-0001-2019-V}
+  \end{figure*}
+}
+
+\begin{solution}
+  \Opg{problem:1.2-1b-oving-01-2019-MAT-0001}: Her kan det lønne seg
+  og tegne intervallene slik som vi har gjort i
+  \cref{fig:1.2-3-MAT-0001-2019-V}. Om en ikke har en Michelangelo\footnote{Her
+    er det altså snakk om kunstneren ikke en av de fire hovedkarakteren fra den
+  svært engasjerende serien Teenage Mutant Ninja Turtles.} i magen, kan en også
+  skrive opp intervallene som ulikheter, og sortere dem:
+  %
+  \begin{flalign*}
+    \hyperlink{subproblem:1.2-1a-oving-01-2019-MAT-0001}{\textcolor{\UiTrefcolor}{a})}
+        && [1, 3] \cap (2, 4] 
+        \quad \Leftrightarrow \quad
+    1 \UiTcorrectColor{< 2 \leq 3}{} \leq 4 &&
+  \end{flalign*}
+  %
+  Siden det er snakk om \emph{snittet}, ønsker vi det minste intervalet, altså
+  $(2,3]$. 
+  %
+  \begin{flalign*}
+    \hyperlink{subproblem:1.2-1b-oving-01-2019-MAT-0001}{\textcolor{\UiTrefcolor}{b})}
+        && [1, 3] \cap (2, 4] 
+        \quad \Leftrightarrow \quad
+    \UiTcorrectColor{1 < 2 \leq 3 \leq 4}{} &&
+  \end{flalign*}
+  %
+  Siden det er snakk om \emph{union} ønsker vi det \emph{største} snittet, altså
+  $[1,4]$. 
+  %
+  \begin{flalign*}
+    \hyperlink{subproblem:1.2-1c-oving-01-2019-MAT-0001}{\textcolor{\UiTrefcolor}{c})}
+        && [1, 3] \cap [3, 4] 
+        \quad \Leftrightarrow \quad
+    1 \UiTcorrectColor{\leq 3 \leq 3}{} \leq 4 &&
+  \end{flalign*}
+  %
+  Her får vi nå ett intervall der vi skal ha alle tall fra og med $3$ til og med
+  $3$, det eneste intervallet som tilfredstiller dette er selvsagt $[3,3]$. For
+  å være veldig pedantisk blir det derimot feil å si at intervallet er $\{3\}$.
+  Intervallet er $[3,3]$ som bare inneholder ett punkt, nemlig $\{3\}$. Som en
+  og ser fra \cref{fig:1.2-3c-MAT-0001-2019-V}.
+  %
+  \begin{flalign*}
+    \hyperlink{subproblem:1.2-1d-oving-01-2019-MAT-0001}{\textcolor{\UiTrefcolor}{d})}
+        && (1, 3) \cap (3, 4) 
+        \quad \Leftrightarrow \quad
+    1 \UiTcorrectColor{< 3 < 3}{} < 4 &&
+  \end{flalign*}
+  %
+  Her ønsker vi å finne intervallet som inneholder alle tall \emph{større} enn
+  $3$, men som også er \emph{mindre} enn $3$. Ah, ha! En umulighet! Siden ingen
+  tall kan oppfylle dette kravet skriver vi det som den \emph{tomme mengden}
+  $(1, 3) \cap (3, 4) =\varnothing$.
+  %
+  \begin{flalign*}
+    \hyperlink{subproblem:1.2-1e-oving-01-2019-MAT-0001}{\textcolor{\UiTrefcolor}{e})}
+        && (-\infty, 3) \cap [2, \infty]
+        \quad \Leftrightarrow \quad
+    - \infty \UiTcorrectColor{< 2 \leq 3 <} \infty &&
+  \end{flalign*}
+  %
+  Her må vi passe på å bruke $<$ når det kommer til $\infty$ for dette er en
+  grense, ikke ett tall. Dette gir da intervallet $(2,3)$.
+  %
+  \begin{flalign*}
+    \hyperlink{subproblem:1.2-1f-oving-01-2019-MAT-0001}{\textcolor{\UiTrefcolor}{f})}
+        && (-\infty, 30) \cap \Set{30}
+        \quad \Leftrightarrow \quad
+    - \infty \UiTcorrectColor{< 30 < 30} &&
+  \end{flalign*}
+  %
+  Hvor vi da ser at det minste intervallet er den tomme mengden
+  \UiTcorrectColor{$\varnothing$}.  Dette er fordi intervallet vårt går opp til men
+  \emph{ikke} inkludert $30$.
+\end{solution}
+
+
+%==============================================================================%
+%                                PROBLEM 1.2.4                                 %
+%==============================================================================%
+
+\begin{problem}
+  \label{problem:1.2-4-oving-01-2019-MAT-0001} I teksten foran ble det gitt en
+  formell definisjon av begrepet intervall. Bruk denne definisjonen til å bevise
+  at dersom $U$ og $V$ er to intervaller som har minst to tall til felles, så er
+  også snittet $U \cap V$ et intervall.
+\end{problem}
+
+\hvisLF{%
+  \begin{figure*}[htbp!]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \standardAxisTwo
+        \drawIntervalCC{0}{1}{UiT-blue}
+        \drawIntervalOC{0.5}{1.5}{UiT-orange}
+        \fill[opacity = 0.2, green,rounded corners=1ex]%
+        (0.5,-1.12ex) -- (1, -1.12ex) -- (1, 1.12ex) -- (0.5,1.12ex) -- cycle;
+      \end{tikzpicture}
+      \caption{$\textcolor{UiT-blue}{U} \cap \textcolor{UiT-orange}{V} = \UiTcorrectColor{[u,1]}$}
+      \label{subfig:1.2-4a-MAT-0001-2019-V}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \standardAxisTwo
+        \drawIntervalCC{0}{1}{UiT-blue}
+        \drawIntervalOC{-0.5}{0.5}{UiT-orange}
+        \fill[opacity = 0.2, green,rounded corners=1ex]%
+        (0,-1.12ex) -- (0.5, -1.12ex) -- (0.5, 1.12ex) -- (0,1.12ex) -- cycle;
+      \end{tikzpicture}
+      \caption{$\textcolor{UiT-blue}{U} \cap \textcolor{UiT-orange}{V} = \UiTcorrectColor{[0,w]}$}
+      \label{subfig:1.2-4b-MAT-0001-2019-V}
+    \end{subfigure}\vspace{\baselineskip}
+
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \standardAxisTwo
+        \drawIntervalCC{0}{1}{UiT-blue}
+        \drawIntervalOC{0.25}{0.75}{UiT-orange}
+        \fill[opacity = 0.2, green,rounded corners=1ex]%
+        (0.25,-1.12ex) -- (0.75, -1.12ex) -- (0.75, 1.12ex) -- (0.25,1.12ex) -- cycle;
+      \end{tikzpicture}
+      \caption{$\textcolor{UiT-blue}{U} \cap \textcolor{UiT-orange}{V} = \UiTcorrectColor{[u,w]}$}
+      \label{subfig:1.2-4c-MAT-0001-2019-V}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \standardAxisTwo
+        \drawIntervalCC{0}{1}{UiT-blue}
+        \drawIntervalOC{-0.5}{1.5}{UiT-orange}
+        \fill[opacity = 0.2, green,rounded corners=1ex]%
+        (0,-1.12ex) -- (1, -1.12ex) -- (1, 1.12ex) -- (0,1.12ex) -- cycle;
+      \end{tikzpicture}
+      \caption{$\textcolor{UiT-blue}{U} \cap \textcolor{UiT-orange}{V} = \UiTcorrectColor{[0,1]}$}
+      \label{subfig:1.2-4d-MAT-0001-2019-V}
+    \end{subfigure}
+    \caption{Illustrasjoner av de fire ulike måtene $U$ og $V$ kan snitte
+      hverandre på fra \cref{problem:1.2-4-oving-01-2019-MAT-0001}.}
+    \label{fig:1.2-4-MAT-0001-2019-V}
+  \end{figure*}
+}
+
+\begin{solution}
+  Dette er en oppgave som kan virke vanskelig, hvor skal vi starte? Når jeg
+  møter en slik oppgave prøver jeg først og forstå hva jeg skal vise. Så først
+  lager jeg intervallet $U = [0,1]$. Så er spørsmålet, hvilke ulike måter kan
+  jeg snitte $U$ og $V$?  Igjen det kan virke litt vanskelig, men vi spør bare
+  hvor vi kan plassere $V$ i forhold til $U$ på tallinjen. Dersom du tenker litt
+  ser vi at det \emph{fire muligheter}, disse er illustrert i
+  \cref{fig:1.2-4-MAT-0001-2019-V}. La $V = (u,w)$ og anta at $U$ og $V$ har
+  punktene $a,b$ til felles, hvor $a \leq b$. Med symboler sier vi at $a,b \in
+  U$ og $a,b \in V$. At $a,b$ ligger i $U$ kan vi og skrive som ett intervall
+  %
+  \begin{equation*}
+    0 \leq a \leq b \leq 1,
+  \end{equation*}
+  %
+  og tilsvarende for $V$
+  %
+  \begin{equation*}
+    u \leq a \leq b \leq w.
+  \end{equation*}
+  %
+  Nå vet vi både at $0 \leq a$ og $u \leq a$, men vi vet ikke om $u$ er større
+  eller mindre enn null. Så enten har vi $0 \leq u \leq a$ eller $u \leq 0 \leq
+  a$.  Tilsvarende så har vi at $b \leq 1$ og $b \leq w$, men vi vet ikke hva
+  som er størst av $1$ og $w$, så enten har vi $b \leq 1 \leq w$ eller $b \leq w
+  \leq 1$. Dette gir fire muligheter totalt
+  %
+  \begin{align*}
+    0 \UiTcorrectColor{\leq u \leq a \leq b \leq 1}{} \leq w \qquad \text{(se \cref{subfig:1.2-4a-MAT-0001-2019-V})}\\
+    u \UiTcorrectColor{\leq 0 \leq a \leq b \leq w}{} \leq 1 \qquad \text{(se \cref{subfig:1.2-4b-MAT-0001-2019-V})}\\
+    0 \UiTcorrectColor{\leq u \leq a \leq b \leq w}{} \leq 1 \qquad \text{(se \cref{subfig:1.2-4c-MAT-0001-2019-V})}\\
+    u \UiTcorrectColor{\leq 0 \leq a \leq b \leq 1}{} \leq w \qquad \text{(se \cref{subfig:1.2-4d-MAT-0001-2019-V})}
+  \end{align*}
+  %
+  Her ser vi at uansett hvilket av disse fire tilfellene vi har, får vi uansett
+  ett intervall.  I denne oppgaven gjorde vi noen antagelser som at vi låste $U$
+  til å være $(0,1)$, hvorfor kan vi gjøre dette?
+\end{solution}
+
+\newpageLF
+
+
+%==============================================================================%
+%                                 SEKSJON 1.3                                  %
+%==============================================================================%
+
+\subsection*{Seksjon 1.3}
+
+%==============================================================================%
+%                                PROBLEM 1.3.1                                 %
+%==============================================================================%
+
+\begin{problem}[1]
+  Forenkle følgende formeluttrykk så mye du kan. Alle bokstaver 
+  står for tall.
+  \begin{tabenum}[\color{\UiTnumbercolor}\bfseries a\color{black})]%
+    \tabenumitem $\displaystyle \frac{x^4 - x^3}{2x + x^2}$
+    \hypertarget{subproblem:1.3-1a-MAT-0001-2019-V}{}
+    \tabenumitem $\displaystyle \frac{x^3 + 5x^2}{x^3 + 2x}$
+    \hypertarget{subproblem:1.3-1b-MAT-0001-2019-V}{}
+    \tabenumitem $\displaystyle \frac{x^5 y - x y^2}{xy}$
+    \hypertarget{subproblem:1.3-1c-MAT-0001-2019-V}{}
+    \\
+    \tabenumitem $\displaystyle \frac{x^2 + x}{x + 1}$
+    \hypertarget{subproblem:1.3-1d-MAT-0001-2019-V}{}
+    \tabenumitem $\displaystyle \frac{1}{x} + \frac{2}{x^2} - \frac{x}{x^3}$
+    \hypertarget{subproblem:1.3-1e-MAT-0001-2019-V}{}
+    \tabenumitem $\displaystyle x \cdot \frac{5x - 8}{x^2}$
+    \hypertarget{subproblem:1.3-1f-MAT-0001-2019-V}{}
+    \\
+    \tabenumitem $\displaystyle 1 - \frac{x - 1}{x}$
+    \hypertarget{subproblem:1.3-1g-MAT-0001-2019-V}{}
+    \tabenumitem $\displaystyle \frac{\frac{1}{a}}{\frac{1}{a-b}}$
+    \hypertarget{subproblem:1.3-1h-MAT-0001-2019-V}{}
+  \end{tabenum}
+\end{problem}
+
+\begin{solution}
+    Husk å tøye ut før du begynner å gjøre gymnastiske algebraøvelser!
+    \begin{flalign*}
+        \textit{\hyperlink{subproblem:1.3-1a-MAT-0001-2019-V}{Oppgave~\textcolor{\UiTrefcolor}{1a})}} && 
+          &\frac{x^4 - x^3}{2x + x^2}
+        = \frac{\textcolor{UiT-orange}{x}\cdot x^3 - \textcolor{UiT-orange}{x} \cdot x^2}{\textcolor{UiT-blue}{x} \cdot 2 + \textcolor{UiT-blue}{x} \cdot x}
+        = \frac{\textcolor{UiT-orange}{x}}{\textcolor{UiT-blue}{x}} \cdot\frac{x^3 - x^2}{2 + x}
+        = \frac{x^2(x - 1)}{x + 2} \\
+%
+        \textit{\hyperlink{subproblem:1.3-1b-MAT-0001-2019-V}{Oppgave~\textcolor{\UiTrefcolor}{1b})}} && 
+        &\frac{x^3 + 5x^2}{x^3 + 2x}
+        = \frac{\textcolor{UiT-orange}{x} \cdot x^2 + \textcolor{UiT-orange}{x} \cdot 5x}{\textcolor{UiT-blue}{x} \cdot x^2 + \textcolor{UiT-blue}{x} \cdot 2}
+        = \frac{\textcolor{UiT-orange}{x}}{\textcolor{UiT-blue}{x}} \cdot \frac{x^2 + 5x}{x^2 + 2}
+        = \frac{x^2 + 5x}{x^2 + 2} \\
+%
+        \textit{\hyperlink{subproblem:1.3-1c-MAT-0001-2019-V}{Oppgave~\textcolor{\UiTrefcolor}{1c})}} && 
+        &\frac{x^5y - x y^2}{xy}
+        = \frac{\textcolor{UiT-orange}{xy} \cdot x^4 - \textcolor{UiT-orange}{y}\cdot y}{\textcolor{UiT-blue}{xy}}
+        = \frac{\textcolor{UiT-orange}{xy}}{\textcolor{UiT-blue}{xy}} (x^4 -y) 
+        = x^4 - xy \\
+%
+        \textit{\hyperlink{subproblem:1.3-1d-MAT-0001-2019-V}{Oppgave~\textcolor{\UiTrefcolor}{1d})}} && 
+           &\frac{x^2 + x}{x + 1}
+         = \frac{\textcolor{UiT-orange}{x} \cdot x + \textcolor{UiT-orange}{x}}{x + 1}
+         = \frac{\textcolor{UiT-orange}{x} (\textcolor{UiT-blue}{x + 1})}{\textcolor{purple}{x + 1}}
+         = x \cdot \frac{\textcolor{UiT-blue}{x + 1}}{\textcolor{purple}{x + 1}}
+         = x \\
+%
+          \textit{\hyperlink{subproblem:1.3-1e-MAT-0001-2019-V}{Oppgave~\textcolor{\UiTrefcolor}{1e})}} && 
+          &\frac{1}{x} + \frac{2}{x^2} - \frac{x}{x^3}
+          = \frac{x}{x}\frac{1}{x} + \frac{2}{x^2} - \frac{1}{x^2}
+          = \frac{x + 2 - 1}{x^2}
+          = \frac{x + 1}{x^2} \\
+%
+          \textit{\hyperlink{subproblem:1.3-1f-MAT-0001-2019-V}{Oppgave~\textcolor{\UiTrefcolor}{1f})}} && 
+          &x \cdot \frac{5x - 8}{x^2}
+          = \textcolor{UiT-orange}{x} \cdot \frac{5x - 8}{\textcolor{UiT-blue}{x} \cdot x}
+          = \frac{\textcolor{UiT-orange}{x}}{\textcolor{UiT-blue}{x}} \frac{5x - 8}{x}
+          = 5 - \frac{8}{x} \\
+%
+          \textit{\hyperlink{subproblem:1.3-1g-MAT-0001-2019-V}{Oppgave~\textcolor{\UiTrefcolor}{1g})}} && 
+            &1 - \frac{x-1}{x}
+          = 1 - \biggl( \frac{x}{x} - \frac{1}{x}\biggr)
+          = 1 - 1 + \frac{1}{x}
+          = \frac{1}{x} \\
+%
+          && 
+            &1 - \frac{x-1}{x}
+          = \frac{x}{x} - \frac{x-1}{x}
+          = \frac{x -(x-1)}{x}
+          = \frac{x - x + 1}{x}
+          = \frac{1}{x} \\
+%
+           \textit{\hyperlink{subproblem:1.3-1h-MAT-0001-2019-V}{Oppgave~\textcolor{\UiTrefcolor}{1h})}} && 
+            &\frac{\frac{1}{a}}{\frac{1}{a-b}}
+            = \frac{\frac{1}{a}}{\frac{1}{a-b}} \frac{a-b}{a-b}
+            = \frac{\frac{1}{a} \cdot (a-b)}{\frac{1}{a-b} \cdot (a-b)}
+            = \frac{\frac{a-b}{a}}{1}
+            = \frac{a}{a}-\frac{b}{a} = 1 - \frac{b}{a}
+    \end{flalign*}
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.3.2                                 %
+%==============================================================================%
+
+\begin{problem}
+  Et stoff har massetetthet $\SI{12}{\g\per\cm\cubed}$, det vil si $12$~gram per
+  kubikkcentimeter. Hvor mye veier $\SI{10}{\m\cubed}$ av dette stoffet?
+\end{problem}
+
+\begin{solution}
+  La oss først bytte til enheter til. Siden $\SI{1}{\cm} = \SI{e-2}{\m}$ får vi
+  %
+  \begin{equation*}
+      \frac{\SI{12}{\g}}{\si{\cm\cubed}}
+    = \frac{\SI{12}{\g}}{(\SI{e-2}{\m})^3}
+    = \frac{\SI{12}{\g}}{\SI{e-6}{\m\cubed}}
+    = \SI{12e6}{\g\per\m\cubed} 
+    = \SI{12e7}{\g}/\SI{10}{\m\cubed} 
+  \end{equation*}
+  %
+  Altså veier $\SI{10}{\m\cubed}$ av dette stoffet \UiTcorrectColor{\SI{1.2e8}{\g}}
+  eller \UiTcorrectColor{\SI{1.2e5}{\kg}} eller \UiTcorrectColor{\SI{120}{\tonne}}.
+\end{solution}
+
+\newpageLF
+
+%==============================================================================%
+%                                PROBLEM 1.3.3                                 %
+%==============================================================================%
+
+\begin{problem}
+  Hvor mange siffer har
+  %
+  \begin{subproblem}{3}
+    \item $\num{-14.5400}$ \UiTcorrect{$6$}
+      \label{subproblem:1.3-3a-MAT-0001-2019-V}
+    \item $\num{-0.14e3}$ \UiTcorrect{$2$}
+      \label{subproblem:1.3-3b-MAT-0001-2019-V}
+    \item $\num{0.004}$ \UiTcorrect{$1$}
+      \label{subproblem:1.3-3c-MAT-0001-2019-V}
+  \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  Når vi skal regne gjeldende siffer så teller vi alltid fra og med det første
+  tallet som ikke er null, og til og med den siste nullen etter komma. Dette er
+  fordi det er stor forskjell på $\num{120,0}$ og $\num{120,000000}$ i siste
+  tilfellet har vi gjort langt, langt mer nøyaktige målinger og har en mye
+  lavere usikkerhet. \medskip
+
+  \Opg{subproblem:1.3-3a-MAT-0001-2019-V} Her har vi to siffer før
+  komma, og fire etter, altså \UiTcorrectColor{$6$ siffer} totalt.
+  \Opg{subproblem:1.3-3b-MAT-0001-2019-V} Her har vi null siffer før
+  komma, og to etter, altså \UiTcorrectColor{$2$ siffer} totalt.
+  \Opg{subproblem:1.3-3c-MAT-0001-2019-V} Her har vi null siffer før
+  komma, og ett etter, altså \UiTcorrectColor{$1$ siffer} totalt
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.3.4                                 %
+%==============================================================================%
+
+\begin{problem}
+  Sidene i et rektangulært svømmebasseng er målt i henholdsvis $\num{5.3}$~meter
+  og $\num{2.997}$~meter med usikkerhet. Finn arealet av bassengets overflate,
+  fornuftig avrundet. \UiTcorrect{$16$~meter}
+\end{problem}
+
+\begin{solution}
+  Når vi skal regne med enheter er en fin huskeregel at vi alltid skal ta med
+  like mange gjeldende siffer som det tallet med \emph{færrest} gjeldende
+  siffer. I dette tilfellet skal vi altså ha med \emph{to} gjeldende siffer.
+
+  Merk at når vi gjør selve utregningen tar vi med alle sifferene, og gjør
+  avrundingen til sist slik at vi unngår avrundingsfeil.
+  %
+  \begin{equation*}
+    A = 2b + 2l = 2(\SI{5.3}{\m} + \SI{2.997}) = \SI{15.8841}{\m}
+  \end{equation*}
+  %
+  Arealet av omkretsen til bassenget er altså $\num{16}$~meter. Hvor
+  vi da rundet opp $\num{15.8}$ til $\num{16}$. Husk at dersom vi ønsker å runde
+  av til $k$ gjeldende siffer, så ser vi bare på de $k+1$ første sifferene i
+  tallet og runder av disse.
+\end{solution}
+
+%==============================================================================%
+%                                PROBLEM 1.3.5                                 %
+%==============================================================================%
+
+\begin{problem}
+  Du har fått tallet $\num{871.5}$ som resultat av en måling, men vurdering av
+  usikkerheten tilsier at du bare har grunnlag for å oppgi svaret med to
+  gjeldende siffer. Hvordan bør svaret skrives?\UiTcorrect[~]{870}[~]Hva om du bare 
+  kan bruke ett gjeldende siffer? \UiTcorrect{900}
+\end{problem}
+
+\begin{solution}
+  Dersom vi skal skrive svaret med to gjeldende siffer så er det tallet $87$ vi
+  skal bruke, siden vi runder ned $1$. Så tallet kan skrives som
+  $\num{8.7e2}$ eller $\num{870}$.
+
+  Dersom svaret skal skrives med ett gjeldende siffer så runder vi opp $87$ til
+  $90$. Så tallet kan skrives som $\num{9e2}$ eller
+  $\num{900}$.
+\end{solution}
+
+\newpageLF
+
+%==============================================================================%
+%                       BLANDEDE OPPGAVER TIL KAPITTEL 1                       %
+%==============================================================================%
+
+\subsection*{Blandede oppgaver til kapittel 1}
+
+%==============================================================================%
+%                               PROBLEM 1.X.14                                 %
+%==============================================================================%
+
+\begin{problem}[14]
+  \label{problem:1-mix-14-MAT-0001-2019-V} Anta $a < -3$. Finn $\abs{a}$ uttrykt
+  ved $a$. \UiTcorrect{$\abs{a} = -a$}
+\end{problem}
+
+\begin{solution}
+  \Opg{problem:1-mix-14-MAT-0001-2019-V}: Det enkleste blir nok å
+  huske på definisjonen av absoluttverdien
+  %
+  \begin{equation*}
+    \label{eq:1-mix-14-MAT-0001-2019-V-def-absolute-value}
+    \abs{x} = 
+    \begin{cases}
+      -x & \ \text{hvis} \ x \leq 0, \\
+      \phantom{-} x & \ \text{hvis} \ x > 0
+    \end{cases}.
+  \end{equation*}
+  %
+  Så siden $a < -3$ har vi per definisjon at $\abs{a} = -a$. Vi kan
+  og gjøre dette med ett eksempel, husk at absoluttverdien av ett tall alltid
+  skal være \emph{positivt}. La $a = -5$ da er det klart at $a < -3$. Så regner
+  vi ut$\abs{-5} = -(-5) = 5$ så her ser vi at absoluttverdien git ut et
+  positivt svar som var det vi ønsket! Her brukte vi bare det vi fant ut altså
+  at $\abs{x} = -x$ for negative $x$.
+\end{solution}
+
+%==============================================================================%
+%                               PROBLEM 1.X.15                                 %
+%==============================================================================%
+
+\begin{problem}
+  For hvilke verdier av $x$ har vi
+    \begin{subproblem}{3}
+      \item $x < \abs{x}$ \UiTcorrect{$x<0$}
+        \label{subproblem:1-mix-16a-MAT-0001-2019-V}
+      \item $\abs{x} \leq x$ \UiTcorrect{$x\geq0$}
+        \label{subproblem:1-mix-16b-MAT-0001-2019-V}
+      \item $\abs{x} < x$ \UiTcorrect{$\varnothing$}
+        \label{subproblem:1-mix-16c-MAT-0001-2019-V}
+    \end{subproblem}
+\end{problem}
+
+\hvisLF{%
+  \begin{figure}[htbp!]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        UiTplotstyle,
+        ytick={-6,-4,...,6},
+        xtick={-6,-4,...,6},
+        % x tick label style={below right},
+        % y tick label style={above left,},
+        ymin=-4.5,
+        ymax=4.5,
+        xmin=-4.5,
+        xmax=4.5,
+        domain=-10:10,
+        after end axis/.code={
+          \path (axis cs:0,0) 
+          node [anchor=north west,yshift=-0.075cm] {0}
+          node [anchor=south east,xshift=-0.075cm] {0};
+        }
+        ]
+        \addplot+[name path=F, domain=-5:0, mark=none, white] {-x};
+        \addplot+[name path=G, domain= 0:5, mark=none, white] { x};
+
+        \addplot+[name path=H, ultra thick,mark=none, UiT-orange] {x};
+
+        \addplot+[domain=-5:0, only marks,mark=star,mark options={color=UiT-blue,fill=white,scale=1}] {-x};
+        \addplot+[domain= 0:5, only marks,mark=star,mark options={color=UiT-blue,fill=white,scale=1}] { x};
+
+        \addplot[opacity=0.2,green]fill between[of=F and H, soft clip={domain=-5:0}];
+      \end{axis}
+    \end{tikzpicture}
+    \caption{$\textcolor{UiT-blue}{\abs{x}}$ og $\textcolor{UiT-orange}{x}$}
+    \label{subfig:1-mix-16-MAT-0001-2019-V}. 
+  \end{figure}
+}
+
+\begin{solution}
+  Det enkleste blir nok å tegne $x$ og $\abs{x}$ også drøfte hvilken som
+  er størst på hvilket intervall. En enkel skisse er vist i
+  \cref{subfig:1-mix-16-MAT-0001-2019-V}. \medskip
+
+  \Opg{subproblem:1-mix-16a-MAT-0001-2019-V} Fra figuren så
+  viser det grønne området viser hvor $x<\abs{x}$. Dette skjer når $x<0$,
+  men la oss vise det ved å bruke definisjonen av $\abs{x}$ 
+  %
+  \begin{equation*}
+    \abs{x}>x \ \Leftrightarrow \ 
+    \begin{cases}
+      -x>x & \text{hvis} \ x \leq 0, \\
+      \phantom{-} x>x & \text{hvis} \ x > 0
+    \end{cases}.
+  \end{equation*}        
+  %
+  Hvor vi ser at likningen har ingen løsninger når $x>0$. I det andre
+  tilfellet har vi $-x > x \ \Rightarrow \ 0 > 2x \ \Rightarrow 0 > x$ som
+  er det samme som at $x < 0$.
+  \medskip
+
+  \Opg{subproblem:1-mix-16b-MAT-0001-2019-V} Igjen fra
+  \cref{subfig:1-mix-16-MAT-0001-2019-V} ser vi at eneste gangen hvor $x$
+  er større eller lik $\abs{x}$ er når $x\geq 0$. Dette gir mye mening da
+  $\abs{x} = x$ når $x$ er positiv. 
+  %
+  \begin{equation*}
+    \abs{x} \leq x \ \Leftrightarrow \ 
+    \begin{cases}
+      -x \leq x & \text{hvis} \ x \leq 0, \\
+      \phantom{-} x \leq x & \text{hvis} \ x > 0
+    \end{cases}
+  \end{equation*}        
+  %
+  Hvor første likning $-x \leq x$ er gyldig for $x = 0$, mens $x \leq x$
+  er gyldig for alle $x>0$. Dette gir til sammen den samme løsningen som
+  før, altså at $\abs{x} \leq x \ \Rightarrow \ x \geq 0$.
+  \medskip
+
+  \Opg{subproblem:1-mix-16c-MAT-0001-2019-V} Fra
+  \cref{subfig:1-mix-16-MAT-0001-2019-V} ser vi at likningen $\abs{x} < x$
+  ikke kan ha noen løsninger. Dette er fordi funksjonen $x$ aldri har
+  høyere verdi enn $\abs{x}$ bare like stor eller lavere. Ved å bruke
+  definisjonen får vi helt tilsvarende
+  %
+  \begin{equation*}
+    \abs{x} < x \ \Leftrightarrow \ 
+    \begin{cases}
+      -x < x & \text{hvis} \ x \leq 0, \\
+      \phantom{-} x < x & \text{hvis} \ x > 0
+    \end{cases}
+    \ \Leftrightarrow \ 
+    \begin{cases}
+      x > 0 & \text{hvis} \ x \leq 0, \\
+      0 < 0 & \text{hvis} \ x > 0
+    \end{cases}.
+  \end{equation*}        
+  %
+  Hvor vi ser at begge tilfellene er umulige og oppnå slik at det er
+  ingen verdier for $x$ slik at $\abs{x} < x$.
+\end{solution}
+
+%==============================================================================%
+%                               PROBLEM 1.X.17                                 %
+%==============================================================================%
+
+\begin{problem}[17]
+  Skriv mengdene som en union av to intervaller:
+  \begin{multicols}{2}
+    \begin{subproblem}
+      \label{subproblem:1-mix-17a-MAT-0001-2019-V}
+      $\Set{x \in \R \given \abs{x} > 2}$
+    \end{subproblem}
+    \begin{subproblem}
+      \label{subproblem:1-mix-17b-MAT-0001-2019-V}
+      $\Set{x \in \R \given \abs{x - 3} > 2}$
+    \end{subproblem}
+  \end{multicols}
+\end{problem}
+
+\hvisLF{%
+  \begin{figure*}[htbp!]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[
+          UiTplotstyle,
+          width=1.2\textwidth,
+          ytick={-6,-4,...,6},
+          xtick={-6,-4,...,6},
+          ymin=-0.5,
+          ymax=4.5,
+          xmin=-4.5,
+          xmax=4.5,
+          domain=-10:10,
+          after end axis/.code={
+            \path (axis cs:0,0) 
+%            node [anchor=north west,yshift=-0.075cm] {0};
+            node [anchor=south east,xshift=-0.075cm] {0};
+          }
+          ]
+          \addplot+[name path=F,domain=-5:0, ultra thick, mark=none,UiT-blue] {-x}
+          node [pos=0.6, above] {$\abs{x}$};
+          \addplot+[name path=G,domain= 0:5, ultra thick, mark=none,UiT-blue] {x};
+          \addplot+[name path=H,ultra thick, mark=none, UiT-orange] {2}
+          node [pos=0.65, below] {$y = 2$};
+          \addplot[opacity=0.2,green]fill between[of=F and H, soft clip={domain=-5:-2}];
+          \addplot[opacity=0.2,green]fill between[of=G and H, soft clip={domain=2:5}];
+        \end{axis}
+      \end{tikzpicture}
+      \caption{\UiTcorrectColor{$(-\infty,-2)\cup(2,\infty)$}{}}
+      \label{subfig:1-mix-17a-MAT-0001-2019-V}
+    \end{subfigure}
+    %
+    \begin{subfigure}[t]{0.45\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[
+          UiTplotstyle,
+          width=1.2\textwidth,
+          ytick={-6,-4,...,6},
+          xtick={0,1,3,5,7},
+          ymin=-0.5,
+          ymax=4.5,
+          xmin=-1.5,
+          xmax=7.5,
+          domain=-10:10,
+          after end axis/.code={
+            \path (axis cs:0,0) 
+%            node [anchor=north west,yshift=-0.075cm] {0}
+            node [anchor=south east,xshift=-0.075cm] {0};
+          }
+          ]
+          \addplot+[name path=F,domain=-2:3, ultra thick, mark=none,UiT-blue] {3-x}
+          node [pos=0.75, above,yshift=1em] {$\abs{x-3}$};
+          \addplot+[name path=G,domain= 3:8, ultra thick, mark=none,UiT-blue] {x-3};
+          \addplot+[name path=H,ultra thick, mark=none, UiT-orange] {2}
+          node [pos=0.8, below] {$y = 2$};
+          \addplot[opacity=0.2,green]fill between[of=F and H, soft clip={domain=-2:1}];
+          \addplot[opacity=0.2,green]fill between[of=G and H, soft clip={domain=5:8}];
+        \end{axis}
+      \end{tikzpicture}
+      \caption{\UiTcorrectColor{$(-\infty,1)\cup(5,\infty)$}{}}
+      \label{subfig:1-mix-17b-MAT-0001-2019-V}
+    \end{subfigure}
+    \caption{}
+    \label{fig:1-mix-17-MAT-0001-2019-V}
+  \end{figure*}
+}
+
+\begin{solution}
+  Her ønsker vi å skrive om mengdene som en union av to intervall.  En smart idè
+  kan være å tegne funksjonene som vi har gjort i
+  \cref{fig:1-mix-17-MAT-0001-2019-V}. Vi ønsker området hvor $\abs{x}$ ligger
+  over $y = 2$, disse to intervallene er da markert med grønn i
+  \cref{subfig:1-mix-17a-MAT-0001-2019-V,subfig:1-mix-17b-MAT-0001-2019-V}.
+  Alternativt kan intervallene også bestemmes via regning: \medskip
+
+  \Opg{subproblem:1-mix-17a-MAT-0001-2019-V} Den vanligste metoden er
+  å bruke definisjonen av absoluttverdien
+  %
+  \begin{equation*}
+    \abs{x} > 2
+    \ \Leftrightarrow \ 
+    \begin{cases}
+      -  x > 2 \ \text{hvis} \ x < 0 \\
+      \phantom{-} x > 2 \ \text{hvis} \ x \geq 0
+    \end{cases}
+    \ \Leftrightarrow \ 
+    \begin{cases}
+      x < - 2 \ \text{hvis} \ x < 0 \\
+      x > \phantom{-} 2 \ \text{hvis} \ x \geq 0
+    \end{cases}.
+  \end{equation*}
+  %
+  Hvor vi kan lese ut at intervallene våre er $(-\infty,-2) \cup (2,\infty)$.
+  Husk at når vi ganger med $-1$ så snur vi alle ulikheter.  Altså at 
+  %
+  \begin{equation*}
+    -x > 2 \ \Rightarrow \ x < -2
+  \end{equation*}
+  %
+  Dette kan vi og se dersom vi \bquote{flytter\footnote{Eller trekker fra det
+  samme på begge sider som de mer korrekte matematikkerene ville sagt det.}}
+  over $x$, og deretter $2$
+  %
+  \begin{equation}
+    \label{eq:1-mix-17b-MAT-0001-2019-V-ulikhet}
+    -x > 2 
+    \ \Rightarrow \  0 > x + 2 
+    \ \Rightarrow \ -2 > x 
+    \ \Rightarrow \  x < 2.
+  \end{equation}
+  %
+  \Opg{subproblem:1-mix-17b-MAT-0001-2019-V} Igjen fra definisjonen
+  har vi
+  %
+  \begin{equation*}
+    \abs{x-3} > 2
+    \ \Leftrightarrow \ 
+    \begin{cases}
+      -(x-3) > 2 \ \text{hvis} \ x < 0 \\
+      \phantom{-}(x-3) > 2 \ \text{hvis} \ x \geq 0
+    \end{cases}
+    \Leftrightarrow \ 
+    \begin{cases}
+      x < 1\ \text{hvis} \ x < 0 \\
+      x > 5 \ \text{hvis} \ x \geq 0
+    \end{cases}.
+  \end{equation*}
+  %
+  Hvor vi kan lese ut at intervallene våre er $(-\infty,1)\cup(5,\infty)$.  Å
+  vise at $-(x-3) > 2 \ \Rightarrow \ x < 1$ kan vises enten ved å først snu
+  ulikheten ved å gange med $-1$, eller gjennomføre de samme stegene som i
+  \cref{eq:1-mix-17b-MAT-0001-2019-V-ulikhet}; men dette overlates som en artig
+  øvelse til leseren ;-)
+\end{solution}
+
+%==============================================================================%
+%                               PROBLEM 1.X.20                                 %
+%==============================================================================%
+
+\begin{problem}[20]
+  Avgjør om følgende mengder er like.
+  \begin{subproblem}
+    \label{subproblem:1-mix-20a-MAT-0001-2019-V}
+    $A = \Set{\Set{1,2}}$ og $B = \Set{1, 2}$ 
+    \UiTwrong{$A \neq B$}
+  \end{subproblem}
+  \begin{subproblem}
+    \label{subproblem:1-mix-20b-MAT-0001-2019-V}
+    $A = \Set{1, 2, 1, 1, 4}$ og $B = \Set{4, 2, 1}$
+    \UiTcorrect{$A = B$}
+  \end{subproblem}
+  \begin{subproblem}
+    \label{subproblem:1-mix-20c-MAT-0001-2019-V}
+    $A = \Set{1, 2, 3, 4}$ og $B = \Set{4, 3, 2, 1}$
+    \UiTcorrect{$A = B$}
+  \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  Vi begynner med å skrive opp definisjonen for at to mengder skal være like
+  %
+  \begin{equation*}
+    A = B 
+    \quad \Leftrightarrow \quad 
+    A \subseteq B \ \text{og} \ B \subseteq A
+  \end{equation*}
+  %
+  med andre ord så må \emph{alle} elementene i $A$ være inneholdt i $B$, og
+  \emph{alle} elementene i $B$ må være inneholdt i $A$. \medskip
+
+  \Opg{subproblem:1-mix-20a-MAT-0001-2019-V} Vi kan se med en gang at
+  elementet $\Set{1,2} \in A$ ikke ligger i $B$ ($\Set{1,2} \not\in B$) slik at
+  $A \neq B$.  \medskip
+
+  \Opg{subproblem:1-mix-20b-MAT-0001-2019-V} I en mengde så er alle
+  elementene unike, ved å gjøre dette på $A$, ser vi at $A = \Set{4,2,1}$ så $A$
+  og $B$ er identiske mengder.  Slik at $A = B$.  \medskip
+
+  \Opg{subproblem:1-mix-20c-MAT-0001-2019-V} Her kan en enten si at
+  \UiTcorrectColor{$A = B$} direkte siden rekkefølgen av elementer i en mengde er
+  irrelevant, eller sjekke at alle elementene i $A$ også ligger i $B$, og at
+  alle elementene i $B$ også ligger i $A$.
+\end{solution}
+
+\newpageLF
+
+%==============================================================================%
+%                               PROBLEM 1.X.21                                 %
+%==============================================================================%
+
+\begin{problem}
+  La $A = \Set{4, 5, 6, 7, 8, 9}$ og $B = \Set{2, 4, 8, 10}$. Finn $A \cap B$
+  og $A \cup B$.
+\end{problem}
+
+\begin{solution}
+  \textcolor{UiT-main}{$A \cap B$}: Ønsker å finne \emph{snittet} mellom $A$ og
+  $B$ altså bare de som ligger i begge mengdene. Med andre ord bare det de har
+  til felles.
+  %
+  \begin{align*}
+    A \cap B &= \Set{4, 8}.
+    %
+    \intertext{\textcolor{UiT-main}{$A \cup B$}: Ønsker å finne \emph{unionen}
+    mellom $A$ og $B$ altså alt som ligger i begge mengdene til sammen.}
+    %
+    A \cup B &= \Set{2,4, 5, 6, 7, 8, 9, 10}.
+  \end{align*}
+\end{solution}
+
+%==============================================================================%
+%                               PROBLEM 1.X.22                                 %
+%==============================================================================%
+
+\begin{problem}
+  Avgjør om $A$ er inneholdt i $B$.
+  \begin{subproblem}
+    \label{subproblem:1-mix-22a-MAT-0001-2019-V}
+    $A = \Set{2, 3, 5}$ og $B = \Set{2, 3, 4, 5}$
+    \UiTcorrect{$A \subseteq B$}
+  \end{subproblem}
+  \begin{subproblem}
+    \label{subproblem:1-mix-22b-MAT-0001-2019-V}
+    $A = \Set{2, 3, 5}$ og $B = \Set{2, 3, 5}$
+    \UiTcorrect{$A \subseteq B$}
+  \end{subproblem}
+  \begin{subproblem}
+    \label{subproblem:1-mix-22c-MAT-0001-2019-V}
+    $A = \Set{1, 2}$ og $B = \Set{\Set{1, 2}}$
+    \UiTwrong{$A \not\subseteq B$}
+  \end{subproblem}
+  \begin{subproblem}
+    \label{subproblem:1-mix-22d-MAT-0001-2019-V}
+    $A = \varnothing$ og $B = \Set{2, 3, 4, 5}$
+    \UiTcorrect{$A \subseteq B$}
+  \end{subproblem}
+  \begin{subproblem}
+    \label{subproblem:1-mix-22e-MAT-0001-2019-V}
+    $A = \varnothing$ og $B = \varnothing$
+    \UiTcorrect{$A \subseteq B$}
+  \end{subproblem}
+\end{problem}
+
+\begin{solution}
+  For å finne ut om mengde $A$ er inneholdt i $B$ så må alle $x \in A$ også
+  ligge i $B$. \medskip
+
+  \Opg{subproblem:1-mix-22a-MAT-0001-2019-V} Her
+  må vi sjekke om $2$, $3$ og $5$ ligger i $B$
+  %
+  \begin{equation*}
+    A = \Set{\UiTcorrectColor{2}, \UiTcorrectColor{3}, \UiTcorrectColor{5}} 
+    \ \text{og} \ 
+    B = \Set{\UiTcorrectColor{2}, \UiTcorrectColor{3}, 4, \UiTcorrectColor{5}} \
+    \text{slik at} \ A \subseteq B.
+  \end{equation*}
+  %
+  \Opg{subproblem:1-mix-22b-MAT-0001-2019-V} Her må vi sjekke om $2$,
+  $3$ og $5$ ligger i $B$
+  %
+  \begin{equation*}
+    A = \Set{\UiTcorrectColor{2}, \UiTcorrectColor{3}, \UiTcorrectColor{5}} 
+    \ \text{og} \ 
+    B = \Set{\UiTcorrectColor{2}, \UiTcorrectColor{3}, \UiTcorrectColor{5}}  \
+    \text{slik at} \ A \subseteq B.
+  \end{equation*}
+  %
+  \Opg{subproblem:1-mix-22c-MAT-0001-2019-V} Denne kan være litt
+  tricky for her må vi sjekke om $B$ inneholder $1$ og $2$, men det gjør ikke
+  $B$.  Det eneste $B$ inneholder er mengden $\Set{1, 2}$ som hverken er lik $1$
+  eller $2$!
+  %
+  \begin{equation*}
+    A = \Set{\UiTcorrectColor{1}, \UiTcorrectColor{2}} 
+    \ \text{og} \ 
+    B = \Set{\UiTwrongColor{\Set{1, 2}}} \
+    \text{slik at} \ A \not\subseteq B.
+  \end{equation*}
+  %
+  \Opg{subproblem:1-mix-22d-MAT-0001-2019-V} Vi ønsker at alle
+  elementene i $A$ skal være inneholdt i $B$. Siden $A$ ikke inneholder noen
+  elementer (det er den tomme mengden), så inneholder $B$ alle elementene til
+  $A$ (som er ingen).
+  %
+  \begin{equation*}
+    A = \varnothing
+    \ \text{og} \ 
+    B = \Set{2, 3, 4, 5} \
+    \text{slik at} \ A \subseteq B.
+  \end{equation*}
+  %
+  \Opg{subproblem:1-mix-22e-MAT-0001-2019-V} Her kan vi bruke akkuratt
+  samme argument som i svaret på forrige deloppgave, men la oss i stedet
+  presentere ett alternativt argument.  Snittet av to mengder er en undermengde
+  til de originale mengdene
+  %
+  \begin{equation*}
+    A \cap B = C \Rightarrow C \subseteq A \ \text{og} \ C \subseteq B.
+  \end{equation*}
+  %
+  Videre har vi at
+  $A \cap \varnothing = \varnothing$. Dette betyr at $\varnothing$ er en
+  undermengde av $A$ ($\varnothing \subseteq A)$ og at $\varnothing$ er en
+  undermengde av $\varnothing$ ($\varnothing \subseteq \varnothing$). Som var
+  akkurat det oppgaven spurte om
+  %
+  \begin{equation*}
+    A = \varnothing
+    \ \text{og} \ 
+    B = \varnothing \
+    \text{slik at} \ A \subseteq B.
+  \end{equation*}
+\end{solution}
+
+\end{document}

@@ -1,0 +1,98 @@
+
+\RequirePackage{pgfplots}
+
+\pgfplotsset{
+    compat = 1.15,
+    shift down/.style={
+         y filter/.code={\pgfmathparse{\pgfmathresult*(#1)}}
+    },
+    shift down/.default=1,
+    positive/.style={
+        no markers,
+        red
+    },
+    negative/.style={
+        no markers,
+        blue
+    },
+    /tikz/function label/.style={
+        anchor=east
+    },
+    step functionallinenumber/.code={
+        \stepcounter{functionallinenumber}
+    },
+    title entries/.initial={}
+}
+
+\makeatletter
+\newcommand\functionalline[4][\@empty]{
+    \edef\plots{
+        \noexpand\addplot [negative, shift down=#3, forget plot] {#2<0};
+        \noexpand\addplot [positive, shift down=#3, forget plot] {#2>0};
+    }
+    \plots
+    \node at (axis cs:\pgfkeysvalueof{/pgfplots/xmin},#3) [function label] {%
+        \ifx#1\@empty%
+            $#2$%
+        \else%
+            $#1$%
+        \fi
+    };
+
+    \pgfplotsinvokeforeach {#4} {
+       \node at (axis cs:##1,#3) [
+        fill=white,
+        inner sep=1pt,
+        declare function={x=##1;} % Set 'x' to current position
+    ] {%
+    \pgfkeys{/pgf/fpu}% Use the fpu library, because it doesn't throw an error for divide by zero, but sets result to +/- inf
+    \pgfmathparse{#2}%
+    \pgfmathfloatifflags{\pgfmathresult}{0}{0}{x}% Check whether result is zero. The \hspace is necessary because of a bug in the fpu library. (Update 11 June 2012: Doesn't seem to be the case anymore, the \hspace can be removed)
+    \pgfkeys{/pgf/fpu=false}%
+    };
+    }   
+}
+
+\newenvironment{functionallines}[3][]{
+    \begin{tikzpicture}[
+        every axis plot/.style={restrict y to domain=0.5:inf},
+    ]
+    \begin{axis}[        
+        extra x ticks = {#2},
+        grid=none,
+        xticklabel pos=right,
+        hide y axis,
+        x axis line style={draw=none},
+        every tick label/.style={
+            anchor=base,
+            yshift=1ex,
+            gray!50
+        },
+        every extra x tick/.style={
+            every tick label/.style={
+                anchor=base,
+                yshift=1ex,
+                inner xsep=0pt,
+                fill=white,
+                text=black
+            }
+        },
+        extra x tick style={grid=major},
+        xtick pos=right,
+        major tick length=0pt,
+        enlarge x limits=false,
+        enlarge y limits={abs=0.75},
+        domain=#3,
+        samples=100,
+        y = -0.5cm,
+        clip=false,
+        #1
+    ]
+}{
+    \coordinate (bottom right) at (rel axis cs:1,0);
+    \coordinate (top right) at (rel axis cs:1,1);
+    \end{axis}
+    \draw [-latex] (top right-|current bounding box.west) -- (top right) node [right] {$x$};
+    \draw (bottom right) -- (bottom right-|current bounding box.west);
+    \end{tikzpicture}
+}

@@ -1,0 +1,625 @@
+\usepackage{makecell}
+\newlist{supportMaterialList}{enumerate}{1}
+\setlist[supportMaterialList]{label=\arabic*. ,
+                  wide=0pt, 
+                  leftmargin=*, 
+                  nosep, 
+                  itemsep=2pt, 
+                  after=\vspace{-\baselineskip}, 
+                  before=\compress\vspace{-0.6\dimexpr\baselineskip +2 \partopsep}}
+% \usepackage{array}
+
+\makeatletter
+  \newcommand*{\compress}{\@minipagetrue}
+\makeatother
+
+\newcommand{\ifauto}[3]{
+    \ifthenelse{\equal{#1}{auto}}{#2}{#3}
+}
+
+\newcommand{\expandMacro}[1]{
+  \begingroup\edef\x{\endgroup
+    \noexpand#1%
+  }\x
+}
+
+\newcommand{\IfNoText}[3]{%
+  \sbox0{#1}%
+  \ifdim\wd0=0pt %
+    {#2}% if #1 is empty
+  \else%
+    \ifdim0pt=\dimexpr\ht0+\dp0\relax
+      {#2}% if #1 is empty
+    \else
+      {#3}% if #1 is not empty
+    \fi
+  \fi%
+}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\defineInfo}{mm}
+ {
+  \prop_new:c { \__nebu_ContactID_prop:n { #1 } }
+  \prop_gset_from_keyval:cn { \__nebu_ContactID_prop:n { #1 } } { #2 }
+ }
+ \NewExpandableDocumentCommand{\ContactIDInfoTable}{mm}
+ {
+  \str_case:nnF { #2 }
+   {
+    {phone}  { \ContactIDTestTF{#1}{#2}{%
+         Phone: & \nebu_phone:e { \prop_item:cn { \__nebu_ContactID_prop:n { #1 } } { #2 } } \\ }{%
+         }}
+    {mobile} {  \ContactIDTestTF{#1}{#2}{%
+        Mobile: & \nebu_phone:e { \prop_item:cn { \__nebu_ContactID_prop:n { #1 } } { #2 } } \\ }{%
+        &\\}}
+   }
+   { \prop_item:cn { \__nebu_ContactID_prop:n { #1 } } { #2 } }
+ }
+\NewExpandableDocumentCommand{\ContactIDInfo}{mm}
+ {
+  \str_case:nnF { #2 }
+   {
+    {phone}  { \nebu_phone:e { \prop_item:cn { \__nebu_ContactID_prop:n { #1 } } { #2 } } }
+    {mobile} { \nebu_phone:e { \prop_item:cn { \__nebu_ContactID_prop:n { #1 } } { #2 } } }
+   }
+   { \prop_item:cn { \__nebu_ContactID_prop:n { #1 } } { #2 } }
+ }
+\NewExpandableDocumentCommand{\ContactIDTestTF}{mmmm}
+ {% #1 = ContactID, #2 = property to test, #3 = code for true, #4 = code for false
+  \prop_if_in:cnTF { \__nebu_ContactID_prop:n { #1 } } { #2 } { #3 } { #4 }
+ }
+
+% syntactic sugar
+\cs_new:Nn \__nebu_ContactID_prop:n
+ {
+  g_nebu_ContactID_\str_lower_case:n { #1 }_prop
+ }
+
+%%% formatting phone numbers
+\NewDocumentCommand{\phone}{m}
+ {
+  \nebu_phone:n { #1 }
+ }
+
+\tl_new:N \l__nebu_phone_tl
+
+\cs_new_protected:Nn \nebu_phone:n
+ {
+  \tl_set:Nn \l__nebu_phone_tl { #1 }
+  \tl_remove_all:Nn \l__nebu_phone_tl { ~ }
+  \int_compare:nTF { \tl_count:N \l__nebu_phone_tl = 8 }
+   {
+    \__nebu_phone_eight:V \l__nebu_phone_tl
+   }
+   {
+    \tl_use:N \l__nebu_phone_tl
+   }
+ }
+\cs_generate_variant:Nn \nebu_phone:n { e }
+
+\cs_new:Nn \__nebu_phone_eight:n
+ {
+  \str_case_e:nnF { \tl_head:n { #1 } }
+   {
+    {4}{ \__nebu_phone_iii_ii_iii:nnnnnnnn #1 }
+    {8}{ \__nebu_phone_iii_ii_iii:nnnnnnnn #1 }
+    {9}{ \__nebu_phone_iii_ii_iii:nnnnnnnn #1 }
+   }
+   {
+    \__nebu_phone_ii:nnnnnnnn #1
+   }
+ }
+\cs_generate_variant:Nn \__nebu_phone_eight:n { V }
+
+\cs_new:Nn \__nebu_phone_iii_ii_iii:nnnnnnnn { #1#2#3\hspace{1ex}#4#5\hspace{1ex}#6#7#8 }
+\cs_new:Nn \__nebu_phone_ii:nnnnnnnn { #1#2\hspace{0.6666ex}#3#4\hspace{0.6666ex}#5#6\hspace{0.6666ex}#7#8 }
+
+\newcommand{\mymod}[2]{\int_mod:nn{#1}{#2}}
+
+\def\stripzero#1{\expandafter\stripzerohelp#1}
+\def\stripzerohelp#1{\ifx 0#1\expandafter\stripzerohelp\else\checkrange{#1}#1\fi}
+\def\checkrange#1{\ifx1#1\else\ifx2#1\else\ifx3#1\else\ifx4#1\else\ifx5#1\else%
+  \ifx6#1\else\ifx7#1\else\ifx8#1\else\ifx9#1\else0\fi\fi\fi\fi\fi\fi\fi\fi\fi}
+
+\NewExpandableDocumentCommand{\padinteger}{mm}
+ {
+  \int_compare:nNnTF { #2 } < { 0 }
+   {
+    - \kuttens_padinteger:nn { #1 } { -#2 }
+   }
+   {
+    \kuttens_padinteger:nn { #1 } { #2 }
+   }
+ }
+
+\cs_new:Nn \kuttens_padinteger:nn
+ {
+  \prg_replicate:nn { #1 - \tl_count:f { \int_to_arabic:n { #2 } } } { 0 }
+  \int_to_arabic:n { #2 }
+ }
+\cs_generate_variant:Nn \tl_count:n { f }
+\ExplSyntaxOff
+
+% https://tex.stackexchange.com/a/505149/8306
+\newcommand*{\numdash}{\,--\,}
+
+\ExplSyntaxOn
+
+% Similar to your \dateRange, but we use integer comparisons here and the
+% code-level API allows the creation of variants with \cs_generate_variant:Nn.
+\cs_new_protected:Npn \nebuch_display_date_range:nnnnnn #1#2#3#4#5#6
+  {
+    \int_compare:nNnTF {#1} = {#4}
+      {
+        \int_compare:nNnTF {#2} = {#5}
+          {
+            \int_compare:nNnTF {#3} = {#6}
+              { \DTMdisplaydate {#4} {#5} {#6} {-1} }
+              {
+                \DTMordinal {#3} {} {} \numdash\,
+                \DTMdisplaydate {#4} {#5} {#6} {-1}
+              }
+          }
+          {
+            % I replaced ~ with \nobreakspace here because of \ExplSyntaxOn
+            \DTMordinal {#3} \nobreakspace \DTMmonthname {#2} \numdash\,
+            \DTMdisplaydate {#4} {#5} {#6} {-1}
+          }
+      }
+      {
+        \DTMdisplaydate {#1} {#2} {#3} {-1} \numdash\,
+        \DTMdisplaydate {#4} {#5} {#6} {-1}
+      }
+  }
+
+\cs_generate_variant:Nn \nebuch_display_date_range:nnnnnn { nnnxxx }
+
+\newcount \nebuch_tmp_count
+
+% #1, #2, #3: year, month, day
+% #4: number of days (offset)
+% #5: <name> (in the sense of datetime2) used to store the resulting date
+\cs_new_protected:Npn \nebuch_compute_offset_date:nnnnn #1#2#3#4#5
+  {
+    \DTMsavedate { nebuch_compute_offset_date_tmp_date } { #1-#2-#3 }
+    \DTMsaveddateoffsettojulianday
+      { nebuch_compute_offset_date_tmp_date } {#4} { \nebuch_tmp_count }
+    \DTMsavejulianday {#5} { \number \nebuch_tmp_count }
+  }
+
+\NewDocumentCommand { \dateRange } { O{0} m m m m m m }
+  {
+    \nebuch_compute_offset_date:nnnnn {#5} {#6} {#7} {#1}
+                                      { nebuch_dateRange_tmp_date }
+    \nebuch_display_date_range:nnnxxx {#2} {#3} {#4}
+      { \DTMfetchyear { nebuch_dateRange_tmp_date } }
+      { \DTMfetchmonth { nebuch_dateRange_tmp_date } }
+      { \DTMfetchday { nebuch_dateRange_tmp_date } }
+  }
+
+\ExplSyntaxOff
+
+\makeatletter
+
+\newcommand{\definemykey}[2]{%
+  \expandafter\newif\csname ifUiTname@#1\endcsname
+  \define@key{UiT}{#1}{%
+    \expandafter\gdef\csname classoption@UiT@#2\endcsname{##1}
+    \global\expandafter\csname UiTname@#1true\endcsname
+  }
+}
+
+\providetoggle{isEksamen} \settoggle{isEksamen}{false}
+\providetoggle{isOving}   \settoggle{isOving}{false}
+
+\definemykey{isExam}{isExam}
+\definemykey{isExercise}{isExercise}
+\definemykey{isKont}{isKont}
+\definemykey{Solution}{Solution}
+\definemykey{SolutionShort}{SolutionShort}
+\definemykey{ExerciseNumber}{ExerciseNumber}
+\newcounter{ExerciseNumber} 
+\definemykey{Language}{Language}
+\definemykey{CourseCode}{CourseCode}
+\definemykey{CourseName}{CourseName}
+\definemykey{Year}{Year}
+\definemykey{Month}{Month}
+\definemykey{Day}{Day}
+
+\definemykey{DurationDays}{DurationDays}
+\definemykey{DurationHours}{DurationHours}
+\definemykey{DurationMinutes}{DurationMinutes}
+
+\definemykey{DeadlineYear}{DeadlineYear}
+\definemykey{DeadlineMonth}{DeadlineMonth}
+\definemykey{DeadlineDay}{DeadlineDay}
+
+\definemykey{Date}{Date}
+\definemykey{StartHour}{StartHour}
+\definemykey{StartMinute}{StartMinute}
+\definemykey{EndHour}{EndHour}
+\definemykey{EndMinute}{EndMinute}
+\definemykey{Location}{Location}
+\definemykey{ApprovedAids}{ApprovedAids}
+\definemykey{Pages}{Pages}
+\definemykey{Sheets}{Sheets}
+\definemykey{ContactID}{ContactID}
+\definemykey{Phone}{Phone}
+\definemykey{Mobile}{Mobile}
+\definemykey{Visit}{Visit}
+\definemykey{VisitWhen}{VisitWhen}
+
+\newcommand{\dateDuration}{}%
+
+\newcommand{\UiTsetup}[1]{%
+  \setkeys{UiT}{#1}%
+  \UiTdefaults
+}
+
+\newcounter{incrementDeadlineDay} \setcounter{incrementDeadlineDay}{0}
+
+\newcommand{\UiTdefaults}{%
+    \setcounter{incrementDeadlineDay}{0}
+    \ifUiTname@Language
+        \ifdefempty{\classoption@UiT@Language}{}{%
+            \ifauto{\classoption@UiT@Language}{%
+                \renewcommand{\classoption@UiT@Language}%
+                {\languagename}%
+            }{\selectLang{\classoption@UiT@Language}}%
+        }%
+    \else\fi
+    %
+    \IfLanguageName{nynorsk}{\DTMsetstyle{norsk}}{}%
+    %
+    \ifUiTname@isExercise
+        \settoggle{isOving}{\classoption@UiT@isExercise} 
+        \ifUiTname@ExerciseNumber
+            \ifdefempty{\classoption@UiT@ExerciseNumber}{}{%
+                \ifauto{\classoption@UiT@ExerciseNumber}{%
+                    \renewcommand{\classoption@UiT@ExerciseNumber}%
+                        {\stepcounter{ExerciseNumber}}}%
+                        {\setcounter{ExerciseNumber}{\classoption@UiT@ExerciseNumber}%
+                }%
+            }%
+        \else\fi
+    \else\fi
+    \ifUiTname@isExam
+        \settoggle{isEksamen}{\classoption@UiT@isExam}
+    \else\fi
+    \ifUiTname@Solution
+        \settoggle{isLF}{\classoption@UiT@Solution}
+        \iftoggle{isLF}{%
+            \includecomment{solution}\includecomment{answer}}{%
+            \excludecomment{solution}\excludecomment{answer}%
+        }
+    \else
+        \settoggle{isLF}{false}
+    \fi
+    \ifUiTname@SolutionShort
+        \ifauto{\classoption@UiT@SolutionShort}{%
+            \iftoggle{isLF}{\toggletrue{isLFshort}}{\togglefalse{isLFshort}}}{%
+            \settoggle{isLFshort}{\classoption@UiT@SolutionShort}%
+        }
+    \else
+        \settoggle{isLFshort}{false}
+    \fi
+    %
+    % This defines all the local options
+    % If auto use the \courseCode command, otherwise return the input
+    \ifUiTname@CourseCode
+        \ifdefempty{\classoption@UiT@CourseCode}{}{%
+            \ifauto{\classoption@UiT@CourseCode}{%
+                \renewcommand{\classoption@UiT@CourseCode}{\ifdef{\courseCode}{\courseCode}{}}%
+            }%
+        }%
+    \else\fi
+    % If auto use the \courseName command, otherwise return the input
+    \ifUiTname@CourseName
+        \ifdefempty{\classoption@UiT@CourseName}{}{%
+            \ifauto{\classoption@UiT@CourseName}{%
+                \renewcommand{\classoption@UiT@CourseName}{\ifdef{\courseName}{\courseName}{}}%
+            }%
+        }%
+%                     {\num[minimum-integer-digits=1]{\classoption@UiT@Day}}%
+    \else\fi
+    % Sets the default values for Year, Month and Day
+    \ifUiTname@Year
+        \ifdefempty{\classoption@UiT@Year}{}{%
+            \ifauto{\classoption@UiT@Year}%
+                {\renewcommand{\classoption@UiT@Year}{\the\year}}%
+                {}%
+        }%
+    \else\fi
+    \ifUiTname@Month
+        \ifdefempty{\classoption@UiT@Month}{}{%
+            \ifauto{\classoption@UiT@Month}%
+                {\renewcommand{\classoption@UiT@Month}{\the\month}}%
+                {}%
+        }%
+    \else\fi
+    \ifUiTname@Day
+        \ifdefempty{\classoption@UiT@Day}{}{%
+            \ifauto{\classoption@UiT@Day}%
+                {\renewcommand{\classoption@UiT@Day}{\the\day}}%
+                {}%
+        }%
+    \else\fi
+    \ifUiTname@DurationDays
+        \ifdefempty{\classoption@UiT@DurationDays}{}{%
+            \ifauto{\classoption@UiT@DurationDays}%
+                {\renewcommand{\classoption@UiT@DurationDays}{0}}%
+                {\addtocounter{incrementDeadlineDay}{\classoption@UiT@DurationDays}}%
+        }%
+    \else\fi
+    \ifUiTname@DurationHours
+        \ifdefempty{\classoption@UiT@DurationHours}{}{%
+            \ifauto{\classoption@UiT@DurationHours}%
+                {\renewcommand{\classoption@UiT@DurationHours}{4}}%
+                {}%
+        }%
+    \else
+        \ifdef{\classoption@UiT@DurationHours}{%
+        }{\newcommand{\classoption@UiT@DurationHours}{0}}
+    \fi
+    \ifUiTname@DurationMinutes
+        \ifdefempty{\classoption@UiT@DurationMinutes}{}{%
+            \ifauto{\classoption@UiT@DurationMinutes}%
+                {\renewcommand{\classoption@UiT@DurationMinutes}{0}}%
+                {}%
+        }%
+    \else
+        \ifdef{\classoption@UiT@DurationMinutes}{%
+        }{\newcommand{\classoption@UiT@DurationMinutes}{0}}
+    \fi
+    % Sets the default values for the hours
+    \ifUiTname@StartHour
+        \ifdefempty{\classoption@UiT@StartHour}{}{%
+            \ifauto{\classoption@UiT@StartHour}%
+                {\renewcommand{\classoption@UiT@StartHour}{9}}%
+                {}%
+        }%
+    \else\fi
+    \ifUiTname@EndHour
+        \ifdefempty{\classoption@UiT@EndHour}{}{%
+            \ifauto{\classoption@UiT@EndHour}%
+                {% set EndHour = StartHour + Duration (usually 4 hours)
+                \pgfmathsetmacro{\classoption@UiT@EndHour}%
+                                {int(mod(\classoption@UiT@StartHour+%
+                                         \classoption@UiT@DurationHours,24))}}%
+                {}%
+        }%
+    \else
+        \ifUiTname@StartHour
+            % In this case StartHour exists but no EndHour, we now
+            % set EndHour = StartHour + Duration (usually 4 hours)
+            \pgfmathsetmacro{\classoption@UiT@EndHour}%
+                    {int(mod(\classoption@UiT@StartHour+%
+                             \classoption@UiT@DurationHours,24))}
+        \else\fi
+    \fi
+    % Sets the default values for the hours
+    \ifUiTname@StartMinute
+        \ifdefempty{\classoption@UiT@StartMinute}{}{%
+            \ifauto{\classoption@UiT@StartMinute}%
+                {\renewcommand{\classoption@UiT@StartMinute}{0}}%
+                {}%
+        }%
+    \else% If the option StartMinute is omitted set it to 0
+        \ifdef{\classoption@UiT@StartMinute}{%
+        }{\newcommand{\classoption@UiT@StartMinute}{0}}
+    \fi
+    \ifUiTname@EndMinute
+        \ifdefempty{\classoption@UiT@EndMinute}{}{%
+            \ifauto{\classoption@UiT@EndMinute}%
+                {\renewcommand{\classoption@UiT@EndMinute}{0}}%
+                {}
+        }%
+    \else% If the option EndMinute is omitted set it to StartMinute
+        \ifdef{\classoption@UiT@EndMinute}{%
+        }{\newcommand{\classoption@UiT@EndMinute}{\classoption@UiT@StartMinute}}
+    \fi
+    % This starts the cumbersome process of determining how long an exam lasts.
+    % Normally there is no problem, but this code makes sure it works over several days
+    % Duration = 72, would mean the exam lasts for 3 days for instance. You can also specify
+    % DeadlineYear, DeadlineMonth, DeadlineDay, EndHour, EndMinute
+    \ifUiTname@DeadlineDay\else
+        \ifdef{\classoption@UiT@DeadlineDay}{%
+        }{\newcommand{\classoption@UiT@DeadlineDay}{\classoption@UiT@Day}}
+        % If DeadlineDay is set, that is the final end date. Otherwise some calculation is needed. 
+        \ifUiTname@StartHour
+            \pgfmathparse{int(\classoption@UiT@StartMinute+\classoption@UiT@DurationMinutes)}
+            \ifthenelse{\pgfmathresult<60}%
+                        {}%
+                        {\pgfmathsetmacro{\extraHours}{int((\classoption@UiT@StartMinute+%
+                         \classoption@UiT@DurationMinutes)/60)}
+                         \pgfmathsetmacro{\classoption@UiT@EndMinute}{int(mod(\classoption@UiT@StartMinute+%
+                                                                 \classoption@UiT@DurationMinutes,60))}%
+                         \ifUiTname@EndHour
+                            \pgfmathsetmacro{\newEndHour}{int(mod(\classoption@UiT@EndHour+\extraHours,24))}%
+                         \else
+                            \pgfmathsetmacro{\newEndHour}{int(mod(\classoption@UiT@StartHour+\extraHours,24))}%                         
+                         \fi
+                         \renewcommand{\classoption@UiT@EndHour}{\newEndHour}%
+                         \pgfmathsetmacro{\newDurationHours}{int(\classoption@UiT@DurationHours+\extraHours)}%
+                         \renewcommand{\classoption@UiT@DurationHours}{\newDurationHours}}%
+                         \pgfmathsetmacro{\classoption@UiT@EndHour}%
+                            {int(mod(\classoption@UiT@StartHour+%
+                                     \classoption@UiT@DurationHours,24))}
+            \ifUiTname@EndHour
+                \ifthenelse{\classoption@UiT@StartHour < \classoption@UiT@EndHour}{}{\stepcounter{incrementDeadlineDay}}
+            \else
+                \pgfmathsetmacro{\extraDays}{int((\classoption@UiT@StartHour+%
+                                                  \classoption@UiT@DurationHours)/24)}
+                \addtocounter{incrementDeadlineDay}{\extraDays}
+            \fi
+        \else\fi
+    \fi
+    \ifUiTname@DeadlineMonth\else
+        \ifdef{\classoption@UiT@DeadlineMonth}{%
+        }{\newcommand{\classoption@UiT@DeadlineMonth}{\classoption@UiT@Month}}
+    \fi
+    \ifUiTname@DeadlineYear\else
+        \ifdef{\classoption@UiT@DeadlineYear}{%
+        }{\newcommand{\classoption@UiT@DeadlineYear}{\classoption@UiT@Year}}
+    \fi
+    \@ifundefined{DeadlineDate}{%
+        \newcommand{\DeadlineDate}%
+            {\DTMdisplaydate{\classoption@UiT@DeadlineYear}%
+            {\classoption@UiT@DeadlineMonth}%
+            {\classoption@UiT@DeadlineDay}{-1}}
+    }{}
+    \@ifundefined{PublishedDate}{%
+        \newcommand{\PublishedDate}%
+            \dateDuration%
+    }{}
+    %
+    \renewcommand{\dateDuration}{%
+        \dateRange[\arabic{incrementDeadlineDay}]%
+            {\classoption@UiT@Year}%
+            {\classoption@UiT@Month}%
+            {\classoption@UiT@Day}%
+            {\classoption@UiT@DeadlineYear}%
+            {\classoption@UiT@DeadlineMonth}%
+            {\classoption@UiT@DeadlineDay}%
+    }
+}
+
+\NewDocumentCommand\frontpageUiT{g}{%
+    \IfValueT {#1} {\selectLang{#1}}%
+    \UiTdefaults%
+    %
+    \iftoggle{isEksamen}{%
+    \clearpage%
+    \thispagestyle{UiT-frontpage}
+    %
+    \bgroup%
+        \renewcommand{\headrule}{}
+        \renewcommand{\footrule}{}
+        \vspace*{-2cm}\hspace{-0.25cm}\BareLogo[scale=0.075]
+        \begin{center}
+        \ifxetex
+            \myOpenSans
+        \fi
+            \Huge\bfseries \color{UiT-main} \EKSAMENSOPPGAVE \medskip
+        \end{center}
+    %
+    \def\arraystretch{1.5}\noindent
+    \begin{tabular}{| p{0.21\textwidth} | p{0.718\textwidth} |}
+        \ifUiTname@CourseCode
+            \hline Exam in: & \classoption@UiT@CourseCode
+                \ifUiTname@CourseName
+                    \IfNoText{\classoption@UiT@CourseCode}{}{%
+                        \IfNoText{\classoption@UiT@CourseName}{}%
+                        {, \classoption@UiT@CourseName}
+                    }%
+                \else\fi\\%
+        \else
+            \ifUiTname@CourseName
+                \hline \Eksameni: & \classoption@UiT@CourseName \\
+            \else\fi 
+        \fi
+        %
+        \ifUiTname@Year
+            \ifUiTname@Month
+                \ifUiTname@Day
+                    \hline \Dato: & 
+                    \dateDuration \\
+                \else
+                \fi
+            \else
+            \fi
+        \else
+        \fi
+        %
+        \ifUiTname@StartHour        
+            \hline \Tid: & \padinteger{2}{\classoption@UiT@StartHour}:%
+                           \padinteger{2}{\classoption@UiT@StartMinute}%
+                           ~--~%
+                           \padinteger{2}{\classoption@UiT@EndHour}:%
+                           \padinteger{2}{\classoption@UiT@EndMinute}\\%
+        \else\fi
+        %
+        \ifUiTname@Location
+            \hline 
+            \Sted: & 
+            \classoption@UiT@Location \\
+        \else
+        \fi
+        %    
+        \ifUiTname@ApprovedAids
+            \hline 
+            \TillatteHjelpemidler: & 
+            \classoption@UiT@ApprovedAids \\
+        \else
+        \fi
+        %    
+        \ifUiTname@Sheets
+            \hline 
+            \TypeArk: & 
+            \switchLang{\vspace{-0.5\baselineskip}}{\mbox{\hspace{\textwidth}}}{}{}
+            \classoption@UiT@Sheets \\
+        \else
+        \fi
+        %    
+        \ifUiTname@Pages
+            \hline 
+            \totaltSider: &%
+            \switchLang{\mbox{\hspace{\textwidth}}}{\vspace{-0.5\baselineskip}}{}{}%
+            \ifdefempty{\classoption@UiT@Pages}{\pageref*{LastPage}}{\classoption@UiT@Pages} \\
+        \else
+        \fi
+        %   
+        \ifUiTname@ContactID
+            \hline 
+            \Kontaktperson: & 
+            \switchLang{\mbox{\hspace{\textwidth}}}{\vspace{-0.5\baselineskip}}{\vspace{-0.5\baselineskip}}{}
+            \IfNoText{\expandMacro{\ContactIDInfo{\classoption@UiT@ContactID}{name}}}{\classoption@UiT@ContactID}{\expandMacro{\ContactIDInfo{\classoption@UiT@ContactID}{name}}}\\%
+            \ifUiTname@Phone%
+                \ifthenelse{\equal{\classoption@UiT@Phone}{auto}}%
+                    {\expandMacro{\ContactIDInfoTable{\classoption@UiT@ContactID}{phone}}}%
+                    {\Telefon: & \expandMacro{\phone{\classoption@UiT@Phone}}}%
+            \else%
+            \fi%
+            \ifUiTname@Mobile%
+                \ifthenelse{\equal{\classoption@UiT@Mobile}{auto}}%
+                    {\expandMacro{\ContactIDInfoTable{\classoption@UiT@ContactID}{mobile}}}%
+                    {\Mobil: & \expandMacro{\phone{\classoption@UiT@Mobile}}}%
+            \else%
+            \fi%
+        \else%
+            \ifUiTname@Phone
+                \ifthenelse{\equal{\classoption@UiT@Phone}{auto}}%
+                    {}%
+                    {\Telefon: & \expandMacro{\phone{\classoption@UiT@Phone}}}%
+            \else%
+            \fi%
+            \ifUiTname@Mobile
+                \ifthenelse{\equal{\classoption@UiT@Mobile}{auto}}%
+                    {}%
+                    {\Mobil: & \expandMacro{\phone{\classoption@UiT@Mobile}}}%
+            \else%
+            \fi%
+            \\%
+        \fi%
+        %    
+        \ifUiTname@Visit%
+            \hline%
+            \multicolumn{2}{|l|}{\Oppklaringsrunde%
+            \ifthenelse{\equal{true}{\classoption@UiT@Visit}}{\JA}{\NEI}}%
+            \ifthenelse{\equal{true}{\classoption@UiT@Visit}}{%
+            \ifUiTname@VisitWhen%
+                \\ \multicolumn{2}{|l|}{\Hvis~\JA: \classoption@UiT@VisitWhen}\\%
+            \else%
+            \fi}{\\}%
+        \else%
+        \fi%
+        \hline
+    \end{tabular}
+    \egroup
+    
+    \bigskip 
+    
+    \textcolor{UiT-red}{\bfseries \Large \Kladdepapir}%
+    \clearpage%
+    }%
+}

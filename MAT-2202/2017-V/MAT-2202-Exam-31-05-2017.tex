@@ -1,0 +1,120 @@
+\documentclass[a4paper,11pt]{article}
+
+% Always keep your main language last
+\usepackage[norsk,nynorsk,samin,british]{babel}
+
+\usepackage{_sty/UiT}
+\usepackage{_sty/IMS}
+\usepackage{MAT-2202/MAT-2202}
+
+% ============================================================ 
+% COURSE INFORMATION
+% ============================================================
+
+% This is old to be removed
+
+% Default time is 09:00 - 13:00 | Uncomment and change the line below  \visif neccecary
+% \newcommand{\examtime}{15:00--19:00}
+\newcommand{\location}{\aasgard}
+\newcommand{\permittedAids}{%
+    \supportMaterial{c,r}}
+\newcommand{\paper}{squares}
+\newcommand{\pages}{} % Sets the total number of pages manually. Uncomment if neccecary
+\newcommand{\contact}{\MariusOve}
+\newcommand{\mobile}{}
+\settoggle{isVisit}{true} % Uncomment this line if examinator / person in charge is visiting
+\newcommand{\visitWhen}{ca. kl. 11:00}
+\settoggle{showVisit}{false} %Uncomment if unknown when visit
+
+% \newcommand{\ExerciseNumber}{1}
+
+\Published{2016}{06}{01}% YEAR {dddd} MONTH {01 - 12} DAY {01 - 31} 
+% \Deadline{2018}{11}{27}% Has to be set, not visible if exam
+
+\settoggle{isLF}{true}
+\settoggle{isLF}{false} % Comment this line to show solutions
+
+\settoggle{isEksamen}{false}
+\settoggle{isEksamen}{true} % Uncomment this if used for exams
+
+\settoggle{isEksamenUtsatt}{false}
+% \settoggle{isEksamenUtsatt}{true} % Uncomment this line if Re sit exam (kont / utsatt eksamen)
+
+% ============================================================ 
+% v OWN COMMANDS AND PACKAGES BELOW HERE v
+% ============================================================
+
+\frontpageUiTsetup{%
+    % All the options in UiTsetup are listed below. They all have four defaults:
+    %
+    %   1)  Commented out   2) empty  3) auto  4) value 
+    %
+    %  1) If an option is commented out, the associated line is not shown in the
+    %     table
+    %  2) If a line is empty then the associated line is shown, but the value 
+    %     itself is empty.
+    %  3) If the command auto is used then the default value is used. This 
+    %     depends on the various commands, for the values that have default 
+    %     values they are listed beside the command. See below for more details..
+    %  4) If you write in any value, that value is displayed in the table as 
+    %     normal.
+    %
+    % ---------------------------|-------------------------
+    %         Input              |     Visual Output    
+    % ---------------------------|-------------------------
+    %    % CourseCode = {auto},  | 
+    %    % CourseCode = {},      | 
+    %    % CourseCode = {MAT101},| 
+    %      CourseCode = {auto},  |     Exam in: & \courseCode \\
+    %      CourseCode = {},      |     Exam in: & \\
+    %      CourseCode = {MAT101},|     Exam in: & MAT101 \\
+    % ---------------------------|-------------------------
+    %
+    Language = {english}, %auto = language defined by babel
+    Exam = {true}, % Is this an exam? true / false
+%    Exercise = {true}, % Is this an exercise? true / false
+%    ExerciseNumber = {1} % Which exercise number is this?
+    CourseCode = {auto}, % auto = \courseCode (defined in courseCode.sty, e.g. MAT-1001.sty)
+    CourseName = {auto}, % auto = \courseName (defined in courseCode.sty, e.g. MAT-1001.sty)
+    Year = {2017}, % No auto setting for this, as it might change on recompilation
+    Month = {6}, % No auto setting for this, as it might change on recompilation
+    Day = {1},% No auto setting for this, as it might change on recompilation
+%    DeadlineYear = {2020},
+%    DeadlineMonth = {12},
+%    DeadlineDay = {22},
+    StartHour = {9}, % Input is 1,2,...,24 (auto = 9) (DONT USE 01, 02 etc)
+%    StartMinute = {15}, % Default is 0, auto = 0
+    EndHour = {auto}, % If no EndHour, EndHour = (StartHour + DurationHours) % 24
+%    EndMinute = {0}, % Default is 0, auto = 0
+    % Note: you can EITHER use DeadlineYear, DeadlineMonth, DeadlineDay, 
+    %                 OR       DurationHours, DurationMinutes, DurationDays
+    %                 NOT both
+    DurationHours = {4}, % default = 0, auto = 4 
+%    DurationMinutes = {3680}, % Set the number of minutes the exam should last
+%    DurationDays = {1}, % Set the number of days the exam should last
+    Location = {\AA{s}gardveien 9},
+    ApprovedAids = {\supportMaterial{c,r}},
+    Sheets = {\Squares}, % Use \Squares, \Lines or write nothing
+    Pages = {}, % Uses auto = pagecount, write in number to override
+    ContactID = {mariusove}, % Use the ID from IMS.sty, you CAN use a full name, but PLEASE UPDATE IMS.sty instead.
+% You CAN write in a mobile number, but PLEASE UPDATE THE IMS.sty and use ID INSTEAD
+    Mobile = {auto}, % blank, auto or mobile number
+    Phone = {auto}, % blank, auto or mobile number
+    Visit = {true}, % Use true if the lecturer will visit during exam, otherwise false,
+%    Visit = {false}, % Visit MUST be true or false
+    VisitWhen = {Approx 11} % Write in the approx time the lecturer will visit
+}
+
+\begin{document}
+
+% \FrontpageUiT[norsk]
+
+\frontpageUiT
+
+% \include{MAT-2202-Exam-bok-31-05-2017}
+
+% \include{MAT-2202-Exam-nyn-31-05-2017}
+
+\include{MAT-2202-Exam-eng-31-05-2017}
+
+\end{document}

@@ -1,0 +1,90 @@
+\documentclass[a4paper,11pt]{article}
+
+% Always keep your main language last
+\usepackage[norsk,nynorsk,samin,british]{babel}
+
+\usepackage{_sty/UiT}
+\usepackage{_sty/IMS}
+\usepackage{MAT-2202/MAT-2202}
+
+% ============================================================ 
+% COURSE INFORMATION
+% ============================================================
+
+% Default time is 09:00 - 13:00 | Uncomment and change the line below  \visif neccecary
+% \newcommand{\examtime}{15:00--19:00}
+\newcommand{\location}{\aasgard}
+\newcommand{\permittedAids}{%
+    \supportMaterial{c,r}}
+\newcommand{\paper}{squares}
+\newcommand{\pages}{} % Sets the total number of pages manually. Uncomment if neccecary
+\newcommand{\contact}{\TrygveJoh}
+\newcommand{\mobile}{}
+\settoggle{isVisit}{true} % Uncomment this line if examinator / person in charge is visiting
+\newcommand{\visitWhen}{ca. kl. 11:00}
+\settoggle{showVisit}{false} %Uncomment if unknown when visit
+
+% \newcommand{\ExerciseNumber}{1}
+
+\Published{2017}{09}{26}% YEAR {dddd} MONTH {01 - 12} DAY {01 - 31} 
+% \Deadline{2018}{11}{27}% Has to be set, not visible if exam
+
+\settoggle{isLF}{true}
+\settoggle{isLF}{false} % Comment this line to show solutions
+
+\settoggle{isEksamen}{false}
+\settoggle{isEksamen}{true} % Uncomment this if used for exams
+
+\settoggle{isEksamenUtsatt}{false}
+% \settoggle{isEksamenUtsatt}{true} % Uncomment this line if Re sit exam (kont / utsatt eksamen)
+
+% ============================================================ 
+% v OWN COMMANDS AND PACKAGES BELOW HERE v
+% ============================================================
+
+\usetikzlibrary{decorations.pathreplacing,
+decorations.markings,
+positioning,
+arrows.meta}
+\tikzset{
+  % style to apply some styles to each segment of a path
+  on each segment/.style={
+    decorate,
+    decoration={
+      show path construction,
+      moveto code={},
+      lineto code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+      curveto code={
+        \path [#1] (\tikzinputsegmentfirst)
+        .. controls
+        (\tikzinputsegmentsupporta) and (\tikzinputsegmentsupportb)
+        ..
+        (\tikzinputsegmentlast);
+      },
+      closepath code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+    },
+  },
+  % style to add an arrow in the middle of a path
+  mid arrow/.style={postaction={decorate,decoration={
+        markings,
+        mark=at position .55 with {\arrow[#1]{Stealth[scale=1.5]}}
+      }}},
+}
+
+\begin{document}
+
+\FrontpageUiT[english]
+
+% \include{MAT-2202-Exam-bok-26-09-2017}
+
+% \include{MAT-2202-Exam-nyn-26-09-2017}
+
+\include{MAT-2202-Exam-eng-26-09-2017}
+
+\end{document}

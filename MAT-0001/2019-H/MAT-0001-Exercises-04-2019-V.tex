@@ -1,0 +1,1371 @@
+\documentclass[a4paper,11pt]{article}
+
+% Always keep your main language last
+\usepackage[british,nynorsk,samin,norsk]{babel}
+
+\usepackage{_sty/UiT}
+\usepackage{_sty/IMS}
+\usepackage{MAT-0001/MAT-0001}
+
+%==============================================================================%
+%                              COURSE INFORMATION                              %
+%==============================================================================%
+
+
+\UiTsetup{%
+    Language = {norsk}, %auto = language defined by babel
+    isExercise = {true}, % Is this an exercise? true / false
+    ExerciseNumber = {4}, % Which exercise number is this?
+    Solution = {true}, % Boolean (true/false) includes solutions
+    SolutionShort = {auto}, % is used by \UiTcorrect and \UiTwrong
+    CourseCode = {auto}, % auto = \courseCode (defined in courseCode.sty, e.g. MAT-1001.sty)
+    CourseName = {auto}, % auto = \courseName (defined in courseCode.sty, e.g. MAT-1001.sty)
+    Year = {2019}, % No auto setting for this, as it might change on recompilation
+    Month = {9}, % No auto setting for this, as it might change on recompilation
+    Day = {16},% No auto setting for this, as it might change on recompilation
+    DurationDays = {4}, % Set the number of days the exam/exercise should last
+}
+
+%==============================================================================%
+%                     OWN COMMANDS AND PACKAGES BELOW HERE                     %
+%==============================================================================%
+
+\DeclareDocumentCommand{\drawQuadratic}{O{0} O{0} m}{%
+    \pgfmathsetmacro{\minX}{ 1.50 + #1}
+    \pgfmathsetmacro{\maxX}{ 8.25 + #1}
+    \pgfmathsetmacro{\maxY}{ 1.25 + #2}
+    \pgfmathsetmacro{\minY}{-9.25 + #2}
+\begin{tikzpicture}[declare function={
+            f(\x)= #3;
+          }] 
+            \begin{axis}[%
+                    UiTplotstyle,
+                    width=2*\textwidth,
+                    ytick={-9,-8,...,9},
+                    xtick={-3,-2,...,9},
+                    xmin= \minX, xmax=\maxX,
+                    ymin= \minY, ymax=\maxY,
+                    domain = 2:8,
+                    axis x discontinuity=crunch,
+               after end axis/.code={
+                  \path (axis cs:0,0) 
+                  node [anchor=west,xshift=0.16cm] {0};
+                }]
+       \addplot[ultra thick, UiT-blue, smooth] {f(x)}; 
+       \addplot+[samples=7, only marks,mark=*,thick,UiT-blue,mark options = {scale=1.5,fill=white}] {f(x)}; 
+    \end{axis}
+\end{tikzpicture} 
+}
+
+\begin{document}
+
+%==============================================================================%
+%                                 EXERCISE 04                                  %
+%==============================================================================%
+
+\frontpageUiT
+
+\titlebox[norsk]{auto}{\Spraak}{auto}{\dateDuration}
+
+%==============================================================================%
+%                                SEKSJON 2.1                                   %
+%==============================================================================%
+
+\UNIsection[2]
+
+%==============================================================================%
+%                               PROBLEM 2.1.2                                  %
+%==============================================================================%
+
+\begin{problem}[2]
+    La $f$ være funksjonen definert ved $f(x) = 2x - 3$, med definisjonsområde
+    $D_f = [-1, 2)$. Tegn en skisse av grafen til $f$.
+\end{problem}
+
+\begin{solution}
+    Løsningen er vist i \cref{fig:MAT-0001-Problem-2-1-2}, men hvordan kommer vi dit? Det enkleste er nok først å bare regne ut noen verdier, som vist i
+    \cref{tab:MAT-0001-Problem-2-1-2} deretter kan vi markere disse punktene på grafen, også trekke en linje mellom dem. I utgangspunktet trenger vi bare $2$ punkter for å tegne en rett linje, men her tok vi med $4$.
+\end{solution}
+
+\hvisLF{%
+    \medskip
+    \hspace{-3cm}
+    \begin{minipage}{\textwidth}
+        \centering
+        \begin{tikzpicture}
+          \begin{axis}[
+            UiTplotstyle,
+            ytick={-5,-4,...,1},
+            xtick={-1,0,1,2},
+            % x tick label style={below right},
+            % y tick label style={above left,},
+            ymin=-5.5,
+            ymax= 1.5,
+            xmin=-1.5,
+            xmax= 2.5,
+            legend style={at={(0.25,0.145)},anchor=west},
+            legend cell align={left},
+            ]
+            \addplot+[domain=-1:2, mark=none, ultra thick, UiT-blue] {2*x - 3};
+            \legend{$f(x) = 2x - 3$}
+            \addplot+[domain=-1:2, mark=*, only marks, samples=4, mark options={ultra thick, color=UiT-blue, fill=white, scale=1.5}] {2*x - 3};
+          \end{axis}
+        \end{tikzpicture}
+        \captionof{figure}{}
+        \label{fig:MAT-0001-Problem-2-1-2}
+    \end{minipage}%
+    \hspace{-7cm}
+    \begin{minipage}{\textwidth}
+        \centering
+        \captionof{table}{}
+        \begin{tabular}{c|r r r r}
+          \toprule
+               $x$  & $-1$ &  $0$ &  $1$ & $\phantom{-}2$ \\
+          \midrule
+             $f(x)$ & $-5$ & $-3$ & $-1$ & $1$ \\ 
+          \bottomrule
+        \end{tabular}
+        \label{tab:MAT-0001-Problem-2-1-2}
+    \end{minipage}%
+}
+
+%==============================================================================%
+%                               PROBLEM 2.1.3                                  %
+%==============================================================================%
+
+\begin{problem}[3]
+    Tegn grafen til funksjonen $g$ bestemt ved at $D_g = (-\infty, 3]$ og
+    %
+    \begin{equation*}
+        g(x) = \begin{cases}
+            x  - 2             & \text{hvis} \phantom{1 <.} x \neq -2, \\
+            \phantom{x-}\ \, 5 & \text{hvis} \phantom{1 <.} x = -2, \\
+            x                  & \text{hvis} \ 1 < x \leq 3.
+        \end{cases}
+    \end{equation*}
+\end{problem}
+
+\begin{solution}
+    Akkurat som før begynner vi med å sette opp en tabell med $x$ og $y$ verdier. 
+    Det viktige her er at vi må ha ett området som er stort nok til å få med alle 
+    bitene av funksjonen. Når $x \leq -2$ så er $g(x) = x - 2$ og tilsvarende når
+    $x > 3$ så er også $g(x) = x - 2$. Slik at dersom $x \in [-3, 4]$ får vi med
+    hele oppførselen til $g$. De tilhørende verdiene er vist i 
+    \cref{tab:MAT-0001-Problem-2-1-3}
+    
+    \begin{center}
+        \captionof{table}{}
+        \label{tab:MAT-0001-Problem-2-1-3}
+        \begin{tabular}{h | j j j j j j j j }
+            \toprule
+               x  & -3 & -2 & -1 & 0 & 1 & \phantom{-}2 & \phantom{-}3 & \phantom{-}4  \\
+            \midrule
+             f(x) & -5 & 5 & -5 & -2 & -1 & 2 & 3 & -1 \\ 
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    
+    Dersom vi tegner en strek mellom disse punktene $(-1, -3), (0,-2), \ldots$
+    får vi \cref{fig:MAT-0001-Problem-2-1-2}. Merk, det er viktig å passe på hva
+    verdien er i skjøtepunktene. Eksempelvis så er $g(1) = -1$ selv om $g(\num{1.0001}) = \num{1.0001}$
+    fordi $g(x) = x - 2$ når $x \in (-2,1]$, men $g(x) = x$ når $x \in (1,3)$.
+\end{solution}
+
+\hvisLF{%
+    \begin{figure}[htbp!]
+        \centering
+    \begin{tikzpicture}[
+          declare function={
+            func(\x)= (\x < -2) * (\x - 2) +
+                      (\x == -2) * (5)   +
+                      and(\x > -2, \x <= 1) * (\x - 2)     +
+                      and(\x > 1, \x <= 3) * (\x)     +
+                      (\x > 3) * (\x - 5)
+           ;
+          }
+        ]
+          \begin{axis}[
+            UiTplotstyle,
+            ytick={-5,-4,...,5},
+            xtick={-3,-2,...,4},
+            % x tick label style={below right},
+            % y tick label style={above left,},
+            ymin=-5.5,
+            ymax= 5.5,
+            xmin=-3.5,
+            xmax= 4.5,
+            legend style={at={(0.25,0.145)},anchor=west},
+            legend cell align={left},
+            ]
+            \addplot+[domain=-3:4, samples=200, mark=none, ultra thick, UiT-blue] {func(x)};
+            \addplot+[domain=-3:4, mark=*, only marks, samples=8, mark options={ultra thick, color=UiT-blue, fill=white, scale=1.5}] {func(x)};
+          \end{axis}
+        \end{tikzpicture}
+        \caption{}
+        \label{fig:MAT-0001-Problem-2-1-2}
+    \end{figure}
+}
+
+%==============================================================================%
+%                               PROBLEM 2.1.5                                  %
+%==============================================================================%
+
+\begin{problem}[5]
+    Undersøk hvilke av følgende utsagn som definerer $y$ som en funksjon av $x$
+\end{problem}
+
+\begin{subproblem}
+    $2x - 2y = 5$ \UiTcorrect
+\end{subproblem}
+
+\begin{solution}
+    En enkel måte er å se om det er mulig å løse likningen med hensyn på $y$.
+    Altså om det for enhver $x$ eksisterer en \emph{unik} tilhørende $y$ verdi.
+    %
+    \begin{equation}
+        2x - 2y = 5
+        \ \rightarrow \ 
+        2y = 5 - 2x
+        \ \rightarrow \
+        y = \frac{5}{2} - x.
+    \end{equation}
+    %
+    Altså definerer uttrykket $2x - 2y = 5$, $y$ som en funksjon av $x$.
+\end{solution}
+
+\begin{subproblem}
+    $x^2 + y^2 = 1$ \UiTwrong
+\end{subproblem}
+
+\begin{solution}
+    Vi ser igjen om det er mulig å løse likningen med hensyn på $y$
+    %
+    \begin{equation}
+        x^2 + y^2 = 1
+        \ \rightarrow \ 
+        y^2 = 1 - x^2
+        \ \rightarrow \
+        y = \pm \sqrt{1 - x^2}.
+    \end{equation}
+    %
+    Hvor vi ser at dersom $x \neq 0$ så har hver $y$ verdi \emph{to} tilhørende $x$
+    verdier.
+    Altså definerer \emph{ikke} uttrykket $2x - 2y = 5$, $y$ som en unik funksjon av $x$.
+\end{solution}
+
+\begin{subproblem}
+    $y$ er overflaten av en kule med volum $x$ \UiTwrong
+\end{subproblem}
+
+\begin{solution}
+    Arealet av en sfære er $y=4\pi r^2$ så først må vi finne radiusen
+    \begin{align*} 
+        \text{Volum:} \ x &= \frac{4}{3}\pi r^3 \ \Rightarrow \ r = \sqrt[3]{\frac{3x}{4\pi}} \\
+        \text{Areal:} \ y &= 4 \pi r^2 = 4 \pi \biggl(\sqrt[3]{\frac{3x}{4\pi}}\biggr)^{2}= 6^{\frac{2}{3}}\pi^{\frac{1}{3}} x^{\frac{2}{3}}
+    \end{align*}
+    Slik at vi ser at for ethvert volum $x$ så eksisterer det ett unikt tilhørende
+    areal $y$. Intuitivt gir dette mening, da en kule med volum $x$ ikke kan ha
+    flere ulike overflateareal.
+\end{solution}
+
+\begin{subproblem}
+    $y$ er omkretsen av et rektangel med areal $x$ \UiTcorrect
+\end{subproblem}
+
+\begin{solution}
+    Akkurat som i forrige oppgave må vi tenke om det eksisterer rektangler som
+    har samme areal, men ulike omkretser. Jeg er sikker på at du klarer å komme
+    på noen eksempler om du tenker litt. Slik at utsagnet ikke stemmer, men la 
+    oss for ordens skyld sette det opp formelt. La rektangelet ha lengde $l$ og
+    bredde $x$
+    \begin{align*} 
+        \text{areal:} \   x = lb \qquad \text{og} \qquad
+        \text{omkrets:} \ y = 2l + 2b = 2(1 + \frac{x}{l}) 
+    \end{align*}
+    Dersom for eksempel arealet er $x = 12$ så ser vi at vi kan variere
+    lengden av rektangelet $l$ og få ulike verdier for omkretsen.
+    Se \cref{fig:MAT-0001-Problem-2-1-5} 
+    for eksempler på rektangler med samme areal, men ulik omkrets.
+    
+    \begin{center}
+        \begin{tikzpicture}[rectangle style/.style={thick,UiT-blue},scale=0.75]
+        \draw[step=1.0,gray,thin,dashed] (0,0) grid (12,8);
+        \draw[rectangle style] (0,0) rectangle ++(12,1);
+        \draw[rectangle style] (0,2) rectangle ++(2,6);
+        \draw[rectangle style] (3,2) rectangle ++(3,4);
+        \draw[rectangle style] (7,2) rectangle ++(3.46410,3.46410);
+        \end{tikzpicture}
+        \captionof{figure}{}
+        \label{fig:MAT-0001-Problem-2-1-5}
+    \end{center}
+\end{solution}
+
+%==============================================================================%
+%                               PROBLEM 2.1.7                                  %
+%==============================================================================%
+
+\begin{problem}[7]
+    Skisser grafen til $f(x) = 2x^2 + 4x + 1$.
+\end{problem}
+
+\begin{solution}
+    En metode er som før og plotte masse punkter, men en smartere måte 
+    kan være å gjøre
+    %
+    \begin{itemize}
+        \item Ekstremalpunkt: (Topp-,bunnpunkt)
+        \item Nullpunkt: Hvor $f$ skjærer $x$-aksen
+        \item Hvor $f$ skjærer $y$-aksen
+        \item Tegne fortengslinje for $f$
+        \item Tegne fortegnslinje for $f'$
+    \end{itemize}
+    %
+    Da vil en få en mye mer naturlig fremstilling av funksjonen enn hva
+    punktene vil gi oss. 
+    %
+    \begin{align*}
+        2x^2 + 4x + 1 = 0
+         \ \Rightarrow \ x = \frac{-4 \pm \sqrt{4^2 - 4\cdot 2}}{2 \cdot 2} = -1 \pm \frac{\sqrt{2}}{2} = -1 \pm \frac{1}{\sqrt{2}} 
+    \end{align*}
+    %
+    Hvor vi nå definerer $x_{-} = -1 - 1/2\sqrt{2}$ og $x_{+} = -1 + 1/\sqrt{2}$.
+    Anta nå at vi ikke har en kalkulator tilgjengelig, hvordan skal vi finne ut 
+    hvor punktene $(x_{-},0)$ og $(x_{+}, 0)$ befinner seg? Vel, siden 
+    $1 < \sqrt{2} < 2$ får vi følgende ulikheter
+    %
+    \begin{align*}
+          -2 &= -1 - \frac{1}{1} < -1 - \frac{1}{\sqrt{2}} < -1 - \frac{1}{2} = - \frac{3}{2} \\
+-\frac{1}{2} &= -1 + \frac{1}{2} < -1 + \frac{1}{\sqrt{2}} < -1 + \frac{1}{1} = 0
+    \end{align*}
+    %
+    Slik at $-2 < x_{-} < -\num{1.5}$ og $\num{-0.5}<x_{+}<0$, som er mer enn nøyaktig nok for en skisse.
+    Mens den deriverte er $f'(x) = 4x + 4$ slik at $f'(x) = 0 \Rightarrow x = -1$.
+    Vi er nå klar til å drøfte funksjonen i en fortegnslinje
+    
+    \begin{center}
+        \begin{functionallines}[
+            extra x tick labels={$x_{-}$,$x_{+}$},
+            xtick={-2, -1, 0, 1, 2}]{-1.7071,-0.29289}{-2.5:1}
+            \functionalline[x - x_{-}]{x+1.7071}{1}{-1.7071}
+            \functionalline[x - x_{+}]{x+0.29289}{2}{-0.29289}
+            \functionalline[f(x)]{(x+1.7071)*(x+0.29289)}{3}{-1.7071,-0.29289}
+            \functionalline[f'(x)]{4*x + 4}{4}{-1}
+        \end{functionallines}
+    \end{center}
+    
+    Hvor vi ser at funksjonen synker frem til $x_{-}$, så krysser den $x$-aksen
+    og fortsetter å synke til den når bunnpunktet $(-1,-1)$. Deretter stiger den
+    til den når $x_{+}$ også fortsette den å stige. Grafen til $f(x)$ er vist i
+    \cref{fig:MAT-0001-Problem-2-1-2} hvor vi plasserte $x_{-}$ ca midt mellom
+    $-2$ og $-1.5$ og $x_{+}$ ca midt mellom $-\num{0.5}$ og $0$.
+\end{solution}
+
+\hvisLF{%
+    \begin{figure}[htbp!]
+        \centering
+    \begin{tikzpicture}
+          \begin{axis}[
+            UiTplotstyle,
+            ytick={-5,-4,...,7},
+            xtick={-3,-2,...,4},
+            % x tick label style={below right},
+            % y tick label style={above left,},
+            ymin=-1.5,
+            ymax= 4.25,
+            xmin=-2.75,
+            xmax= 1.25,
+            domain = -2.5:0.5,
+       after end axis/.code={
+          \path (axis cs:0,0) 
+          node [anchor=north west,yshift=-0.075cm] {0};
+        }
+          ]
+            \addplot[smooth, mark=none, ultra thick, UiT-blue] {2*x*x + 4*x + 1};
+            \addplot+[only marks,mark=*,thick,UiT-blue,mark options = {scale=1.5,fill=white}] plot coordinates
+                { (-2,1) (-1,-1) (0,1)};
+            \addplot+[only marks,mark=*,thick,UiT-orange,mark options = {scale=1.5,fill=white}] plot coordinates
+                { (-1.7071,0) (-0.29289,0)};
+          \end{axis}
+        \end{tikzpicture}
+        \caption{}
+        \label{fig:MAT-0001-Problem-2-1-2}
+    \end{figure}
+}
+
+\newpageNotLF
+
+%==============================================================================%
+%                                SEKSJON 2.2                                   %
+%==============================================================================%
+
+\UNIsection
+
+%==============================================================================%
+%                               PROBLEM 2.2.1                                  %
+%==============================================================================%
+
+\begin{problem}[1]
+    La $f$ være funksjonen gitt ved
+    %
+    \begin{equation}
+        \label{eq:MAT-0001-Problem-2-2-1}
+        f(x) = 3 + \frac{1}{x}, \qquad D_f = (0, \infty).
+    \end{equation}
+\end{problem}
+
+\begin{subproblem}
+    Hva skjer med $f(x)$ når $x$ nærmer seg $0$?
+\end{subproblem}
+
+\begin{solution}
+    Siden definisjonsområdet er $(0, \infty)$ så kan vi bare
+    nærme oss $0$ fra høyre $\leftarrow$. Et kjent triks er at vi kan la
+    $x = 1/n$ hvor $n$ er ett naturlig tall. At $x \to 0^+$ er det samme som at 
+    $n \to \infty$. Hvor vi indikerte at vi beveger oss fra 
+    den positive siden mot null ved å bruke $0^{+}$. Innsetning gir
+    %
+    \begin{equation*}
+        f(x) = f(\frac{1}{n}) = 3 + \frac{1}{(1/n)} = 3 + n
+    \end{equation*}
+    %
+    Hvor det er veldig enkelt å se at $f(x) \to \infty$ når $n \to \infty$
+    som vi husker var det samme som at $x \to 0^{+}$.
+\end{solution}
+
+\begin{subproblem}
+    Vis at $f$ er injektiv. Finn $V_f$.
+\end{subproblem}
+
+\begin{solution}
+    Begrepet injektiv kan være litt vanskelig, men det betyr at hver eneste funksjonsverdi $y$ har maksimalt én tilhørende x-verdi. En måte å vise dette på er å vise at \cref{eq:MAT-0001-Problem-2-2-1} bare synker eller bare vokser\footnote{Fjonge matematikkere kaller gjerne dette for monotont voksende eller monotont synkende funksjoner.}.
+    Om du tenker litt etter så er det ikke mulig at funksjonsverdien $y$ har flere tilhørende
+    $x$-verdier dersom $y$ er voksende eller synkende. 
+    %
+    \begin{equation}
+        f'(x) = -\frac{1}{x^2}
+    \end{equation}
+    %
+    Siden $x \in (0, \infty)$ er $f'(x) < 0$ for alle $x \in D_f$ slik at $f$ er monotont synkende. 
+    Dette betyr igjen at funksjonen vår er injektiv! Mens verdimengden er alle mulige $x$-verdier
+    vi kan ha, er verdimengden alle mulige $y$-verdier funksjonen vår kan oppnå. 
+    Siden $f(x) \to \infty$ når $x \to 0^{0}$ og $f(x) \to 3$ når $x \to \infty$ så blir
+    $V_f = (3,\infty)$. Kan kan altså nå alle $y$-verdier høyere enn $3$, som gir veldig mye mening 
+    når du tegner grafen.
+\end{solution}
+
+\begin{subproblem}
+    Finn den inverse funksjonen $f^{-1}$ til $f$. Angi definisjonsmengde for $f^{-1}$.
+\end{subproblem}
+
+\begin{solution}
+    En måte å finne inversen på er å løse \cref{eq:MAT-0001-Problem-2-2-1} med hensyn på $x$
+    %
+    \begin{equation}
+        f(x) = 3 + \frac{1}{x} \ \Rightarrow \ 
+        x = \frac{1}{f(x) - 3} \ \Rightarrow \ 
+        f^{-1}(x) = \frac{1}{x - 3}
+    \end{equation}
+    %
+    Hvor vi ser at for hver $y = f(x)$ så eksisterer det en unik tilhørende $x$ verdi, gitt ved
+    formelen ovenfor. Den enkleste måten er å si at
+    %
+    \begin{equation}
+        D_f \Leftrightarrow V_{f^{-1}} 
+        \quad \text{og} \quad 
+        V_f \Leftrightarrow D_{f^{-1}} 
+    \end{equation}
+    %
+    Men vi kan og se dette fra likningen $f^{-1}(x) = 1/(x - 3)$. Nå er $f^{-1}(x)$ alle
+    $x$-verdiene funksjonen vår kan ta, siden $x$ er positiv må også $1/(x - 3)$ være det.
+    Dette betyr at definisjonsmengden til $f^{-1}$ er $D_{f^{-1}} = (3, \infty)$ som er det
+    samme som $V_f$.
+\end{solution}
+
+\begin{subproblem}
+    Hva skjer med $f^{-1}(x)$ når $x$ blir stor?    
+\end{subproblem}
+
+\begin{solution}
+    For store $x$ har vi at $f^{-1} = 1/(x -3) \to 0$ når $x \to \infty$.
+    Som igjen gir mening for den inverse funksjonen har jo vi bare byttet om 
+    på $x$ og $y$. Siden $f \to \infty$ når $x \to 0^+$ må vi nødvendigvis ha
+    at $f^{-1} \to 0$ når $x \to \infty$.
+\end{solution}
+
+\begin{subproblem}
+    Tegn grafene til $f$ og $f^{-1}$ på samme figur.
+\end{subproblem}
+
+\begin{solution}
+    Vi har tegnet $f$ og $f^{-1}$ i \cref{fig:MAT-0001-Problem-2-2-1-e}.
+    Det som kan være viktig å merke seg er at $f^{-1}$ hele tiden er 
+    speilet omkring linjen $y = x$. Dette er jo fordi 
+    $f(x) = y \Leftrightarrow f^{-1}(y) = x$ så for hvert punkt $(x^*, y^*)$
+    som ligger på grafen til $f$ så ligger ett tilsvarende punkt $(y^*, x^*)$
+    på grafen til $f^{-1}$.
+\end{solution}
+
+\hvisLF{%
+    \begin{figure}[htbp!]
+        \centering
+    \begin{tikzpicture}
+          \begin{axis}[
+            UiTplotstyle,
+            ytick={-5,-4,...,7},
+            xtick={-3,-2,...,5},
+            % x tick label style={below right},
+            % y tick label style={above left,},
+            ymin= 0,
+            ymax= 5.25,
+            xmin=-0.25,
+            xmax= 5.25,
+            domain = 0.01:5,
+       after end axis/.code={
+          \path (axis cs:0,0) 
+          node [anchor=north west,yshift=-0.075cm] {0};
+        }
+          ]
+            \addplot[mark=none, ultra thick, UiT-blue] {3 + 1/x};
+            \addplot[domain=3.1:5, mark=none, ultra thick, UiT-orange] {1/(x - 3)};
+            \addplot[domain=0:5, mark=none, dashed, ultra thick, black] {x};
+          \end{axis}
+        \end{tikzpicture}
+        \caption{}
+        \label{fig:MAT-0001-Problem-2-2-1-e}
+    \end{figure}
+}
+
+\begin{subproblem}
+    Vis at
+    \begin{subsubproblem*}
+        \item $f^{-1}\bigl(f(x)\bigr) = x \ \forall\footnote{Symbolet $\forall$ er en \bquote{universal quantification} og leses som \emph{for alle} på Norsk.} \ x \in D_f$,
+        \label{subsubproblem:MAT-0001-Problem-2-2-1-e-i}
+        \item $f\bigl(f^{-1}(x)\bigr) = x \ \forall \ x \in V_f$.
+        \label{subsubproblem:MAT-0001-Problem-2-2-1-e-ii}
+    \end{subsubproblem*}
+\end{subproblem}
+
+\begin{solution}
+    \Opg{subsubproblem:MAT-0001-Problem-2-2-1-e-i} Rett frem regning gir
+    %
+    \begin{equation}
+          f^{-1}\bigl(f(x)\bigr)
+        = \frac{1}{f(x) - 3}
+        = \frac{1}{(3 + \frac{1}{x}) - 3}
+        = \frac{1}{1/x} \frac{x}{x}
+        = x
+    \end{equation}
+    \Opg{subsubproblem:MAT-0001-Problem-2-2-1-e-i} Helt tilsvarende så får vi
+    %
+    \begin{equation}
+          f\bigl(f^{-1}(x)\bigr)
+          = 3 + 1 \left/\biggl(\frac{1}{x - 3}\biggr)\right.
+          = 3 + (x - 3)
+          = x
+    \end{equation}
+\end{solution}
+
+%==============================================================================%
+%                                SEKSJON 2.3                                   %
+%==============================================================================%
+
+\UNIsection[2]
+
+%==============================================================================%
+%                               PROBLEM 2.3.1                                  %
+%==============================================================================%
+
+\begin{problem}[1]
+    Angi følgende punktmengde ved et skavert område i $xy$-planet:
+    %
+    \begin{equation*}
+        \Set{(x,y) \given x - y \geq 2}.
+    \end{equation*}
+\end{problem}
+
+\begin{solution}
+    Vi ønsker altså området slik at $y \leq x - 2$ ved å snu om på
+    ulikheten $x - y \geq 2$.Med andre ord ønsker vi området 
+    under eller på linjen $y = x - 2$. Dette området er vist i \cref{fig:MAT-0001-Problem-2-3-1-e}
+\end{solution}
+
+\hvisLF{%
+    \begin{figure}[htbp!]
+        \centering
+        \begin{tikzpicture} 
+            \begin{axis}[%
+                    UiTplotstyle,
+                    ytick={-5,-4,...,7},
+                    xtick={-3,-2,...,5},
+                    % x tick label style={below right},
+                    % y tick label style={above left,},
+                    ymin= -3.5,
+                    ymax=  3.5,
+                    xmin= -1.5,
+                    xmax=  5.5,
+                    domain=-2:6,
+               after end axis/.code={
+                  \path (axis cs:0,0) 
+                  node [anchor=north west,yshift=-0.075cm] {0};
+                }]
+            \addplot[no markers, draw=none,name path=f] {x - 2};
+            \addplot+[no markers, draw=none,name path=axis] {-3.5};
+        
+            \addplot [
+                thick,
+                color=UiT-blue,
+                fill=UiT-blue, 
+                fill opacity=0.2
+            ]
+            fill between[
+                of=f and axis,
+                soft clip={domain=-3:6},
+            ];
+            \end{axis}
+        \end{tikzpicture} 
+        \caption{}
+        \label{fig:MAT-0001-Problem-2-3-1-e}
+    \end{figure}
+}
+
+%==============================================================================%
+%                               PROBLEM 2.3.2                                  %
+%==============================================================================%
+
+\begin{problem}[2]
+    Følgende uliketer bestemmer et trapesformet området i $xy$-planet
+    %
+    \begin{equation}
+        x \geq 0, \qquad 
+        y \geq 0, \qquad 
+        x + y \geq 2, \qquad 
+        x + y \leq 4.
+    \end{equation}
+    %
+    Skaver området, og bestem områdets hjørner.
+\end{problem}
+
+\begin{solution}
+    Det enkleste på en slik oppgave er å først bare tegne linjene uten ulikheter
+    %
+    \begin{equation*}
+        x = 0, \qquad 
+        y = 0, \qquad 
+        x + y = 2, \qquad 
+        x + y = 4.
+    \end{equation*}
+    %
+    Som vist i \cref{fig:MAT-0001-Problem-2-3-2} det er nå enkelt å se hvilket området
+    som ulikhetene avgrenser. Hjørnene er $\Set{(2,0), (4,0), (0,4), (0,2)}$.
+\end{solution}
+
+\hvisLF{%
+    \begin{figure}[htbp!]
+        \centering
+        \begin{tikzpicture} 
+            \begin{axis}[%
+                    UiTplotstyle,
+                    ytick={-5,-4,...,7},
+                    xtick={-3,-2,...,5},
+                    xmin=-1, xmax=5,
+                    ymin=-1, ymax=5,
+                    legend cell align={left},
+               after end axis/.code={
+                  \path (axis cs:0,0) 
+                  node [anchor=north west,yshift=-0.075cm] {0};
+                }]
+       \addplot[samples=100, ultra thick, UiT-blue,domain=-1:3, name path=A] {2 - x)}; 
+      \addplot[samples=50, ultra thick, UiT-orange, domain=-1:5,name path=B] {4 - x}; 
+      \path[name path=xaxis] (\pgfkeysvalueof{/pgfplots/xmin}, 0) -- (\pgfkeysvalueof{/pgfplots/xmax},0);
+       \addplot[color=UiT-main, pattern=north west lines,forget plot] fill between[of=B and xaxis, soft clip={domain=2:4}];
+      \addplot[color=UiT-main, pattern=north west lines,forget plot] fill between[of=A and B, soft clip={domain=0:2}];
+      \addplot +[mark=none,ultra thick, color=UiT-green] coordinates {(0, -1) (0, 5)};
+      \addplot +[mark=none,ultra thick, color=UiT-red] coordinates {(-1, 0) (5, 0)};
+      \legend{$y = 2-x$, $y = 4-x$, $x = 0$, $y = 0$}
+        \addplot+[only marks,mark=*,thick,UiT-blue,mark options = {scale=1.5,fill=white}] plot coordinates
+                { (2,0) (4,0) (0,4) (0,2)};
+    \end{axis}
+        \end{tikzpicture} 
+        \caption{}
+        \label{fig:MAT-0001-Problem-2-3-2}
+    \end{figure}
+}
+
+%==============================================================================%
+%                               PROBLEM 2.3.3                                  %
+%==============================================================================%
+
+\begin{problem}[3]
+    Følgende uliketer bestemmer et trapesformet området i $xy$-planet
+    %
+    \begin{equation}
+        x \geq 0, \qquad 
+        y \geq 0, \qquad 
+        x + y \leq 2.
+    \end{equation}
+\end{problem}
+
+\begin{solution}
+    Igjen ved å tegne linjene
+    %
+    \begin{equation}
+        x = 0, \qquad y = 0, \qquad x + y = 2
+    \end{equation}
+    %
+    får vi \cref{fig:MAT-0001-Problem-2-3-3}.
+\end{solution}
+
+\hvisLF{%
+    \begin{figure}[htbp!]
+        \centering
+        \begin{tikzpicture} 
+            \begin{axis}[%
+                    UiTplotstyle,
+                    ytick={-5,-4,...,7},
+                    xtick={-3,-2,...,5},
+                    xmin=-1.25, xmax=3.25,
+                    ymin=-1.25, ymax=3.25,
+                    legend cell align={left},
+               after end axis/.code={
+                  \path (axis cs:0,0) 
+                  node [anchor=north west,yshift=-0.075cm] {0};
+                }]
+       \addplot[samples=100, ultra thick, UiT-blue,domain=-1:3, name path=A] {2 - x)}; 
+      \path[name path=xaxis] (\pgfkeysvalueof{/pgfplots/xmin}, 0) -- (\pgfkeysvalueof{/pgfplots/xmax},0);
+       \addplot[color=UiT-main, pattern=north west lines,forget plot] fill between[of=A and xaxis, soft clip={domain=0:2}];
+      \addplot +[mark=none,ultra thick, color=UiT-green] coordinates {(0, -1.25) (0, 3.25)};
+      \addplot +[mark=none,ultra thick, color=UiT-red] coordinates {(-1.25, 0) (3.25, 0)};
+      \legend{$y = 2-x$, $x = 0$, $y = 0$}
+        \addplot+[only marks,mark=*,thick,UiT-blue,mark options = {scale=1.5,fill=white}] plot coordinates
+                {(2,0) (0,0) (0,2)};
+       \addplot[black,domain=-1:3] {-1 - 2*x)}; 
+       \addplot[black,domain=-1:3] { 0 - 2*x)}; 
+       \addplot[black,domain=-1:3] { 1 - 2*x)};
+       \addplot[black,domain=-1:3] { 2 - 2*x)};
+       \addplot[black,domain=-1:3] { 3 - 2*x)}; 
+       \addplot[black,domain=-1:3] { 4 - 2*x)}; 
+    \end{axis}
+        \end{tikzpicture} 
+        \caption{}
+        \label{fig:MAT-0001-Problem-2-3-3}
+    \end{figure}
+}
+
+\begin{subproblem}
+    \label{subproblem:MAT-0001-Problem-2-3-3-a}
+    Skaver området, og bestem områdets hjørner.
+\end{subproblem}
+
+\begin{solution}
+    Igjen så er det skaverte området vist i \cref{fig:MAT-0001-Problem-2-3-3},
+    mens hjørnene er gitt som $\Set{(2,0) (0,0) (0,2)}$.
+\end{solution}
+
+\begin{subproblem}
+    Skisser, på samme figur som i \cref{subproblem:MAT-0001-Problem-2-3-3-a}, 
+    noen nivålinjer for funksjonen
+    %
+    \begin{equation*}
+        f(x, y) = 2x + y.
+    \end{equation*}
+\end{subproblem}
+
+\begin{subproblem}
+    Hvor i området har $f$ sin største og minste verdi?
+\end{subproblem}
+
+\begin{solution}
+    Her må vi se hvilke av nivålinjene som går igjennom hjørnene til området vårt.
+    Vi ser at det er tre nivålinjer som gjør dette
+    %
+    \begin{align*}
+        & 0 = 2x + y \ \text{treffer} \ \vek{x}_1 = (0,0), \ f(\vek{x}_1) = 2 \cdot 0 + 0 = 0 \\
+        & 2 = 2x + y \ \text{treffer} \ \vek{x}_2 = (0,2), \ f(\vek{x}_2) = 2 \cdot 0 + 2 = 2 \\
+        & 4 = 2x + y \ \text{treffer} \ \vek{x}_3 = (2,0), \ f(\vek{x}_3) = 2 \cdot 2 + 0 = 4
+    \end{align*}
+    %
+    \begin{itemize}
+        \item Funksjonen $f$ oppnår sin \emph{maksimale verdi} i punktet 
+          $\vek{x}_{\text{maks}} = (2,0)$ med tilhørende verdi 
+          $f_{\text{maks}} = f(\vek{x}_{\text{maks}}) = 4$.
+        \item Funksjonen $f(x)$ oppnår sin \emph{minimale verdi} i punktet 
+          $\vek{x}_{\text{min}} = (0,0)$ med tilhørende verdi 
+          $f_{\text{min}} = f(\vek{x}_{\text{min}}) = 0$.
+    \end{itemize}
+\end{solution}
+
+%==============================================================================%
+%                                SEKSJON 2.X                                   %
+%==============================================================================%
+
+\UNIsection*
+
+%==============================================================================%
+%                               PROBLEM 2.X.3                                  %
+%==============================================================================%
+
+\begin{problem}[3]
+    \textit{Flytting av grafer}. I denne oppgaven skal vi studere hvilken effekt 
+    det har på grafen til en funksjon at vi endrer funksjonsuttrykket på noen 
+    spesielle måter. Det er meningen du skal skissere på frihånd, uten 
+    kalkulator. Kvalitativ forståelse er poenget her.
+\end{problem}
+
+\begin{subproblem}
+    Skisser grafen til $f(x) = x^2$.
+\end{subproblem}
+
+\begin{solution}
+    Merk at funksjonen er symmetrisk omkring $y$-aksen, slik at vi bare
+    trenger å finne punkter til høyre for $y$-aksen, også speile verdiene.
+    Videre så vil funksjonen alltid kvadrere det vi legger inn. Dette gir
+    følgende verditabell
+    
+    \begin{center}
+        \begin{tabular}{j | *{4}h}
+            \toprule
+               x & 0 & 1 & 2 & 3 \\
+            \midrule
+            f(x) & 0 & 1 & 4 & 9 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+\end{solution}
+
+\hvisLF{%
+    \begin{figure}[htbp!]
+        \centering
+        \begin{tikzpicture} 
+            \begin{axis}[%
+                    UiTplotstyle,
+                    ytick={-1,0,...,9},
+                    xtick={-3,-2,...,5},
+                    xmin=-3.25, xmax=3.25,
+                    ymin=-0.25, ymax=9.25,
+                    domain = -3:3,
+               after end axis/.code={
+                  \path (axis cs:0,0) 
+                  node [anchor=north west,yshift=-0.075cm] {0};
+                }]
+       \addplot[ultra thick, UiT-blue, smooth] {\x*\x)}; 
+       \addplot+[only marks,mark=*,thick,UiT-blue,mark options = {scale=1.5,fill=white}] plot coordinates
+                {(-3,9) (-2,4) (-1,1) (0,0) (1,1) (2,4) (3,9)};
+    \end{axis}
+        \end{tikzpicture} 
+        \caption{}
+        \label{fig:MAT-0001-Problem-2-3-3}
+    \end{figure}
+}
+
+\begin{subproblem}
+    Skisser grafen til $f(x) = x^2 + 3$. Hvilken effekt hadde det på grafen 
+    at vi la til $3$ i funksjonsuttrykket?
+\end{subproblem}
+
+\begin{solution}
+    Igjen så kan vi gjøre akkurat det samme som sist. Vi lager en verditabell, også plotter vi punktene fra verditabellen. Igjen så er funksjonen vår symmetrisk så vi plotter bare punktene til høyre for $x$-aksen.
+    
+    \begin{center}
+        \begin{tabular}{j | *{4}h}
+            \toprule
+               x & 0 & 1 & 2 & 3 \\
+            \midrule
+            f(x) & 3 & 4 & 7 & 12 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    
+\end{solution}
+
+\hvisLF{%
+    \begin{figure}[htbp!]
+        \centering
+        \begin{tikzpicture} 
+            \begin{axis}[%
+                    UiTplotstyle,
+                    ytick={-1,0,...,9},
+                    xtick={-3,-2,...,5},
+                    xmin=-3.25, xmax=3.25,
+                    ymin=-0.25, ymax=9.25,
+                    domain = -3:3,
+               after end axis/.code={
+                  \path (axis cs:0,0) 
+                  node [anchor=north west,yshift=-0.075cm] {0};
+                }]
+       \addplot[ultra thick, UiT-blue, smooth] {\x*\x + 3)}; 
+       \addplot+[only marks,mark=*,thick,UiT-blue,mark options = {scale=1.5,fill=white}] plot coordinates
+                {(-3,12) (-2,7) (-1,4) (0,3) (1,4) (2,7) (3,12)};
+    \end{axis}
+        \end{tikzpicture} 
+        \caption{}
+        \label{fig:MAT-0001-Problem-2-3-3}
+    \end{figure}
+}
+
+\begin{subproblem}
+    Skisser grafen til $f(x) = x^2 - 4$.
+\end{subproblem}
+
+\begin{solution}
+    Igjen så kan vi gjøre akkurat det samme som sist. Vi lager en verditabell, også plotter vi punktene fra verditabellen. Igjen så er funksjonen vår symmetrisk så vi plotter bare punktene til høyre for $x$-aksen.
+    
+    \begin{center}
+        \begin{tabular}{j | *{4}h}
+            \toprule
+               x & 0 & 1 & 2 & 3 \\
+            \midrule
+            f(x) & -4 & -3 & 0 & 5 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    
+\end{solution}
+
+\hvisLF{%
+    \begin{figure}[htbp!]
+        \centering
+        \begin{tikzpicture} 
+            \begin{axis}[%
+                    UiTplotstyle,
+                    ytick={-4,-3,...,9},
+                    xtick={-3,-2,...,5},
+                    xmin=-3.25, xmax=3.25,
+                    ymin=-4.25, ymax=5.25,
+                    domain = -3:3,
+               after end axis/.code={
+                  \path (axis cs:0,0) 
+                  node [anchor=north west,yshift=-0.075cm] {0};
+                }]
+       \addplot[ultra thick, UiT-blue, smooth] {\x*\x - 4)}; 
+       \addplot+[only marks,mark=*,thick,UiT-blue,mark options = {scale=1.5,fill=white}] plot coordinates
+                {(-3,5) (-2,0) (-1,-3) (0,-4) (1,-3) (2,0) (3,5)};
+    \end{axis}
+        \end{tikzpicture} 
+        \caption{}
+        \label{fig:MAT-0001-Problem-2-3-3}
+    \end{figure}
+}
+
+\begin{subproblem}
+    Skisser grafen til $f(x) = 2x^2$. Hvilken effekt hadde det at vi ganget 
+    med $2$?
+\end{subproblem}
+
+\hvisLF{%
+    \begin{figure}[htbp!]
+        \centering
+        \begin{tikzpicture} 
+            \begin{axis}[%
+                    UiTplotstyle,
+                    ytick={-1,0,...,9},
+                    xtick={-3,-2,...,5},
+                    xmin=-3.25, xmax=3.25,
+                    ymin=-0.25, ymax=9.25,
+                    domain = -3:3,
+               after end axis/.code={
+                  \path (axis cs:0,0) 
+                  node [anchor=north west,yshift=-0.075cm] {0};
+                }]
+       \addplot[ultra thick, UiT-blue, smooth] {2*\x*\x)}; 
+       \addplot+[only marks,mark=*,thick,UiT-blue,mark options = {scale=1.5,fill=white}] plot coordinates
+                {(-3,18) (-2,8) (-1,2) (0,0) (1,2) (2,8) (3,18)};
+    \end{axis}
+        \end{tikzpicture} 
+        \caption{}
+        \label{fig:MAT-0001-Problem-2-3-3}
+    \end{figure}
+}
+
+\begin{solution}
+    Siden vi nå har $f(x) = 2x^2$ så øker $f$ \emph{dobbelt} så fort som $x^2$.
+    Vi kan dermed anta at funksjonen har lik form, men er \emph{smalere}
+    da den raskere når høyere verdier. 
+    
+    \begin{center}
+        \begin{tabular}{j | *{4}h}
+            \toprule
+               x & 0 & 1 & 2 & 3 \\
+            \midrule
+            f(x) & 0 & 2 & 8 & 18 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    
+\end{solution}
+
+\begin{subproblem}
+    Skisser grafen til $f(x) = -x^2$. Hvilken effekt hadde det på grafen at 
+    vi satte minustegn foran funksjonsuttrykket?
+\end{subproblem}
+
+\begin{solution}
+    Ved litt tenking ser vi at dette speiler funksjonen omkring $x$-aksen.
+    Som gir følgende verditabell
+    
+    \begin{center}
+        \begin{tabular}{j | *{4}h}
+            \toprule
+               x & 0 &  1 &  2 &  3 \\
+            \midrule
+            f(x) & 0 & -1 & -4 & -9 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+\end{solution}
+
+\hvisLF{%
+    \begin{figure}[htbp!]
+        \centering
+        \begin{tikzpicture} 
+            \begin{axis}[%
+                    UiTplotstyle,
+                    ytick={-9,-8,...,1},
+                    xtick={-3,-2,...,5},
+                    xmin=-3.25, xmax=3.25,
+                    ymin= -9.25, ymax=0.25,
+                    domain = -3:3,
+               after end axis/.code={
+                  \path (axis cs:0,0) 
+                  node [anchor=north west,yshift=-0.075cm] {0};
+                }]
+       \addplot[ultra thick, UiT-blue, smooth] {-\x*\x)}; 
+       \addplot+[only marks,mark=*,thick,UiT-blue,mark options = {scale=1.5,fill=white}] plot coordinates
+                {(-3,-9) (-2,-4) (-1,-1) (0,0) (1,-1) (2,-4) (3,-9)};
+    \end{axis}
+        \end{tikzpicture} 
+        \caption{}
+        \label{fig:MAT-0001-Problem-2-3-3}
+    \end{figure}
+}
+
+\begin{subproblem}
+    Skisser grafen til $f(x) = (x - 5)^2$. Hint: regn ut $f(5)$.
+    Hvilken effekt hadde det på grafen at vi erstattet $x$ med $(x - 5)$?
+\end{subproblem}
+
+\begin{subproblem}
+    Skisser grafene til $f(x) = -(x-5)^2$, $g(x)=-2(x-5)^2$, $h(x) = 4 - (x-5)^2$.
+\end{subproblem}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \drawQuadratic{-(\x-5)^2} 
+        \caption{$f(x) = -(x - 5)^2$}
+        \label{subfig:MAT-0001-Problem-2-3-3-e-i}
+    \end{subfigure}
+    \hfill %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \drawQuadratic{-2*(\x-5)^2} 
+        \caption{$g(x) = -2(x - 5)^2$}
+        \label{subfig:MAT-0001-Problem-2-3-3-e-ii}
+    \end{subfigure}
+    \hfill %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+    %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \drawQuadratic[0][4]{4-(\x-5)^2} 
+        \caption{$h(x) = 4-(x - 5)^2$}
+        \label{subfig:MAT-0001-Problem-2-3-3-e-iii}
+    \end{subfigure}
+    \caption{}\label{fig:MAT-0001-Problem-2-3-3-e}
+\end{figure}
+
+%==============================================================================%
+%                               PROBLEM 2.X.4                                  %
+%==============================================================================%
+
+\begin{problem}[4]
+    \label{problem:MAT-0001-Problem-2-X-4}
+    Finn et uttrykk for den omvendte funksjonen til $f$:
+\end{problem}
+
+\begin{subproblem}{3}
+    \item $f(x) = 2 - 3x$
+    \label{subproblem:MAT-0001-Problem-2-X-4-a}
+    \item $g(x) = 1 + x^3$
+    \label{subproblem:MAT-0001-Problem-2-X-4-b}
+    \item \vspace*{-0.8cm}$h(x) = \cfrac{1}{x - 1}$
+    \label{subproblem:MAT-0001-Problem-2-X-4-c}
+\end{subproblem}
+
+\begin{solution}
+    \def\flushspace{\hspace{2cm}}
+    \begin{alignat*}{6}
+           &\ref{subproblem:MAT-0001-Problem-2-X-4-a} \flushspace
+           f(x) &&= 2 - 3x 
+           &&\Rightarrow x 
+           &&= \frac{2 - f(x)}{3} 
+           &&\Rightarrow f^{-1}(x) 
+           &&= \frac{2 - x}{3} \flushspace \\
+         &\ref{subproblem:MAT-0001-Problem-2-X-4-b} \flushspace 
+           g(x) &&= 1 + x^3 
+           &&\Rightarrow x 
+           &&= \sqrt[3]{g(x) - 1} 
+           &&\Rightarrow g^{-1}(x) 
+           &&= \sqrt[3]{x - 1} \flushspace \\
+         &\ref{subproblem:MAT-0001-Problem-2-X-4-c} \flushspace
+           h(x) &&= \frac{1}{x - 1} 
+           &&\Rightarrow x 
+           &&= \frac{1}{h(x)} + 1  
+           &&\Rightarrow h^{-1}(x) 
+           &&= \frac{1}{x} + 1 \flushspace 
+    \end{alignat*}
+\end{solution}
+
+%==============================================================================%
+%                               PROBLEM 2.X.5                                  %
+%==============================================================================%
+
+\begin{problem}[5]
+    For hver av funksjonene i \cref{problem:MAT-0001-Problem-2-X-4}, vis ved 
+    utregning at for alle $a$ og $b$ har
+    %
+    \begin{equation*}
+        f^{-1}\bigl(f(a)\bigr) = a,
+        \qquad \text{og} \qquad 
+        f\bigl(f^{-1}(b)\bigr) = b.
+    \end{equation*}
+\end{problem}
+
+\newpageNotLF
+
+%==============================================================================%
+%                                NOTAT 2.6.6                                   %
+%==============================================================================%
+
+\UNInotat[2]{6}{6}
+
+\begin{align}
+  \langle&a\rangle
+  = \brak{a_1}^{p_1}\brak{a_2}^{p_2}\dots\brak{a_n}^{p_n},
+  \label{Mregel}\\
+  [&a]
+  = \,\bpar{a_1}^{p_1}\,\bpar{a_2}^{p_2}\,\dots\,\bpar{a_n}^{p_n}
+  \label{Bregel}.
+\end{align}
+
+Vi har altså at for enhver benevnt avledet
+størrelse $a$, så finnes det potenser $q_1,\dots,q_k$ slik at
+%
+\begin{equation}
+  \bpar{a} = d_1^{q_1}\cdots d_k^{q_k},\label{BasicUnitExpansion}
+\end{equation}
+%
+hvor $d_1,\cdots,d_k$ er kortnavnene for enhetene assosierte med de benevnte
+grunnstørrelsene.
+
+%==============================================================================%
+%                           NOTAT 2.6.6 | PROBLEM 3                            %
+%==============================================================================%
+
+\begin{problem}[3]
+    La følgene benevnte størrelser være gitt
+    \begin{align*}
+      a_1 &= \SI{3.30}{\m\tothe{\frac{1}{2}}%
+                                \s\cubed%
+                                \kg\tothe{\frac{1}{3}}},\\
+      a_2 &= \SI{4.50}{\m\tothe{-\frac{2}{3}}%
+                                \s\tothe{\frac{1}{2}}%
+                                \kg\tothe{\frac{1}{2}}},\\
+      a_3 &= \SI{6.71}{\m\squared%
+                                 \s\tothe{-\frac{1}{3}}\kg\cubed},
+    \end{align*}
+    og la $a$ være den benevnte avledede størrelsen
+    \begin{equation*}
+      a = a_1^2 a_2^{\tfrac{1}{2}} a_3^{\tfrac{1}{5}},
+    \end{equation*}
+\end{problem}
+\vspace{-0.5cm}
+\begin{subproblem}
+    Finn måltallet til $a$ ved å benytte
+    regelen \eqref{Mregel} for å finne måltallet til en benevnt avledet
+    størrelse.
+\end{subproblem}
+\vspace{-0.25cm}
+\begin{subproblem}
+    Vis, ved å benytte regelen \eqref{Bregel} for å finne
+    benevningen til en benevnt avledet størrelse, at benevningen til
+    $a$ kan skrives på formen \eqref{BasicUnitExpansion}. Angi hva
+    $k$, $d_1,\dots,d_k$ og $p_1,\dots, p_k$ er i dette tilfellet.
+\end{subproblem}
+\vspace{-0.25cm}
+\begin{subproblem}
+    Skift fra gamle enheter til nye enheter ved at
+    \begin{equation*}
+      \si{\kg} \rightarrow \si{\ct}, \qquad
+      \si{\s} \rightarrow \si{\hour}, \qquad
+      \si{\m} \rightarrow \si{\ft}.
+    \end{equation*}
+    Beregn måltall og benevning til $a$ med hensyn på de nye
+    enhetene på to måter
+    \begin{subsubproblem}
+        \label{subsubproblem:MAT-0001-Exercise-03-Problem-N-2.6.6.1-c-i}
+        Skift først enheter i $a_1$ og $a_2$ og finn de nye måltallene
+        og benevningene tilhørende disse to benevnte størrelsene. Finn så
+        nytt måltall og benevning til $a$ ved å bruke reglene fra \cref{Mregel,Bregel}.
+    \end{subsubproblem}
+    \begin{subsubproblem}
+        \label{subsubproblem:MAT-0001-Exercise-03-Problem-N-2.6.6.1-c-ii}
+        Bruk måltallet og benevningen til $a$ med hensyn på gamle
+        enheter, funnet i oppgavene a og b, til å direkte beregne måltallet
+        og benevningen til $a$ med hensyn på de nye enhetene.
+    \end{subsubproblem}
+\end{subproblem}
+
+%==============================================================================%
+%                          NOTAT 2.6.6 | PROBLEM 11                            %
+%==============================================================================%
+
+\begin{problem}[11]
+    \begin{subproblem}
+        La $E$, $T$, $\rho$ og
+        $r$ være benevnte størrelser hvor benevningene er gitt ved
+        \begin{align*}
+          \bpar{E}    &= \si{\kg\m\squared\per\s\squared},\\
+          \bpar{T}    &= \si{\s}\\
+          \bpar{\rho} &= \si{\kg\per\m\cubed}\\
+          \bpar{R}    &= \si{\m}.
+        \end{align*}
+        Vis at
+        \begin{equation*}
+          \alpha = E\,T^2 R^{-5} \rho^{-1}
+        \end{equation*}
+        er ubenevnt avledet størrelser.
+    \end{subproblem}
+\end{problem}
+\begin{subproblem}
+      La størrelsene fra a) ha måltall
+        \begin{align*}
+          \brak{E} &= \num{3.4},\\
+          \brak{T} &= \num{5.1},\\
+          \brak{\rho} &= \num{1.6},\\
+          \brak{R} &= \num{2.5}.
+        \end{align*}
+        Regn ut måltallet for størrelsen $\alpha$ fra a)og sjekk resultatet
+        du fant der ved å vise at dersom vi endrer enheter
+        \begin{align*}
+          \si{\m}&\rightarrow \si{\mm},\\
+          \si{\s}&\rightarrow \si{\hour},\\
+          \si{\kg}&\rightarrow g.
+        \end{align*}
+        så endres ikke måltallet for størrelsen $\alpha$.
+    \end{subproblem}
+    \begin{subproblem}
+        La oss betrakte en situasjon hvor en eksplosjon har funnet sted for
+        kort tid siden. La $r$ være radiusen til eksplosjonsskyen en tid $T$
+        etter at eksplosjonen fant sted og la $\rho$ være lufttettheten utenfor
+        eksplosjonsskyenen og $E$ energien som ble frigjort i eksplosjonen.
+        Eksperimenter med små eksplosjoner i laboratorium tyder på at den
+        ubenevnte avledede størrelsen har numerisk verdi nær $1$. La oss derfor
+        anta at $\alpha=1$ og la oss postulere at den samme verdien av $\alpha$
+        gjelder for alle eksplosjoner, store som små. Dette postulatet gir oss
+        en fysisk lov som uttrykker energien som utløser en eksplosjon ved hjelp
+        av de benevnte størrelsene $T$, $\rho$ og $r$
+        %
+        \begin{equation*}
+          E = R^{5} \rho\,t^{-2}
+        \end{equation*}
+        %
+        Den første test eksplosjonen av en atombombe ble utført i staten New
+        Mexico i USA i 1945. Måltallet for energien som ble frigjort ved
+        eksplosjonen ble hemmeligholdt da en ikke ønsket at land som Tyskland og
+        Sovjetunionen, som stod mot USA og de allierte i andre verdenskrig,
+        skulle få noe hint som kunne hjelpe dem til å konstruere egne
+        atombomber. Like etter ble imidlertid et bilde av eksplosjonskyen
+        $\SI{0.006}{\s}$ etter eksplosjonen publisert i et populærvitenskapelig
+        magasin. Bilde inkluderte en lengdeskala som gjorde det mulig å regne ut
+        at på dette tidspunkt etter eksplosjonen var radiusen til
+        eksplosjonsskyen ca. $\SI{80}{\m}$. Lufttettheten på eksplosjonsstedet
+        var ca.  $\SI{1.269}{\kg\per\m\cubed}$. Beregn energien frigjort ved
+        eksplosjonen.
+
+        Benevningen for den benevnte avledede størrelsen $E$ er som
+        nevnt i del a) av oppgaven $\si{\kg\m\squared\per\s\squared}$. Denne
+        benevningen kalles Joule, med kortnavn $\si{\joule}$. For eksplosjoner
+        som frigjør store energimengder benyttes en annen enhet for energi som
+        kalles kiloton, med kortnavn $\si{\kilo\tonne}$. Regelen for å
+        konvertere måltallet for energi når en skifter fra enheten Joule til
+        kiloton finner en på nettet og er
+        \begin{equation*}
+          \si{\joule} \rightarrow \SI{2.3901e-13}{\kilo\tonne}.
+        \end{equation*}
+        Finn måltallet for den frigjorte energien dersom vi bruker kiloton som
+        enhet. Detaljerte målinger og beregninger som ble gjort i 1945 viste at
+        den frigjorte energien var ca $\SI{21}{\kilo\tonne}$. Denne verdien var
+        nær nok verdien du nettopp, med utgangspunkt i åpne kilder, har beregnet
+        til at personen som først gjorde disse beregningene i 1945 ble mistenkt
+        for å være en forræder. Dette fordi han frigjorde hemmelig informasjon
+        som Tyskland og Sovjetunionen kunne bruke til å utvikle sine egne
+        atombomber. I realiteten var han bare en ekspert i bruk av ubenevnte
+        avledede størrelser. Han var en britisk anvendt matematiker ved navn G.
+        I. Taylor.
+    \end{subproblem}
+%==============================================================================%
+%                          NOTAT 2.6.6 | PROBLEM 14                            %
+%==============================================================================%
+
+\begin{problem}[14]
+    La følgende matematiske modell være gitt
+    \begin{align}
+      ax^2=b,\label{OvingsModell1}
+    \end{align}
+    hvor parametrene $a$ og $b$ er følgende benevnte
+    størrelser
+    \begin{align*}
+      a &= \SI{2.34}{\kg\squared\per\m\cubed\s\tothe{\frac{1}{3}}},\\
+      b &= \SI{1.27}{\kg\tothe{-\frac{1}{2}}\m\tothe{\frac{1}{2}}\per\s\cubed},
+    \end{align*}
+\end{problem}
+    \begin{subproblem}
+        \label{subproblem:MAT-0001-Notat-2.6.6-Problem-14a}
+      Hvilken benevning må den ukjente $x$ ha for at \cref{OvingsModell1}
+        skal være en akseptabel matematisk modell?
+        \end{subproblem}
+        \begin{subproblem}
+        \label{subproblem:MAT-0001-Notat-2.6.6-Problem-14b}
+      La $y$ være måltallet til den ukjent, $y=\brak{x}$. Skriv ned
+        ligningen for $y$.
+        \end{subproblem}
+        \begin{subproblem}
+        \label{subproblem:MAT-0001-Notat-2.6.6-Problem-14c}
+      Finn alle løsningene til ligningen som desimaltall,hvor mange
+        signifikante sifre er det naturlig å kreve her?
+        \end{subproblem}
+        \begin{subproblem}
+        \label{subproblem:MAT-0001-Notat-2.6.6-Problem-14d}
+      Skriv ned de tilsvarende benevnte størrelsene som er løsninger til
+        den matematiske modellen fra \cref{OvingsModell1}.
+        \end{subproblem}
+        \begin{subproblem}
+            \label{subproblem:MAT-0001-Notat-2.6.6-Problem-14e}
+      Vi ønsker nå å skifte enheter fra $\si{\m}$, $\si{\s}$ og $\si{\kg}$
+        til $\si{\milli\m}$,$\si{\min}$ og $\si{\ct}$
+        \begin{align*}
+          \si{\m} &\rightarrow \SI{e3}{\milli\m},\\
+          \si{\s} &\rightarrow \SI[quotient-mode=fraction]{1/60}{\min},\\
+          \si{\kg} &\rightarrow \SI{5e3}{\ct}.
+        \end{align*}
+        La oss beregne løsningen $x$ på to forskjellige måter
+        \begin{subsubproblem}
+            Finn måltall og benevning til de to benevnte størrelsene
+            $a$ og $b$, og finn hvilkenbenevning den ukjente
+            $x$ må ha for at \cref{OvingsModell1} skal være en akseptabel
+            matematisk modell. Skriv deretter ned ligningen for måltallet,
+            $y=\brak{x}$ til den ukjente $x$ og finn alleløsningene med det
+            antall signifikante sifre det er naturlig å kreve. Bruk så disse
+            løsningene til å skrive ned de benevnte størrelsene som er løsninger
+            til den matematiske modellen fra \cref{OvingsModell1}.
+        \end{subsubproblem}
+        \begin{subsubproblem}
+            Vi kjenner benevningen til den ukjente med hensyn på de
+            opprinnelige enhetene fra \cref{subproblem:MAT-0001-Notat-2.6.6-Problem-14a}. Brukt dette sammen med
+            resultatet fra \cref{subproblem:MAT-0001-Notat-2.6.6-Problem-14d} og formlene for skifte av enheter til å
+            finne måltall og benevning til de løsningene til
+            \cref{OvingsModell1} etter skifte av enheter.
+        \end{subsubproblem}
+    \end{subproblem}
+\end{document}
